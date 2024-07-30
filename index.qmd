@@ -6,5 +6,5 @@ subtitle: "MSc Advanced Economics 2024-2025 - ENS Lyon"
 This website gathers all the materials and information for the course Econometrics 1 (ECO-4104) of the MSc Advanced Economics (2024-2025) at the ENS Lyon.
 
 ::: callout-caution
-This course will make an extensive use of R and RStudio. Please install it before class. You can find instructions for installation  [here](https://r4ds.hadley.nz/intro#prerequisites).
+This course will make an extensive use of R and RStudio. Please install it before class. You can find instructions for installation [here](https://r4ds.hadley.nz/intro#prerequisites).
 :::

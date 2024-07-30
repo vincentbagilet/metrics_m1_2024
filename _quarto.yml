@@ -14,6 +14,8 @@ execute:
 website:
   title: "Econometrics M1"
   favicon: images/favicon.ico
+  site-url: "https://vincentbagilet.github.io/metrics_m1_2024/"
+  repo-url: "https://github.com/vincentbagilet/metrics_m1_2024"
   navbar:
     left:
       - text: "Lectures"
