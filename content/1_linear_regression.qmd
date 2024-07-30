@@ -1,0 +1,39 @@
+---
+title: "Linear Regression"
+subtitle: "Introduction and refresher to linear regression"
+published-title: "Date"
+date: "2024-09-17"
+self-contained: true
+engine: knitr
+---
+
+::: callout-tip
+## Objective
+
+In this session, we will learn/review the basics of linear regression.
+:::
+
+## Materials
+
+`r fontawesome::fa("file-powerpoint")` Slides
+
+## Session Outline
+
+1.  Course logistics
+2.  Example: the link between the level of education and earnings
+3.  A primer on causal inference
+4.  Exercise
+5.  Mathematical derivation of the OLS estimator
+
+## Exercise
+
+*This section will describe the exercise that we will do in class and provide links to the data sets and tools used.*
+
+Since the TDs have not yet started, we will use Google Collabs to run today's code online. In the future, you will use R Studio.
+
+## Additional Resources
+
+-   [Seeing Theory](https://seeing-theory.brown.edu/) provides a nice introduction to probability and statistics based on interactive web applications
+-   The material from your L3 econometrics class
+-   [Chapter 4 of *The Effect*](https://theeffectbook.net/ch-DescribingRelationships.html)
+-   [Chapter 3 of Sciences Po's *Introduction to Econometrics with R*](https://scpoecon.github.io/ScPoEconometrics/linreg.html)

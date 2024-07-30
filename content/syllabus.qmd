@@ -1,0 +1,92 @@
+---
+title: "Syllabus - Econometrics 1 (ECO-4104)"
+subtitle: "MSc Advanced Economics - ENS Lyon - 2024/2025"
+engine: knitr
+---
+
+## Course website
+
+All the information relative to this class can be found on the [course website]().
+
+## Instructors
+
+-   [Vincent Bagilet](https://vincentbagilet.github.io/): [`r fontawesome::fa("envelope")` vincent.bagilet\@gmail.com](mailto:vincent.bagilet@gmail.com){.email} (4 first lectures)
+-   [Gaetan Bakalli](https://gaetanbakalli.com/): [`r fontawesome::fa("envelope")` bakalli\@em-lyon.com](mailto:bakalli@em-lyon.com){.email} (4 last lectures)
+-   [Lucile Laugrette](https://sites.google.com/view/lucilelaugerette/home): [`r fontawesome::fa("envelope")` lucile.laugerette\@gmail.com](mailto:lucile.laugerette@gmail.com){.email} (R TD)
+
+## Class Meeting Times
+
+`r fontawesome::fa("book-open")` Lectures: Tuesday 8:30am - 11:30am
+
+`r fontawesome::fa("laptop")` TD:
+
+`r fontawesome::fa("pencil")` Exam: Tuesday November 19
+
+## Course Objectives and Overview
+
+This course aims to introduce regression methods for economic research. It shall provide fundamental tools to quantitatively explore relevant social science questions.
+
+Intuition will be central to this class. A typical lecture will first discuss the main intuition related to the topics of the day through a set of concrete examples and realistic simulations. Most sessions will also involve hands-on R exercises and data analyses to allow grasping the main challenges associated with the topic of interest. After this description of the goals, the motivation, and the intuition behind the aspects explored in the lecture, it will turn to a comprehensive theorizing and mathematical formalization.
+
+The first part of this class will discuss how to implement a simple but sensible regression-based analysis. It will introduce a canonical regression method, its properties and discuss the implications of its associated assumptions on the outcomes of the analysis.
+
+## Outline
+
+More specifically, the course content will be divided into eight 3h-long lectures:
+
+1.  [Linear regression](1_linear_regression.qmd): Introduction and refresher to linear regression
+2.  [OLS properties](2_ols_properties.qmd): What are the properties and assumptions behind OLS?
+3.  [Model specification](3_model_selection.qmd): How to define a sensible model describing the relationships between the variables of interest?
+4.  [Covariates selection](4_covariates_selection.qmd): How to decide which variables to include in the model?
+
+## Prerequisites
+
+A basic background in econometrics and statistics is required for this course. A good understanding of linear algebra is also necessary. No prior knowledge of R is required, although some programming experience is a plus.
+
+## Grading
+
+### Weekly Quizes (20%)
+
+Every week at the beginning of class, there will be a short quiz on the material covered during the previous classes (mostly for me last one but some questions may pertain to material covered earlier). The main goal of these quizzes is to incentivize you to review the material and not to penalize you.
+
+Each quiz will last 10 min. Questions will mostly require you to summarize the previous lecture (topic, goal, main message), define a few key terms and give simple intuitions.
+
+### Final Exam (40%)
+
+A computer-based test will be held at the end of the semester. You will be given a dataset with a set of questions to perform applied analysis including estimation, hypothesis testing, the detection and correction of estimation issues, and inference.
+
+### Final Project (40%)
+
+In this project, by groups of two, you will have to investigate a research question of your choice using some of the techniques studied in class.
+
+You will write a short standalone report (5 pages maximum) and present your code and analysis in a Rmarkdown document.
+
+| Criteria   | Description                                        |
+|------------|----------------------------------------------------|
+| Question   | Research question of interest to economists        |
+| Background | Short review of the related literature             |
+| Data       | Data collection and construction of the datasets   |
+| Model      | Choice of the appropriate model and specification  |
+| Estimation | Appropriate diagnostics and corrections            |
+| Results    | Interpretation and answer to the research question |
+| Writing    | Clear and concise. English, referencing, etc.      |
+
+## Bibliography
+
+The course website provides a series of references to complement and go beyond the material taught in this class. Among those, key references are:
+
+-   Gelman, Andrew, Jennifer Hill, and Aki Vehtari. *Regression and Other Stories*. of *Analytical Methods for Social Research*. Cambridge University Press, 2020. 
+-   Wooldridge, Jeffrey M. *Introductory Econometrics: A Modern Approach*. South- Western College Publishing, 7th edition, 2018.
+-   Angrist, Joshua D. and Jorn-Stefen Prischke. *Mostly Harmless Econometrics: An Empiricist’s Companion*. Princeton University Press, 2009.
+-   Wickham, Hadley, Mine Çetinkaya-Rundel, and Garrett Grolemund. *R for data science*. O'Reilly Media, Inc., 2nd edition, 2023
+-   Hanck, Christoph, Martin Arnold, Alexander Gerber and Martin Schmelzer. *Introduction to Econometrics with R*. 2019.
+
+
+
+
+
+
+
+
+
+

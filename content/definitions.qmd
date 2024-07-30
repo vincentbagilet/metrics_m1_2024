@@ -1,0 +1,65 @@
+---
+title: "Definitions, Terminology and Notations"
+subtitle: "A repository of potentially useful definitions, terminology and notations"
+engine: knitr
+format: 
+  html:
+    page-layout: full
+---
+
+## Terminology and notation
+
+For $n$ *individuals* indexed by $i$ ($i = 1,\dots,n$), in the univariate linear regression model $y_i = \beta_0 + \beta_1 x_{i} + u_i,$,
+
+-   $y$ is called the *dependent variable*, the *regressand*, or the *left-hand variable*;
+-   $x$ is the *independent variable*, the *regressor*, or the *right-hand variable*;
+-   $y = \beta_0 + \beta_1 x$ is the *population regression line* or the *population regression function*;
+-   $\beta_0$ is the *intercept* of the population regression line;
+-   $\beta_1$ is the *slope* of the population regression line;
+-   $u_i$ is the error term.
+
+In vector form, this is equivalent to $Y = \beta_0 + \beta_1 X + U$ where
+
+$$Y = \begin{bmatrix}
+                    y_1\\ 
+                    \vdots\\
+                    y_n
+                \end{bmatrix},
+    \quad       
+     X = \begin{bmatrix}
+                    x_1\\ 
+                    \vdots\\
+                    x_n
+                \end{bmatrix}
+     \quad and \quad        
+     U = \begin{bmatrix}
+                    u_1\\ 
+                    \vdots\\
+                    u_n
+                \end{bmatrix}$$
+
+## Definitions
+
+```{r}
+#| label: definition_table
+#| echo: false
+#| message: false
+
+library(tidyverse)
+library(readxl)
+library(DT)
+
+definitions <- read_excel("definitions.xlsx")
+
+definitions |> 
+  arrange(Word) |> 
+  DT::datatable(
+    filter = 'top', 
+    options = list(
+      pageLength = 10,
+      scrollY = TRUE,
+      scrollX = TRUE,
+      autoWidth = TRUE
+    )
+  )
+```

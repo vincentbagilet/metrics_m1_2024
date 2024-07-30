@@ -1,0 +1,69 @@
+---
+title: "Resources"
+engine: knitr
+---
+
+Here is a list of resources and references that can be helpful for this class and to go beyond the material taught in this class.
+
+## Econometrics
+
+### Main Textbooks
+
+-   Wooldridge, [*Introductory Econometrics: A Modern Approach*](https://books.google.fr/books?id=GHoJzgEACAAJ&hl=fr&source=gbs_book_other_versions)
+-   Gelman, Hill and Vehtari, [*Regression and Other Stories*](https://www.cambridge.org/highereducation/books/regression-and-other-stories/DD20DD6C9057118581076E54E40C372C)
+-   SciencesPo [Introduction to Econometrics with R](https://scpoecon.github.io/ScPoEconometrics/)'s material overlaps with the one taught in this class and provides helpful web apps through the [ScPoApps R Package](https://github.com/ScPoEcon/ScPoApps).
+-   [Introduction to Econometrics with R](https://www.econometrics-with-r.org/index.html)
+
+### Going Further
+
+<!-- #### Causal Inference -->
+
+-   Huntington-Klein, [The Effect: An Introduction to Research Design and Causality](https://theeffectbook.net/index.html)
+-   Cunningham, [Causal Inference, The Mixtape](https://mixtape.scunning.com/)
+
+## R
+
+In addition to the material and information provided in the TD, here is a list of `r fontawesome::fa("r-project")` resources.
+
+### Learning R
+
+-   [R for Data Science](https://r4ds.hadley.nz/): definitely the **best** resource to learn R and the [tidyverse](https://www.tidyverse.org/) by yourself.
+-   [R cheatsheets](https://posit.co/resources/cheatsheets/): great summaries of the functions in key tidyverse packages.
+-   [The tidyverse style guide](https://style.tidyverse.org/index.html): a very short book to help you write more legible R code.
+-   [Tidy design principles](https://design.tidyverse.org/) a more advanced book to help you write better R code. <!-- - Any book by [Hadley Wickham](https://hadley.nz/) or the [Posit](https://posit.co/) team is a good place to start.  -->
+
+::: callout-tip
+If you are new to R, read R for Data Science cover to cover, running all the code in the book yourself; by the time you finish the book, you will know R.
+:::
+
+### Data viz in R
+
+Data visualization is key to any statistical analysis, whether it is used to explore the data, build a model, check hypotheses or present and communicate results. Here are a few resources that can help you build nice and relevant data viz in R.
+
+-   [R for Data Science](https://r4ds.hadley.nz/) provides a nice introduction to [ggplot](https://ggplot2.tidyverse.org/), THE package to build plots in R. To go further you can read [this book](https://ggplot2-book.org/).
+-   [Modern Data Visualization with R](https://rkabacoff.github.io/datavis/index.html) and [Data Visualization - A practical introduction](https://socviz.co/index.html) both discuss key data viz concepts and teaches you how to apply them in R and ggplot.
+-   [Fundamentals of Data Visualization](https://clauswilke.com/dataviz/) does not provide R code directly but provides a great introduction to data viz and the code can be found on [the book's GitHub](https://github.com/clauswilke/dataviz).
+
+## Finding data
+
+Data are obviously central to statistical analyses. Identifying relevant datasets is often not an easy task. Here is a non-exhaustive list of places where to look for useful datasets.
+
+-   [Google Dataset Search](https://datasetsearch.research.google.com/): a search engine for datasets hosted in thousands of repositories across the Web. Info [here](https://blog.google/products/search/making-it-easier-discover-datasets/)
+-   [Data Europa](https://data.europa.eu/en): European public sector datasets
+-   [Data.gouv](https://www.data.gouv.fr/en/): open platform for French public data
+-   [Data Is Plural](https://www.data-is-plural.com/): a weekly newsletter providing useful and often original datasets. There is a [spreadsheet](https://docs.google.com/spreadsheets/d/1wZhPLMCHKJvwOkP4juclhjFgqIY8fQFMemwKL2c64vk/edit?gid=0#gid=0) archiving all the data sets
+-   [A currated list of French open data sources](https://axysweb.com/top-15-des-sources-open-data/)
+-   [Quantitative Social Science Data](https://f.briatte.org/teaching/quanti/data/#economics): a curated list of economics datasets
+-   [Awesome Public Datasets](https://github.com/awesomedata/awesome-public-datasets#education): a list of topic-centric public data sources
+-   [PolData](https://github.com/erikgahner/PolDatahttps://github.com/erikgahner/PolData): a list of political science datasets
+-   [ICPSR](https://www.icpsr.umich.edu/web/pages/ICPSR/index.html) stores, curates, and provides access to scientific data so others can reuse the data
+-   [Harvard dataverse](https://dataverse.harvard.edu/): A repository of datasets used in published research articles.
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
