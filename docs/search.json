@@ -1,0 +1,156 @@
+[
+  {
+    "objectID": "content/syllabus.html",
+    "href": "content/syllabus.html",
+    "title": "Syllabus - Econometrics 1 (ECO-4104)",
+    "section": "",
+    "text": "All the information relative to this class can be found on the course website."
+  },
+  {
+    "objectID": "content/syllabus.html#course-website",
+    "href": "content/syllabus.html#course-website",
+    "title": "Syllabus - Econometrics 1 (ECO-4104)",
+    "section": "",
+    "text": "All the information relative to this class can be found on the course website."
+  },
+  {
+    "objectID": "content/syllabus.html#instructors",
+    "href": "content/syllabus.html#instructors",
+    "title": "Syllabus - Econometrics 1 (ECO-4104)",
+    "section": "Instructors",
+    "text": "Instructors\n\nVincent Bagilet:  vincent.bagilet@gmail.com (4 first lectures)\nGaetan Bakalli:  bakalli@em-lyon.com (4 last lectures)\nLucile Laugrette:  lucile.laugerette@gmail.com (R TD)"
+  },
+  {
+    "objectID": "content/syllabus.html#class-meeting-times",
+    "href": "content/syllabus.html#class-meeting-times",
+    "title": "Syllabus - Econometrics 1 (ECO-4104)",
+    "section": "Class Meeting Times",
+    "text": "Class Meeting Times\n Lectures: Tuesday 8:30am - 11:30am\n TD:\n Exam: Tuesday November 19"
+  },
+  {
+    "objectID": "content/syllabus.html#course-objectives-and-overview",
+    "href": "content/syllabus.html#course-objectives-and-overview",
+    "title": "Syllabus - Econometrics 1 (ECO-4104)",
+    "section": "Course Objectives and Overview",
+    "text": "Course Objectives and Overview\nThis course aims to introduce regression methods for economic research. It shall provide fundamental tools to quantitatively explore relevant social science questions.\nIntuition will be central to this class. A typical lecture will first discuss the main intuition related to the topics of the day through a set of concrete examples and realistic simulations. Most sessions will also involve hands-on R exercises and data analyses to allow grasping the main challenges associated with the topic of interest. After this description of the goals, the motivation, and the intuition behind the aspects explored in the lecture, it will turn to a comprehensive theorizing and mathematical formalization.\nThe first part of this class will discuss how to implement a simple but sensible regression-based analysis. It will introduce a canonical regression method, its properties and discuss the implications of its associated assumptions on the outcomes of the analysis."
+  },
+  {
+    "objectID": "content/syllabus.html#outline",
+    "href": "content/syllabus.html#outline",
+    "title": "Syllabus - Econometrics 1 (ECO-4104)",
+    "section": "Outline",
+    "text": "Outline\nMore specifically, the course content will be divided into eight 3h-long lectures:\n\nLinear regression: Introduction and refresher to linear regression\nOLS properties: What are the properties and assumptions behind OLS?\nModel specification: How to define a sensible model describing the relationships between the variables of interest?\nCovariates selection: How to decide which variables to include in the model?"
+  },
+  {
+    "objectID": "content/syllabus.html#prerequisites",
+    "href": "content/syllabus.html#prerequisites",
+    "title": "Syllabus - Econometrics 1 (ECO-4104)",
+    "section": "Prerequisites",
+    "text": "Prerequisites\nA basic background in econometrics and statistics is required for this course. A good understanding of linear algebra is also necessary. No prior knowledge of R is required, although some programming experience is a plus."
+  },
+  {
+    "objectID": "content/syllabus.html#grading",
+    "href": "content/syllabus.html#grading",
+    "title": "Syllabus - Econometrics 1 (ECO-4104)",
+    "section": "Grading",
+    "text": "Grading\n\nWeekly Quizes (20%)\nEvery week at the beginning of class, there will be a short quiz on the material covered during the previous classes (mostly for me last one but some questions may pertain to material covered earlier). The main goal of these quizzes is to incentivize you to review the material and not to penalize you.\nEach quiz will last 10 min. Questions will mostly require you to summarize the previous lecture (topic, goal, main message), define a few key terms and give simple intuitions.\n\n\nFinal Exam (40%)\nA computer-based test will be held at the end of the semester. You will be given a dataset with a set of questions to perform applied analysis including estimation, hypothesis testing, the detection and correction of estimation issues, and inference.\n\n\nFinal Project (40%)\nIn this project, by groups of two, you will have to investigate a research question of your choice using some of the techniques studied in class.\nYou will write a short standalone report (5 pages maximum) and present your code and analysis in a Rmarkdown document.\n\n\n\nCriteria\nDescription\n\n\n\n\nQuestion\nResearch question of interest to economists\n\n\nBackground\nShort review of the related literature\n\n\nData\nData collection and construction of the datasets\n\n\nModel\nChoice of the appropriate model and specification\n\n\nEstimation\nAppropriate diagnostics and corrections\n\n\nResults\nInterpretation and answer to the research question\n\n\nWriting\nClear and concise. English, referencing, etc."
+  },
+  {
+    "objectID": "content/syllabus.html#bibliography",
+    "href": "content/syllabus.html#bibliography",
+    "title": "Syllabus - Econometrics 1 (ECO-4104)",
+    "section": "Bibliography",
+    "text": "Bibliography\nThe course website provides a series of references to complement and go beyond the material taught in this class. Among those, key references are:\n\nGelman, Andrew, Jennifer Hill, and Aki Vehtari. Regression and Other Stories. of Analytical Methods for Social Research. Cambridge University Press, 2020.\nWooldridge, Jeffrey M. Introductory Econometrics: A Modern Approach. South- Western College Publishing, 7th edition, 2018.\nAngrist, Joshua D. and Jorn-Stefen Prischke. Mostly Harmless Econometrics: An Empiricist’s Companion. Princeton University Press, 2009.\nWickham, Hadley, Mine Çetinkaya-Rundel, and Garrett Grolemund. R for data science. O’Reilly Media, Inc., 2nd edition, 2023\nHanck, Christoph, Martin Arnold, Alexander Gerber and Martin Schmelzer. Introduction to Econometrics with R. 2019."
+  },
+  {
+    "objectID": "content/index.html",
+    "href": "content/index.html",
+    "title": "Econometrics 1",
+    "section": "",
+    "text": "This website gathers all the materials and information for the course Econometrics 1 (ECO-4104) of the MSc Advanced Economics (2024-2025) at the ENS Lyon.\n\n\n\n\n\n\nCaution\n\n\n\nThis course will make an extensive use of R and RStudio. Please install it before class. You can find instructions for installation here."
+  },
+  {
+    "objectID": "content/1_linear_regression.html",
+    "href": "content/1_linear_regression.html",
+    "title": "Linear Regression",
+    "section": "",
+    "text": "Objective\n\n\n\nIn this session, we will learn/review the basics of linear regression."
+  },
+  {
+    "objectID": "content/1_linear_regression.html#materials",
+    "href": "content/1_linear_regression.html#materials",
+    "title": "Linear Regression",
+    "section": "Materials",
+    "text": "Materials\n Slides"
+  },
+  {
+    "objectID": "content/1_linear_regression.html#session-outline",
+    "href": "content/1_linear_regression.html#session-outline",
+    "title": "Linear Regression",
+    "section": "Session Outline",
+    "text": "Session Outline\n\nCourse logistics\nExample: the link between the level of education and earnings\nA primer on causal inference\nExercise\nMathematical derivation of the OLS estimator"
+  },
+  {
+    "objectID": "content/1_linear_regression.html#exercise",
+    "href": "content/1_linear_regression.html#exercise",
+    "title": "Linear Regression",
+    "section": "Exercise",
+    "text": "Exercise\nThis section will describe the exercise that we will do in class and provide links to the data sets and tools used.\nSince the TDs have not yet started, we will use Google Collabs to run today’s code online. In the future, you will use R Studio."
+  },
+  {
+    "objectID": "content/1_linear_regression.html#additional-resources",
+    "href": "content/1_linear_regression.html#additional-resources",
+    "title": "Linear Regression",
+    "section": "Additional Resources",
+    "text": "Additional Resources\n\nSeeing Theory provides a nice introduction to probability and statistics based on interactive web applications\nThe material from your L3 econometrics class\nChapter 4 of The Effect\nChapter 3 of Sciences Po’s Introduction to Econometrics with R"
+  },
+  {
+    "objectID": "content/definitions.html",
+    "href": "content/definitions.html",
+    "title": "Definitions, Terminology and Notations",
+    "section": "",
+    "text": "For \\(n\\) individuals indexed by \\(i\\) (\\(i = 1,\\dots,n\\)), in the univariate linear regression model \\(y_i = \\beta_0 + \\beta_1 x_{i} + u_i,\\),\n\n\\(y\\) is called the dependent variable, the regressand, or the left-hand variable;\n\\(x\\) is the independent variable, the regressor, or the right-hand variable;\n\\(y = \\beta_0 + \\beta_1 x\\) is the population regression line or the population regression function;\n\\(\\beta_0\\) is the intercept of the population regression line;\n\\(\\beta_1\\) is the slope of the population regression line;\n\\(u_i\\) is the error term.\n\nIn vector form, this is equivalent to \\(Y = \\beta_0 + \\beta_1 X + U\\) where\n\\[Y = \\begin{bmatrix}\n                    y_1\\\\\n                    \\vdots\\\\\n                    y_n\n                \\end{bmatrix},\n    \\quad       \n     X = \\begin{bmatrix}\n                    x_1\\\\\n                    \\vdots\\\\\n                    x_n\n                \\end{bmatrix}\n     \\quad and \\quad        \n     U = \\begin{bmatrix}\n                    u_1\\\\\n                    \\vdots\\\\\n                    u_n\n                \\end{bmatrix}\\]"
+  },
+  {
+    "objectID": "content/definitions.html#terminology-and-notation",
+    "href": "content/definitions.html#terminology-and-notation",
+    "title": "Definitions, Terminology and Notations",
+    "section": "",
+    "text": "For \\(n\\) individuals indexed by \\(i\\) (\\(i = 1,\\dots,n\\)), in the univariate linear regression model \\(y_i = \\beta_0 + \\beta_1 x_{i} + u_i,\\),\n\n\\(y\\) is called the dependent variable, the regressand, or the left-hand variable;\n\\(x\\) is the independent variable, the regressor, or the right-hand variable;\n\\(y = \\beta_0 + \\beta_1 x\\) is the population regression line or the population regression function;\n\\(\\beta_0\\) is the intercept of the population regression line;\n\\(\\beta_1\\) is the slope of the population regression line;\n\\(u_i\\) is the error term.\n\nIn vector form, this is equivalent to \\(Y = \\beta_0 + \\beta_1 X + U\\) where\n\\[Y = \\begin{bmatrix}\n                    y_1\\\\\n                    \\vdots\\\\\n                    y_n\n                \\end{bmatrix},\n    \\quad       \n     X = \\begin{bmatrix}\n                    x_1\\\\\n                    \\vdots\\\\\n                    x_n\n                \\end{bmatrix}\n     \\quad and \\quad        \n     U = \\begin{bmatrix}\n                    u_1\\\\\n                    \\vdots\\\\\n                    u_n\n                \\end{bmatrix}\\]"
+  },
+  {
+    "objectID": "content/definitions.html#definitions",
+    "href": "content/definitions.html#definitions",
+    "title": "Definitions, Terminology and Notations",
+    "section": "Definitions",
+    "text": "Definitions"
+  },
+  {
+    "objectID": "content/resources.html",
+    "href": "content/resources.html",
+    "title": "Resources",
+    "section": "",
+    "text": "Here is a list of resources and references that can be helpful for this class and to go beyond the material taught in this class."
+  },
+  {
+    "objectID": "content/resources.html#econometrics",
+    "href": "content/resources.html#econometrics",
+    "title": "Resources",
+    "section": "Econometrics",
+    "text": "Econometrics\n\nMain Textbooks\n\nWooldridge, Introductory Econometrics: A Modern Approach\nGelman, Hill and Vehtari, Regression and Other Stories\nSciencesPo Introduction to Econometrics with R’s material overlaps with the one taught in this class and provides helpful web apps through the ScPoApps R Package.\nIntroduction to Econometrics with R\n\n\n\nGoing Further\n\n\nHuntington-Klein, The Effect: An Introduction to Research Design and Causality\nCunningham, Causal Inference, The Mixtape"
+  },
+  {
+    "objectID": "content/resources.html#r",
+    "href": "content/resources.html#r",
+    "title": "Resources",
+    "section": "R",
+    "text": "R\nIn addition to the material and information provided in the TD, here is a list of  resources.\n\nLearning R\n\nR for Data Science: definitely the best resource to learn R and the tidyverse by yourself.\nR cheatsheets: great summaries of the functions in key tidyverse packages.\nThe tidyverse style guide: a very short book to help you write more legible R code.\nTidy design principles a more advanced book to help you write better R code. \n\n\n\n\n\n\n\nTip\n\n\n\nIf you are new to R, read R for Data Science cover to cover, running all the code in the book yourself; by the time you finish the book, you will know R.\n\n\n\n\nData viz in R\nData visualization is key to any statistical analysis, whether it is used to explore the data, build a model, check hypotheses or present and communicate results. Here are a few resources that can help you build nice and relevant data viz in R.\n\nR for Data Science provides a nice introduction to ggplot, THE package to build plots in R. To go further you can read this book.\nModern Data Visualization with R and Data Visualization - A practical introduction both discuss key data viz concepts and teaches you how to apply them in R and ggplot.\nFundamentals of Data Visualization does not provide R code directly but provides a great introduction to data viz and the code can be found on the book’s GitHub."
+  },
+  {
+    "objectID": "content/resources.html#finding-data",
+    "href": "content/resources.html#finding-data",
+    "title": "Resources",
+    "section": "Finding data",
+    "text": "Finding data\nData are obviously central to statistical analyses. Identifying relevant datasets is often not an easy task. Here is a non-exhaustive list of places where to look for useful datasets.\n\nGoogle Dataset Search: a search engine for datasets hosted in thousands of repositories across the Web. Info here\nData Europa: European public sector datasets\nData.gouv: open platform for French public data\nData Is Plural: a weekly newsletter providing useful and often original datasets. There is a spreadsheet archiving all the data sets\nA currated list of French open data sources\nQuantitative Social Science Data: a curated list of economics datasets\nAwesome Public Datasets: a list of topic-centric public data sources\nPolData: a list of political science datasets\nICPSR stores, curates, and provides access to scientific data so others can reuse the data\nHarvard dataverse: A repository of datasets used in published research articles."
+  }
+]
