@@ -4,7 +4,6 @@ project:
     port: 4611
   render: 
     - "*.qmd"
-    - "!slides/"
     - "!misc/"
   output-dir: docs
     
@@ -23,11 +22,11 @@ website:
           - text: "1 - Linear Regression"
             href: content/1_linear_regression.qmd
           - text: "2 - OLS Properties"
-            href: content/2_ols_properties.qmd
+            # href: content/2_ols_properties.qmd
           - text: "3 - Model Specification"
-            href: content/3_model_specification.qmd
+            # href: content/3_model_specification.qmd
           - text: "4 - Covariates Selection"
-            href: content/4_covariates_selection.qmd
+            # href: content/4_covariates_selection.qmd
       - href: content/syllabus.qmd
         text: "Syllabus"
       - href: content/definitions.qmd

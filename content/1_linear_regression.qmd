@@ -10,12 +10,19 @@ engine: knitr
 ::: callout-tip
 ## Objective
 
-In this session, we will learn/review the basics of linear regression.
+In this session, we will review the basics of linear regression.
 :::
 
 ## Materials
 
-`r fontawesome::fa("file-powerpoint")` Slides
+`r fontawesome::fa("file-powerpoint")` [Open slides](../slides/lecture_1/slides_1_linear_regression.html)
+
+```{r out.width='100%'}
+#| echo: false
+
+knitr::include_url("https://vincentbagilet.github.io/metrics_m2_2024/slides/lecture_1/slides_1_linear_regression.html")
+```
+
 
 ## Session Outline
 
@@ -35,5 +42,7 @@ In this session, we will learn/review the basics of linear regression.
 
 -   [Seeing Theory](https://seeing-theory.brown.edu/) provides a nice introduction to probability and statistics based on interactive web applications
 -   The material from your L3 econometrics class
--   [Chapter 4 of *The Effect*](https://theeffectbook.net/ch-DescribingRelationships.html)
--   [Chapter 3 of Sciences Po's *Introduction to Econometrics with R*](https://scpoecon.github.io/ScPoEconometrics/linreg.html)
+-   [Chapter 2 of *The Effect*](https://theeffectbook.net/ch-ResearchQuestions.html) on good research questions
+-   [Chapter 4 of *The Effect*](https://theeffectbook.net/ch-DescribingRelationships.html) for a review of linear regression
+-   [Chapter 3 of Sciences Po's *Introduction to Econometrics with R*](https://scpoecon.github.io/ScPoEconometrics/linreg.html): same
+-   [MLU-explain on linear regression](https://mlu-explain.github.io/linear-regression/): same but from a machine learning perspective
