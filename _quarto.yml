@@ -37,7 +37,7 @@ website:
   page-footer:
     right: |
       Made with R and [Quarto](https://quarto.org/)<br>
-      [Source code on GitHub]()
+      [Source code on GitHub](https://github.com/vincentbagilet/metrics_m1_2024)
 
 
 format:

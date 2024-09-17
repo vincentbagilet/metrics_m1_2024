@@ -16,15 +16,15 @@ All the information relative to this class can be found on the [course website](
 
 ## Class Meeting Times
 
-`r fontawesome::fa("book-open")` Lectures: Tuesday 8:30am - 11:30am
+`r fontawesome::fa("book-open")` Lectures: Tuesday 8:30am - 11:30am (for Vincent's section)
 
-`r fontawesome::fa("laptop")` TD:
+`r fontawesome::fa("laptop")` TD: Wednesday 9:00am - 11:30am
 
 `r fontawesome::fa("pencil")` Exam: Tuesday November 19
 
 ## Course Objectives and Overview
 
-This course aims to introduce regression methods for economic research and general method to test hypothesis. It shall provide fundamental tools to quantitatively explore relevant social science questions.
+This course aims to introduce regression methods for economic research and general methods to test hypothesis. It shall provide fundamental tools to quantitatively explore relevant social science questions.
 
 Intuition will be central to this class. A typical lecture will first discuss the main intuition related to the topics of the day through a set of concrete examples and realistic simulations. Most sessions will also involve hands-on R exercises and data analyses to allow grasping the main challenges associated with the topic of interest. After this description of the goals, the motivation, and the intuition behind the aspects explored in the lecture, it will turn to a comprehensive theorizing and mathematical formalization.
 
@@ -40,7 +40,7 @@ More specifically, the course content will be divided into eight 3h-long lecture
 2.  [OLS properties](2_ols_properties.qmd): What are the properties and assumptions behind OLS?
 3.  [Model specification](3_model_selection.qmd): How to define a sensible model describing the relationships between the variables of interest?
 4.  [Covariates selection](4_covariates_selection.qmd): How to decide which variables to include in the model?
-5.  [Convergence in ](4_convergence.qmd)[probability](5_convergence.qmd): How to show the convergence of an extremum estimator?
+5.  [Convergence in](4_convergence.qmd)[probability](5_convergence.qmd): How to show the convergence of an extremum estimator?
 6.  [Asymptotic normality](6_asynorm.qmd): How to derive the asymptotic distribution of an estimator?
 7.  [Hypothesis testing - Theory](7_test_theo.qmd): How to construct a good statistical test?
 8.  [Hypothesis testing - Application](8_test_app.qmd): Which hypothesis can I use based on a specific (set) of hypothesis?
@@ -51,7 +51,7 @@ A basic background in econometrics, statistics and probability is required for t
 
 ## Grading
 
-### Weekly Quizes (20%)
+### Weekly Quizzes (20%)
 
 Every week at the beginning of class, there will be a short quiz on the material covered during the previous classes (mostly for me last one but some questions may pertain to material covered earlier). The main goal of these quizzes is to incentivize you to review the material and not to penalize you.
 
@@ -65,7 +65,7 @@ The final exam will have two part. First, a computer-based test will be held at 
 
 In this project, by groups of two, you will have to investigate a research question of your choice using some of the techniques studied in class.
 
-You will write a short standalone report (5 pages maximum) and present your code and analysis in a Rmarkdown document.
+You will write a short standalone report (5 pages maximum) and present your code and analysis in a Quarto document.
 
 | Criteria   | Description                                        |
 |------------|----------------------------------------------------|

@@ -19,17 +19,17 @@ In this session, we will learn/review the basics of linear regression.
 
 ## Session Outline
 
+1.  Introduction: estimating a production function
 1.  Course logistics
-2.  Example: the link between the level of education and earnings
-3.  A primer on causal inference
-4.  Exercise
-5.  Mathematical derivation of the OLS estimator
+1.  Example: the link between the level of education and earnings
+1.  Exercise (optional)
+1.  Mathematical derivation of the OLS estimator
 
-## Exercise
+<!-- ## Exercise -->
 
-*This section will describe the exercise that we will do in class and provide links to the data sets and tools used.*
+<!-- *This section will describe the exercise that we will do in class and provide links to the data sets and tools used.* -->
 
-Since the TDs have not yet started, we will use Google Collabs to run today's code online. In the future, you will use R Studio.
+<!-- Since the TDs have not yet started, we will use Google Collabs to run today's code online. In the future, you will use R Studio. -->
 
 ## Additional Resources
 
