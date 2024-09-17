@@ -10,13 +10,13 @@ All the information relative to this class can be found on the [course website](
 
 ## Instructors
 
--   [Vincent Bagilet](https://vincentbagilet.github.io/): [`r fontawesome::fa("envelope")` vincent.bagilet\@gmail.com](mailto:vincent.bagilet@gmail.com){.email} (4 first lectures)
+-   [Vincent Bagilet](https://vincentbagilet.github.io/): [`r fontawesome::fa("envelope")` vincent.bagilet\@ens-lyon.fr](mailto:vincent.bagilet@ens-lyon.fr){.email} (4 first lectures)
 -   [Gaetan Bakalli](https://gaetanbakalli.com/): [`r fontawesome::fa("envelope")` bakalli\@em-lyon.com](mailto:bakalli@em-lyon.com){.email} (4 last lectures)
--   [Lucile Laugrette](https://sites.google.com/view/lucilelaugerette/home): [`r fontawesome::fa("envelope")` lucile.laugerette\@gmail.com](mailto:lucile.laugerette@gmail.com){.email} (R TD)
+-   [Lucile Laugrette](https://sites.google.com/view/lucilelaugerette/home): [`r fontawesome::fa("envelope")` lucile.laugerette\@ens-lyon.fr](mailto:lucile.laugerette@ens-lyon.fr){.email} (R TD)
 
 ## Class Meeting Times
 
-`r fontawesome::fa("book-open")` Lectures: Tuesday 8:30am - 11:30am (for Vincent's section)
+`r fontawesome::fa("book-open")` Lectures: Tuesday 8:00am - 11:00am (for Vincent's section)
 
 `r fontawesome::fa("laptop")` TD: Wednesday 9:00am - 11:30am
 

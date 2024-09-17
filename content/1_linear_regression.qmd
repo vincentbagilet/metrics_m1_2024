@@ -20,7 +20,7 @@ In this session, we will review the basics of linear regression.
 ```{r out.width='100%'}
 #| echo: false
 
-knitr::include_url("https://vincentbagilet.github.io/metrics_m2_2024/slides/lecture_1/slides_1_linear_regression.html")
+knitr::include_url("https://vincentbagilet.github.io/metrics_m1_2024/slides/lecture_1/slides_1_linear_regression.html")
 ```
 
 
