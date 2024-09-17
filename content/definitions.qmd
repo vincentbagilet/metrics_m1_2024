@@ -17,7 +17,7 @@ For $n$ *individuals* indexed by $i$ ($i = 1,\dots,n$), in the linear regression
 -   $x \mapsto \beta_0 + \beta_1 x$ is the *population regression function*,
 -   $\beta_0$ is the *intercept*,
 -   $\beta_1$ is the *slope* parameter associated with $x_1$,
--   Together $\beta_0$ and $\beta_1$ are the *coefficients* or *parameters *of the regression model,
+-   Together $\beta_0$ and $\beta_1$ are the *coefficients* or *parameters* of the regression model,
 -   $e_i$ is the *error* or *disturbance* term.
 
 In vector form, this is equivalent to $y = \beta_0 + \beta_1 x_1 + ... + \beta_k x_{k} + e$ where:
@@ -39,10 +39,10 @@ $$y = \begin{bmatrix}
                     \vdots\\
                     e_n
                 \end{bmatrix}_{n\times 1}$$
-                
+
 In matrix form, this equivalent to $y = X\beta + e$ where:
 
-$$x = \begin{bmatrix}
+$$X = \begin{bmatrix}
             1 & x_{11} & ... & x_{k1}\\ 
             1 & x_{12} & ... & x_{k2}\\ 
             \vdots & \vdots & & \vdots\\
@@ -55,11 +55,10 @@ $$x = \begin{bmatrix}
                     \beta_{k}
                 \end{bmatrix}_{(k+1)\times 1}
                 $$
-                
+
 ::: callout-note
 In this class, vectors are in lower case (*eg* $y$) and matrices in caps (*eg* $X$). Most of the time, individual observations will be indexed by $i$ (*eg* $y_i$); these are scalars.
 :::
-
 
 ## Definitions
 
