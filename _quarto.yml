@@ -5,6 +5,8 @@ project:
   render: 
     - "*.qmd"
     - "!misc/"
+  resources: 
+      - slides_1_linear_regression.html
   output-dir: docs
     
 execute:
