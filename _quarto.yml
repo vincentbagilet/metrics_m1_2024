@@ -7,6 +7,8 @@ project:
     - "!misc/"
   resources: 
       - slides_1_linear_regression.html
+      - slides_2_properties.htm
+      - sim_results.RDS
   output-dir: docs
     
 execute:
@@ -24,7 +26,7 @@ website:
           - text: "1 - Linear Regression"
             href: content/1_linear_regression.qmd
           - text: "2 - OLS Properties"
-            # href: content/2_ols_properties.qmd
+            href: content/2_properties.qmd
           - text: "3 - Model Specification"
             # href: content/3_model_specification.qmd
           - text: "4 - Covariates Selection"

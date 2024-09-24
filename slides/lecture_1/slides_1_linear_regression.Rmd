@@ -28,7 +28,7 @@ library(plotly)
 
 # set knit directory to "Document directory"
 
-set.seed(34)
+set.seed(12)
 
 xaringan_mediocre(pal = "portal")
 ```
@@ -464,7 +464,7 @@ class: titled, middle
 ---
 layout: false
 
-```{r sim_data, echo=FALSE, fig.asp=0.7, fig.align='center', message=FALSE,  warning=FALSE, out.width='80%', fig.dpi=300}
+```{r sim_data, echo=FALSE, fig.asp=0.8, fig.align='center', message=FALSE,  warning=FALSE, out.width='70%', fig.dpi=300}
 n <- 1000
 alpha <- 15000
 beta <- 2000
@@ -480,7 +480,7 @@ dat <-
 plot_wage_educ <- function(df, color) {
   df |> 
     ggplot(aes(x = educ, y = wage, color = {{color}})) + 
-    geom_point(size = 3) +
+    geom_point() +
     geom_abline(intercept = alpha, slope = beta, size = 1) +
     labs(
       title = "Relationship between education and wage",
@@ -496,7 +496,7 @@ plot_wage_educ(dat) +
 
 ---
 
-```{r plot_sample_1, echo=FALSE, fig.asp=0.7, fig.align='center', message=FALSE,  warning=FALSE, out.width='80%', fig.dpi=300}
+```{r plot_sample_1, echo=FALSE, fig.asp=0.8, fig.align='center', message=FALSE,  warning=FALSE, out.width='70%', fig.dpi=300}
 dat_sample <- dat |> 
   mutate(
     in_sample = rbernoulli(n, p = 0.05),
@@ -504,26 +504,27 @@ dat_sample <- dat |>
   ) 
 
 p <- plot_wage_educ(dat_sample, in_sample_name) +
-  labs(subtitle = "In the sample")
+  labs(subtitle = "The sample")
 
 p
 ```
 
 ---
 
-```{r plot_sample_2, echo=FALSE, fig.asp=0.7, fig.align='center', message=FALSE,  warning=FALSE, out.width='80%', fig.dpi=300}
+```{r plot_sample_2, echo=FALSE, fig.asp=0.8, fig.align='center', message=FALSE,  warning=FALSE, out.width='70%', fig.dpi=300}
 p +
   geom_smooth(
     data = dat_sample |> filter(in_sample), 
     method = "lm", 
     se = FALSE,
     fullrange = TRUE
-  )
+  ) +
+  labs(subtitle = "In the sample")
 ```
 
 ---
 
-```{r plot_sample_3, echo=FALSE, fig.asp=0.7, fig.align='center', message=FALSE,  warning=FALSE, out.width='80%', fig.dpi=300}
+```{r plot_sample_3, echo=FALSE, fig.asp=0.8, fig.align='center', message=FALSE,  warning=FALSE, out.width='70%', fig.dpi=300}
 dat_sample <- dat |> 
   mutate(
     in_sample = rbernoulli(n, p = 0.05),
@@ -531,7 +532,7 @@ dat_sample <- dat |>
   ) 
 
 plot_wage_educ(dat_sample, in_sample_name) +
-  labs(subtitle = "In the sample") +
+  labs(subtitle = "In another sample") +
   geom_smooth(
     data = dat_sample |> filter(in_sample), 
     method = "lm", 
@@ -542,7 +543,7 @@ plot_wage_educ(dat_sample, in_sample_name) +
 
 ---
 
-```{r plot_sample_4, echo=FALSE, fig.asp=0.7, fig.align='center', message=FALSE,  warning=FALSE, out.width='80%', fig.dpi=300}
+```{r plot_sample_4, echo=FALSE, fig.asp=0.8, fig.align='center', message=FALSE,  warning=FALSE, out.width='70%', fig.dpi=300}
 dat_sample <- dat |> 
   mutate(
     in_sample = rbernoulli(n, p = 0.05),
@@ -550,7 +551,7 @@ dat_sample <- dat |>
   ) 
 
 plot_wage_educ(dat_sample, in_sample_name) +
-  labs(subtitle = "In the sample") +
+  labs(subtitle = "In another sample") +
   geom_smooth(
     data = dat_sample |> filter(in_sample), 
     method = "lm", 
@@ -561,11 +562,11 @@ plot_wage_educ(dat_sample, in_sample_name) +
 
 ---
 
-```{r plot_sample_large, echo=FALSE, fig.asp=0.7, fig.align='center', message=FALSE,  warning=FALSE, out.width='80%', fig.dpi=300}
+```{r plot_sample_large, echo=FALSE, fig.asp=0.8, fig.align='center', message=FALSE,  warning=FALSE, out.width='70%', fig.dpi=300}
 dat_sample <- dat |> 
   mutate(
     in_sample = rbernoulli(n, p = 0.7),
-    in_sample_name = ifelse(in_sample, "Within Sample",NA)
+    in_sample_name = ifelse(in_sample, "In Sample",NA)
   ) 
 
 plot_wage_educ(dat_sample, in_sample_name) +
@@ -581,7 +582,7 @@ plot_wage_educ(dat_sample, in_sample_name) +
 ---
 
 
-```{r plot_sample_selection, echo=FALSE, fig.asp=0.7, fig.align='center', message=FALSE,  warning=FALSE, out.width='80%', fig.dpi=300}
+```{r plot_sample_selection, echo=FALSE, fig.asp=0.8, fig.align='center', message=FALSE,  warning=FALSE, out.width='70%', fig.dpi=300}
 dat_sample <- dat |> 
   mutate(
     in_sample = rbernoulli(n, p = 0.2),
@@ -590,7 +591,7 @@ dat_sample <- dat |>
   ) 
 
 plot_wage_educ(dat_sample, in_sample_name) +
-  labs(subtitle = "In a large sample sample") +
+  labs(subtitle = "In a selected sample, illustrating selection bias") +
   geom_smooth(
     data = dat_sample |> filter(in_sample), 
     method = "lm", 

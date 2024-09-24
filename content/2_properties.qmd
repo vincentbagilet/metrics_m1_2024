@@ -1,0 +1,49 @@
+---
+title: "OLS Properties"
+subtitle: ""
+published-title: "Date"
+date: "2024-09-24"
+self-contained: true
+engine: knitr
+---
+
+::: callout-tip
+## Objective
+
+In the previous session, we have discussed the uses of the OLS estimator and how to derive it. In this session, we will study it in more details, in particular its properties.
+:::
+
+## Materials
+
+<!-- `r fontawesome::fa("file-powerpoint")` [Open slides](../slides/lecture_1/slides_1_linear_regression.html) -->
+
+```{r out.width='100%'}
+#| echo: false
+
+# knitr::include_url("https://vincentbagilet.github.io/metrics_m1_2024/slides/lecture_1/slides_1_linear_regression.html")
+```
+
+<!-- These slides are built on the material Clément Gorin taught two years ago. -->
+
+## Session Outline
+
+1.  Recap on research questions
+2.  Summary from last week (from theory to an estimated model)
+3.  Example: the link between the level of education and earnings
+4.  Properties
+5.  Optimality
+5.  Mathematical derivation
+
+## Exercise
+
+
+<!-- *This section will describe the exercise that we will do in class and provide links to the data sets and tools used.* -->
+
+<!-- Since the TDs have not yet started, we will use Google Collabs to run today's code online. In the future, you will use R Studio. -->
+
+## Additional Resources
+
+-   [Seeing Theory](https://seeing-theory.brown.edu/) provides a nice introduction to probability and statistics based on interactive web applications
+-   The material from your L3 econometrics class
+-   [Chapter 2 of *The Effect*](https://theeffectbook.net/ch-ResearchQuestions.html) on good research questions
+-   [Chapter 4 of *The Effect*](https://theeffectbook.net/ch-DescribingRelationships.html) for a review of linear regression
