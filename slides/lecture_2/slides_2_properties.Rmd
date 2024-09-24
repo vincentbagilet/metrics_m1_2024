@@ -382,7 +382,7 @@ class: titled, middle
   
 - Measures the central tendency of the distribution
   
-- Discrete: $\mathbb{E}[X] = \sum_{i = 1}^{n} p(X_i)X_i$
+- Discrete: $\mathbb{E}[X] = \sum_{i = 1}^{s} p(X = x_i)x_i$
   
 - Continuous: $\mathbb{E}[Z] = \int_{- \infty}^{+\infty} z f_Z(z) \text{d}z$
 
@@ -540,6 +540,21 @@ class: titled, middle
 
 - Variance of the estimator
   
+---
+class: right, middle, inverse
+
+# Lecture summary
+
+---
+class: titled, middle
+
+# This week
+
+- Regression is a helpful tool to answer research questions
+
+- The OLS estimator, under some conditions has some neat properties
+
+- We described these properties and some necessary conditions for these properties to hold
 
 ---
 class: right, middle, inverse

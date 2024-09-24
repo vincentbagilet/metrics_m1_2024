@@ -7,7 +7,7 @@ project:
     - "!misc/"
   resources: 
       - slides_1_linear_regression.html
-      - slides_2_properties.htm
+      - slides_2_properties.html
       - sim_results.RDS
   output-dir: docs
     

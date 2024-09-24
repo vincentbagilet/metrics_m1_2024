@@ -10,8 +10,19 @@ engine: knitr
 ::: callout-tip
 ## Objective
 
-In this session, we will review the basics of linear regression.
+In this session, we review the basics of linear regression and derive the formula for the OLS estimator.
 :::
+
+## Summary
+
+As researchers (academic or not), we want to answer research questions. To do so, we build theories and often want to take them to the data to assess their validity and quantify the values of parameters of interest. This involves studying relationships between variables. Regression is an helpful tool to do so. It allows us to estimate our model, using methods such as Ordinary Least-Squares (OLS) for instance. In this session, we review the basics of linear regression and derive the formula for the OLS estimator, an essential tool in any empirical economic analysis.
+
+### Session Outline
+
+1.  Introduction: estimating a production function
+1.  Course logistics
+1.  Example: the link between the level of education and earnings
+1.  Mathematical derivation of the OLS estimator
 
 ## Materials
 
@@ -24,14 +35,6 @@ knitr::include_url("https://vincentbagilet.github.io/metrics_m1_2024/slides/lect
 ```
 
 These slides are built on the material Clément Gorin taught two years ago. 
-
-## Session Outline
-
-1.  Introduction: estimating a production function
-1.  Course logistics
-1.  Example: the link between the level of education and earnings
-1.  Exercise (optional)
-1.  Mathematical derivation of the OLS estimator
 
 <!-- ## Exercise -->
 

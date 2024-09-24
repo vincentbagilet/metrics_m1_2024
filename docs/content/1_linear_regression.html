@@ -4723,8 +4723,11 @@ vertical-align: -.125em;
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#materials" id="toc-materials" class="nav-link active" data-scroll-target="#materials">Materials</a></li>
+  <li><a href="#summary" id="toc-summary" class="nav-link active" data-scroll-target="#summary">Summary</a>
+  <ul class="collapse">
   <li><a href="#session-outline" id="toc-session-outline" class="nav-link" data-scroll-target="#session-outline">Session Outline</a></li>
+  </ul></li>
+  <li><a href="#materials" id="toc-materials" class="nav-link" data-scroll-target="#materials">Materials</a></li>
   <li><a href="#additional-resources" id="toc-additional-resources" class="nav-link" data-scroll-target="#additional-resources">Additional Resources</a></li>
   </ul>
 </nav>
@@ -4768,9 +4771,22 @@ Objective
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>In this session, we will review the basics of linear regression.</p>
+<p>In this session, we review the basics of linear regression and derive the formula for the OLS estimator.</p>
 </div>
 </div>
+<section id="summary" class="level2">
+<h2 class="anchored" data-anchor-id="summary">Summary</h2>
+<p>As researchers (academic or not), we want to answer research questions. To do so, we build theories and often want to take them to the data to assess their validity and quantify the values of parameters of interest. This involves studying relationships between variables. Regression is an helpful tool to do so. It allows us to estimate our model, using methods such as Ordinary Least-Squares (OLS) for instance. In this session, we review the basics of linear regression and derive the formula for the OLS estimator, an essential tool in any empirical economic analysis.</p>
+<section id="session-outline" class="level3">
+<h3 class="anchored" data-anchor-id="session-outline">Session Outline</h3>
+<ol type="1">
+<li>Introduction: estimating a production function</li>
+<li>Course logistics</li>
+<li>Example: the link between the level of education and earnings</li>
+<li>Mathematical derivation of the OLS estimator</li>
+</ol>
+</section>
+</section>
 <section id="materials" class="level2">
 <h2 class="anchored" data-anchor-id="materials">Materials</h2>
 <p><svg aria-hidden="true" role="img" viewbox="0 0 384 512" style="height:1em;width:0.75em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M64 464c-8.8 0-16-7.2-16-16V64c0-8.8 7.2-16 16-16H224v80c0 17.7 14.3 32 32 32h80V448c0 8.8-7.2 16-16 16H64zM64 0C28.7 0 0 28.7 0 64V448c0 35.3 28.7 64 64 64H320c35.3 0 64-28.7 64-64V154.5c0-17-6.7-33.3-18.7-45.3L274.7 18.7C262.7 6.7 246.5 0 229.5 0H64zm72 208c-13.3 0-24 10.7-24 24V336v56c0 13.3 10.7 24 24 24s24-10.7 24-24V360h44c42 0 76-34 76-76s-34-76-76-76H136zm68 104H160V256h44c15.5 0 28 12.5 28 28s-12.5 28-28 28z" /></svg> <a href="../slides/lecture_1/slides_1_linear_regression.html">Open slides</a></p>
@@ -4779,16 +4795,6 @@ Objective
 </iframe>
 </div>
 <p>These slides are built on the material Clément Gorin taught two years ago.</p>
-</section>
-<section id="session-outline" class="level2">
-<h2 class="anchored" data-anchor-id="session-outline">Session Outline</h2>
-<ol type="1">
-<li>Introduction: estimating a production function</li>
-<li>Course logistics</li>
-<li>Example: the link between the level of education and earnings</li>
-<li>Exercise (optional)</li>
-<li>Mathematical derivation of the OLS estimator</li>
-</ol>
 <!-- ## Exercise -->
 <!-- *This section will describe the exercise that we will do in class and provide links to the data sets and tools used.* -->
 <!-- Since the TDs have not yet started, we will use Google Collabs to run today's code online. In the future, you will use R Studio. -->

@@ -13,30 +13,27 @@ engine: knitr
 In the previous session, we have discussed the uses of the OLS estimator and how to derive it. In this session, we will study it in more details, in particular its properties.
 :::
 
+## Session Outline
+
+1.  Quizz
+1.  Discussion on research questions
+3.  Estimates and uncertainty
+4.  Properties of the OLS estimator
+5.  Optimality conditions
+5.  Mathematical derivation
+
 ## Materials
 
-<!-- `r fontawesome::fa("file-powerpoint")` [Open slides](../slides/lecture_1/slides_1_linear_regression.html) -->
+`r fontawesome::fa("file-powerpoint")` [Open slides](../slides/lecture_2/slides_2_properties.html)
 
 ```{r out.width='100%'}
 #| echo: false
 
-# knitr::include_url("https://vincentbagilet.github.io/metrics_m1_2024/slides/lecture_1/slides_1_linear_regression.html")
+knitr::include_url("https://vincentbagilet.github.io/metrics_m1_2024/slides/lecture_2/slides_2_properties.html")
 ```
 
 <!-- These slides are built on the material Clément Gorin taught two years ago. -->
 
-## Session Outline
-
-1.  Recap on research questions
-2.  Summary from last week (from theory to an estimated model)
-3.  Example: the link between the level of education and earnings
-4.  Properties
-5.  Optimality
-5.  Mathematical derivation
-
-## Exercise
-
-Here are the results of the simulation: [download](https://vincentbagilet.github.io/metrics_m1_2024/slides/lecture_2/sim_results.RDS)
 
 <!-- *This section will describe the exercise that we will do in class and provide links to the data sets and tools used.* -->
 

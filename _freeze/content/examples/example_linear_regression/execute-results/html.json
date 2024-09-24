@@ -1,0 +1,15 @@
+{
+  "hash": "d3a05f740331b9efc286b4fe5027bc81",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"Example linear regression\"\n---\n\n\nFirst, load the `tidyverse` package. \n\nThen, look at the `cars` data set. What are its dimensions? What do the variables represent? Use the `help` function.\n\nHow are `dist` and `speed` related?\n\n\n::: {.cell}\n\n```{.r .cell-code}\ncar |> \n  ggplot(aes(x = , y = )) +\n  geom_point() +\n  geom_smooth(method = \"lm\")\n```\n:::\n\n\nRun a regression using the `lm` function. \n\nInterpret the results.",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}
