@@ -23,7 +23,8 @@ Using OLS does not mean that everything has to be linear in the model; it means 
 6.  Indicators
 7.  Interactions
 
-`r fontawesome::fa("file-powerpoint")` [Open slides](../slides/lecture_3/slides_3_specification.html)
+`r fontawesome::fa("file-powerpoint")` 
+<!-- [Open slides](../slides/lecture_3/slides_3_specification.html) -->
 
 ```{r out.width='100%'}
 #| echo: false
