@@ -1,0 +1,144 @@
+---
+title: "Exercise - Hands-on linear regression"
+subtitle: "A first exercise to get started with regression analysis in R"
+published-title: "Date"
+date: "2024-10-02"
+self-contained: true
+engine: knitr
+---
+
+```{r packages_hidden}
+#| echo: false
+#| message: false
+
+library(webexercises)
+
+# adv <- readr::read_csv("https://www.statlearning.com/s/Advertising.csv") |> 
+#   janitor::clean_names() |> 
+#   dplyr::rename(id = x1)
+# 
+# saveRDS(adv, here("slides", "lecture_3", "data", "adv.RDS"))
+```
+
+::: {.callout-important title="Instructions"}
+This page describe the instructions and some interactive snippets. You will have to run most of your code on `RStudio`, on your own computer.
+:::
+
+First, let's load useful packages. For now, we will only need the `tidyverse` package.
+
+```{r packages}
+#| message: false
+#| code-fold: true
+
+library(tidyverse)
+```
+
+We will work with the `airquality` data set.
+
+## Exploring the data set
+
+This data set is automatically loaded to your `R environment`; you can call it directly. What are its dimensions?
+
+`r webexercises::fitb(nrow(airquality))` rows and `r fitb(ncol(airquality))` columns.
+
+What does each variable represent? Use the `help` function to answer this question.
+
+::: callout-tip
+There is a shortcut for the `help` function: just put a `?` before the function or data set you want help for, *eg*, `help(print)` and `?print` will have the same effect. Try it out!
+:::
+
+## Ploting the relationship
+
+How are `Ozone` and `Wind` related? First, we will plot the raw data using a scatter plot and `ggplot`.
+
+::: callout-important
+`ggplot` is a tool that allows you to make awesome plots in R. It is based on the Grammar of Graphics, a theoretical approach to make graph, that essentially builds graphs layer by layer.
+:::
+
+Which variable should you put on the $y$ axis? `r fitb("Ozone")` . Why?
+
+Now, fill in the blanks in the following chunk of code to plot a graph describing the relationship between the two variables. To do so, replace `x_variable` and `y_variable` with the name of the variables you want to plot.
+
+```{r plot, eval=FALSE}
+ggplot(data = airquality, aes(x = x_variable, y = y_variable)) +
+  geom_point() +
+  geom_smooth(method = "lm") +
+  labs(
+    title = "",
+    x = "",
+    y = ""
+  )
+```
+
+Do not forget to label the axes (indicating the units) and give a title to your graph. You can also play around with the various lines, for instance adding them one after the other, to understand their use. You will learn more about `ggplot` in TD.
+
+## A first regression
+
+Now that we have quickly plotted the data, let's run our first regression. To do so, we will use the `lm()` function. What does `lm` stands for? `r fitb("linear models?$", ignore_case = TRUE, regex = TRUE)`.
+
+To regress, `y` on `x`, we need to write the formula `y ~ x`. Write your formula of interest for the `airquality` dataset and run the function.
+
+```{r regression, eval = FALSE}
+lm(formula = y_variable ~ x_variable, data = airquality)
+```
+
+You can store the result fo this regression, in the `reg` variable for instance. Use the "assignment" sign `<-` and this will create the `reg` variable.
+
+```{r store_reg, eval = FALSE}
+reg <- lm(formula = y_variable ~ x_variable, data = airquality)
+```
+
+The nice thing with this is that you then can call the `summary()` function on this object:
+
+```{r summary, eval=FALSE}
+summary(reg)
+```
+
+Run this function. There is a lot of information there. What is the value of the coefficient of interest? `r fitb(-5.55, tol = 0.1)`.
+
+Interpret this coefficient. What word should your sentence start with? `r fitb("comparing", ignore_case = TRUE)`.
+
+As always, there is some uncertainty associated with the value of this coefficient. What is the standard error of this coefficient? `r fitb(0.69, tol = 0.01)`. Is the estimate statistically significant? `r mcq(c(answer = "Yes", "No"))`.
+
+### Specification
+
+## Multiple regression
+
+Let's consider a different model, including temperature. Assume that $\forall i \in \{1, .., n\}$, we have:
+
+$$Ozone_i = \beta_0 + \beta_1 Wind_i + \beta_2 Temp_i + e_i$$ Run a longer regression by adding one predictor to the model. To do so, you need to replace the `...` by `r fitb(c("Ozone ~ Wind + Temp", "Ozone ~ Temp + Wind"))`.
+
+```{r reg_temp, eval=FALSE}
+reg_temp <- lm(formula = ..., data = airquality)
+
+summary(reg_temp)
+```
+
+What is the coefficient associated with `Wind`? `r fitb(-3.0, tol = 0.1)`.
+
+Is it close to the one we had before, including only `Wind` as a predictor? `r mcq(c("Yes", answer = "No"))`. Why is that different?
+
+Make a sentence to interpret this coefficient, starting with the same word as usual (`r fitb("comparing", ignore_case = TRUE)`).
+
+## Scaling
+
+What is the unit of `Wind`? `r fitb("mph", ignore_case = TRUE)`. Is it easily interpretable for you? Not really. Let's transform it into something we are more familiar with: `r fitb(c("km/h", "kmh"), ignore_case = TRUE, regex = TRUE)`. 
+
+Which `dplyr` function would you use to create a new variable? `r fitb("mutate")`.
+
+To get from `Wind` to your new variable, your need to `r mcq(c(answer = "Multiply", "Divide"))` `Wind` by 1.609. Implement this and run your new regression.
+
+```{r scale, eval=FALSE}
+airquality_scaled <- airquality |> 
+  ...
+
+reg_scaled <- lm(formula = ..., data = airquality_scaled)
+
+summary(reg_scaled)
+```
+
+How do you interpret the coefficient of interest? 
+
+## Linear rellationship?
+
+You plotted the data earlier. Does the relationship between `Ozone` and `Wind` actually seem linear? `r mcq(c("Yes", answer = "No"))`. What physical process could explain this relationship?

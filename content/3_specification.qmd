@@ -1,0 +1,43 @@
+---
+title: "Model Specification"
+subtitle: ""
+published-title: "Date"
+date: "2024-10-02"
+self-contained: true
+engine: knitr
+---
+
+::: callout-tip
+## Objective
+
+Using OLS does not mean that everything has to be linear in the model; it means that the model has to be linear in its parameters. In this session, we will discuss why and how we can introduce non-linearities in our model.
+:::
+
+## Session Outline
+
+1.  Quizz
+2.  Recap' from last week (+ derivation formula of the variance of the OLS estimator)
+3.  Introduction to model specification
+4.  Logarithms
+5.  Quadratics
+6.  Indicators
+7.  Interactions
+
+`r fontawesome::fa("file-powerpoint")` [Open slides](../slides/lecture_3/slides_3_specification.html)
+
+```{r out.width='100%'}
+#| echo: false
+
+# knitr::include_url("https://vincentbagilet.github.io/metrics_m1_2024/slides/lecture_2/slides_2_properties.html")
+```
+
+## Exercise
+
+Now that you have a basic knowledge of `R`, we will implement a simple analysis in `R`. You can find the exercise [here](content/exercises/ex_01_linear_regression.qmd).
+
+## Additional Resources
+
+-   [Seeing Theory](https://seeing-theory.brown.edu/) provides a nice introduction to probability and statistics based on interactive web applications
+-   The material from your L3 econometrics class
+-   [Chapter 2 of *The Effect*](https://theeffectbook.net/ch-ResearchQuestions.html) on good research questions
+-   [Chapter 4 of *The Effect*](https://theeffectbook.net/ch-DescribingRelationships.html) for a review of linear regression

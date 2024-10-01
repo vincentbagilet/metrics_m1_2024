@@ -83,6 +83,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/crosstalk-1.2.1/js/crosstalk.min.js"></script>
 
 
+<link rel="stylesheet" href="../include/webex.css">
 </head>
 
 <body class="nav-fixed">
@@ -115,8 +116,22 @@ ul.task-list li input[type="checkbox"] {
     <a class="dropdown-item" href="../content/2_properties.html">
  <span class="dropdown-text">2 - OLS Properties</span></a>
   </li>  
-        <li class="dropdown-header">3 - Model Specification</li>
+        <li>
+    <a class="dropdown-item" href="../content/3_specification.html">
+ <span class="dropdown-text">3 - Model Specification</span></a>
+  </li>  
         <li class="dropdown-header">4 - Covariates Selection</li>
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-exercises" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Exercises</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-exercises">    
+        <li>
+    <a class="dropdown-item" href="../content/exercises/ex_01_linear_regression.html">
+ <span class="dropdown-text">1 - Hands-on Linear Regression</span></a>
+  </li>  
     </ul>
   </li>
   <li class="nav-item">
@@ -188,16 +203,16 @@ ul.task-list li input[type="checkbox"] {
 <li><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>e</mi><mi>i</mi></msub><annotation encoding="application/x-tex">e_i</annotation></semantics></math> is the <em>error</em> or <em>disturbance</em> term.</li>
 </ul>
 <p>In vector form, this is equivalent to <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>y</mi><mo>=</mo><msub><mi>β</mi><mn>0</mn></msub><mo>+</mo><msub><mi>β</mi><mn>1</mn></msub><msub><mi>x</mi><mn>1</mn></msub><mo>+</mo><mi>.</mi><mi>.</mi><mi>.</mi><mo>+</mo><msub><mi>β</mi><mi>k</mi></msub><msub><mi>x</mi><mi>k</mi></msub><mo>+</mo><mi>e</mi></mrow><annotation encoding="application/x-tex">y = \beta_0 + \beta_1 x_1 + ... + \beta_k x_{k} + e</annotation></semantics></math> where:</p>
-<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>y</mi><mo>=</mo><msub><mrow><mo stretchy="true" form="prefix">[</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><msub><mi>y</mi><mn>1</mn></msub></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mi>⋮</mi></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><msub><mi>y</mi><mi>n</mi></msub></mtd></mtr></mtable><mo stretchy="true" form="postfix">]</mo></mrow><mrow><mi>n</mi><mo>×</mo><mn>1</mn></mrow></msub><mo>,</mo><mspace width="1.0em"></mspace><mo>∀</mo><mi>j</mi><mo>∈</mo><mo stretchy="false" form="prefix">{</mo><mn>1</mn><mo>,</mo><mi>.</mi><mi>.</mi><mo>,</mo><mi>k</mi><mo stretchy="false" form="postfix">}</mo><mspace width="1.0em"></mspace><msub><mi>x</mi><mi>j</mi></msub><mo>=</mo><msub><mrow><mo stretchy="true" form="prefix">[</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><msub><mi>x</mi><mrow><mi>j</mi><mn>1</mn></mrow></msub></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mi>⋮</mi></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><msub><mi>x</mi><mrow><mi>j</mi><mi>n</mi></mrow></msub></mtd></mtr></mtable><mo stretchy="true" form="postfix">]</mo></mrow><mrow><mi>n</mi><mo>×</mo><mn>1</mn></mrow></msub><mspace width="1.0em"></mspace><mi>a</mi><mi>n</mi><mi>d</mi><mspace width="1.0em"></mspace><mi>e</mi><mo>=</mo><msub><mrow><mo stretchy="true" form="prefix">[</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><msub><mi>e</mi><mn>1</mn></msub></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mi>⋮</mi></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><msub><mi>e</mi><mi>n</mi></msub></mtd></mtr></mtable><mo stretchy="true" form="postfix">]</mo></mrow><mrow><mi>n</mi><mo>×</mo><mn>1</mn></mrow></msub></mrow><annotation encoding="application/x-tex">y = \begin{bmatrix}
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>y</mi><mo>=</mo><msub><mrow><mo stretchy="true" form="prefix">[</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><msub><mi>y</mi><mn>1</mn></msub></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mi>⋮</mi></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><msub><mi>y</mi><mi>n</mi></msub></mtd></mtr></mtable><mo stretchy="true" form="postfix">]</mo></mrow><mrow><mi>n</mi><mo>×</mo><mn>1</mn></mrow></msub><mo>,</mo><mspace width="1.0em"></mspace><mo>∀</mo><mi>j</mi><mo>∈</mo><mo stretchy="false" form="prefix">{</mo><mn>1</mn><mo>,</mo><mi>.</mi><mi>.</mi><mo>,</mo><mi>k</mi><mo stretchy="false" form="postfix">}</mo><mspace width="1.0em"></mspace><msub><mi>x</mi><mi>j</mi></msub><mo>=</mo><msub><mrow><mo stretchy="true" form="prefix">[</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><msub><mi>x</mi><mrow><mi>j</mi><mo>,</mo><mn>1</mn></mrow></msub></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mi>⋮</mi></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><msub><mi>x</mi><mrow><mi>j</mi><mo>,</mo><mi>n</mi></mrow></msub></mtd></mtr></mtable><mo stretchy="true" form="postfix">]</mo></mrow><mrow><mi>n</mi><mo>×</mo><mn>1</mn></mrow></msub><mspace width="1.0em"></mspace><mi>a</mi><mi>n</mi><mi>d</mi><mspace width="1.0em"></mspace><mi>e</mi><mo>=</mo><msub><mrow><mo stretchy="true" form="prefix">[</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><msub><mi>e</mi><mn>1</mn></msub></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mi>⋮</mi></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><msub><mi>e</mi><mi>n</mi></msub></mtd></mtr></mtable><mo stretchy="true" form="postfix">]</mo></mrow><mrow><mi>n</mi><mo>×</mo><mn>1</mn></mrow></msub></mrow><annotation encoding="application/x-tex">y = \begin{bmatrix}
                     y_1\\ 
                     \vdots\\
                     y_n
                 \end{bmatrix}_{n\times 1},
     \quad       \forall j \in \{1, .., k\} \quad
      x_j = \begin{bmatrix}
-                    x_{j1}\\ 
+                    x_{j,1}\\ 
                     \vdots\\
-                    x_{jn}
+                    x_{j,n}
                 \end{bmatrix}_{n\times 1}
      \quad and \quad        
      e = \begin{bmatrix}
@@ -206,11 +221,11 @@ ul.task-list li input[type="checkbox"] {
                     e_n
                 \end{bmatrix}_{n\times 1}</annotation></semantics></math></p>
 <p>In matrix form, this equivalent to <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>y</mi><mo>=</mo><mi>X</mi><mi>β</mi><mo>+</mo><mi>e</mi></mrow><annotation encoding="application/x-tex">y = X\beta + e</annotation></semantics></math> where:</p>
-<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>X</mi><mo>=</mo><msub><mrow><mo stretchy="true" form="prefix">[</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd><mtd columnalign="center" style="text-align: center"><msub><mi>x</mi><mn>11</mn></msub></mtd><mtd columnalign="center" style="text-align: center"><mi>.</mi><mi>.</mi><mi>.</mi></mtd><mtd columnalign="center" style="text-align: center"><msub><mi>x</mi><mrow><mi>k</mi><mn>1</mn></mrow></msub></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd><mtd columnalign="center" style="text-align: center"><msub><mi>x</mi><mn>12</mn></msub></mtd><mtd columnalign="center" style="text-align: center"><mi>.</mi><mi>.</mi><mi>.</mi></mtd><mtd columnalign="center" style="text-align: center"><msub><mi>x</mi><mrow><mi>k</mi><mn>2</mn></mrow></msub></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mi>⋮</mi></mtd><mtd columnalign="center" style="text-align: center"><mi>⋮</mi></mtd><mtd columnalign="center" style="text-align: center"></mtd><mtd columnalign="center" style="text-align: center"><mi>⋮</mi></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd><mtd columnalign="center" style="text-align: center"><msub><mi>x</mi><mrow><mn>1</mn><mi>n</mi></mrow></msub></mtd><mtd columnalign="center" style="text-align: center"><mi>.</mi><mi>.</mi><mi>.</mi></mtd><mtd columnalign="center" style="text-align: center"><msub><mi>x</mi><mrow><mi>k</mi><mi>n</mi></mrow></msub></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"></mtd></mtr></mtable><mo stretchy="true" form="postfix">]</mo></mrow><mrow><mi>n</mi><mo>×</mo><mrow><mo stretchy="true" form="prefix">(</mo><mi>k</mi><mo>+</mo><mn>1</mn><mo stretchy="true" form="postfix">)</mo></mrow></mrow></msub><mspace width="1.0em"></mspace><mi>a</mi><mi>n</mi><mi>d</mi><mspace width="1.0em"></mspace><mi>β</mi><mo>=</mo><msub><mrow><mo stretchy="true" form="prefix">[</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><msub><mi>β</mi><mn>0</mn></msub></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mi>⋮</mi></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><msub><mi>β</mi><mi>k</mi></msub></mtd></mtr></mtable><mo stretchy="true" form="postfix">]</mo></mrow><mrow><mrow><mo stretchy="true" form="prefix">(</mo><mi>k</mi><mo>+</mo><mn>1</mn><mo stretchy="true" form="postfix">)</mo></mrow><mo>×</mo><mn>1</mn></mrow></msub></mrow><annotation encoding="application/x-tex">X = \begin{bmatrix}
-            1 &amp; x_{11} &amp; ... &amp; x_{k1}\\ 
-            1 &amp; x_{12} &amp; ... &amp; x_{k2}\\ 
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>X</mi><mo>=</mo><msub><mrow><mo stretchy="true" form="prefix">[</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd><mtd columnalign="center" style="text-align: center"><msub><mi>x</mi><mrow><mn>1</mn><mo>,</mo><mn>1</mn></mrow></msub></mtd><mtd columnalign="center" style="text-align: center"><mi>.</mi><mi>.</mi><mi>.</mi></mtd><mtd columnalign="center" style="text-align: center"><msub><mi>x</mi><mrow><mi>k</mi><mo>,</mo><mn>1</mn></mrow></msub></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd><mtd columnalign="center" style="text-align: center"><msub><mi>x</mi><mrow><mn>1</mn><mo>,</mo><mn>2</mn></mrow></msub></mtd><mtd columnalign="center" style="text-align: center"><mi>.</mi><mi>.</mi><mi>.</mi></mtd><mtd columnalign="center" style="text-align: center"><msub><mi>x</mi><mrow><mi>k</mi><mo>,</mo><mn>2</mn></mrow></msub></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mi>⋮</mi></mtd><mtd columnalign="center" style="text-align: center"><mi>⋮</mi></mtd><mtd columnalign="center" style="text-align: center"></mtd><mtd columnalign="center" style="text-align: center"><mi>⋮</mi></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mn>1</mn></mtd><mtd columnalign="center" style="text-align: center"><msub><mi>x</mi><mrow><mn>1</mn><mo>,</mo><mi>n</mi></mrow></msub></mtd><mtd columnalign="center" style="text-align: center"><mi>.</mi><mi>.</mi><mi>.</mi></mtd><mtd columnalign="center" style="text-align: center"><msub><mi>x</mi><mrow><mi>k</mi><mo>,</mo><mi>n</mi></mrow></msub></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"></mtd></mtr></mtable><mo stretchy="true" form="postfix">]</mo></mrow><mrow><mi>n</mi><mo>×</mo><mrow><mo stretchy="true" form="prefix">(</mo><mi>k</mi><mo>+</mo><mn>1</mn><mo stretchy="true" form="postfix">)</mo></mrow></mrow></msub><mspace width="1.0em"></mspace><mi>a</mi><mi>n</mi><mi>d</mi><mspace width="1.0em"></mspace><mi>β</mi><mo>=</mo><msub><mrow><mo stretchy="true" form="prefix">[</mo><mtable><mtr><mtd columnalign="center" style="text-align: center"><msub><mi>β</mi><mn>0</mn></msub></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><mi>⋮</mi></mtd></mtr><mtr><mtd columnalign="center" style="text-align: center"><msub><mi>β</mi><mi>k</mi></msub></mtd></mtr></mtable><mo stretchy="true" form="postfix">]</mo></mrow><mrow><mrow><mo stretchy="true" form="prefix">(</mo><mi>k</mi><mo>+</mo><mn>1</mn><mo stretchy="true" form="postfix">)</mo></mrow><mo>×</mo><mn>1</mn></mrow></msub></mrow><annotation encoding="application/x-tex">X = \begin{bmatrix}
+            1 &amp; x_{1,1} &amp; ... &amp; x_{k,1}\\ 
+            1 &amp; x_{1,2} &amp; ... &amp; x_{k,2}\\ 
             \vdots &amp; \vdots &amp; &amp; \vdots\\
-            1 &amp; x_{1n} &amp; ... &amp; x_{kn}\\ 
+            1 &amp; x_{1,n} &amp; ... &amp; x_{k,n}\\ 
         \end{bmatrix}_{n\times (k + 1)}
       \quad and \quad   
       \beta = \begin{bmatrix}
@@ -237,8 +252,8 @@ Note
 <h2 class="anchored" data-anchor-id="definitions">Definitions</h2>
 <div class="cell">
 <div class="cell-output-display">
-<div class="datatables html-widget html-fill-item" id="htmlwidget-a75da9118304e256a448" style="width:100%;height:auto;"></div>
-<script type="application/json" data-for="htmlwidget-a75da9118304e256a448">{"x":{"filter":"top","vertical":false,"filterHTML":"<tr>\n  <td><\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n<\/tr>","data":[["1","2","3","4","5","6"],["Conditional distribution","Empirical Research","Inference","Model (scientific)","Random Variable","Regression"],["“The distribution of one variable given the value of another variable”","\"Any research that uses structured observations from the real world to attempt to answer questions\"","\"Using mathematical models to make general claims from particular data.\"","A simplified representation of a phenomenon. The Stanford Encyclopedia offers <a href =\"https://plato.stanford.edu/entries/models-science/\">a long discussion on models in science<\/a>","“A variable whose outcome is uncertain.” Formally, a rand is a function.","“A method that allows researchers to summarize how predictions or average values of an outcome vary across individuals defined by a set of predictors.\""],["<a href=\"https://theeffectbook.net/\">The Effect<\/a>","<a href=\"https://theeffectbook.net/\">The Effect<\/a>","<a href = \"https://avehtari.github.io/ROS-Examples/\">Regression and Other Stories<\/a>",null,"<a href = \"https://cbpbu.ac.in/userfiles/file/2020/STUDY_MAT/ECO/2.pdf\">Wooldridge, Introductory Econometrics","<a href = \"https://avehtari.github.io/ROS-Examples/\">Regression and Other Stories<\/a>"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Word<\/th>\n      <th>Definition<\/th>\n      <th>Source<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":10,"scrollY":true,"scrollX":true,"autoWidth":true,"columnDefs":[{"orderable":false,"targets":0},{"name":" ","targets":0},{"name":"Word","targets":1},{"name":"Definition","targets":2},{"name":"Source","targets":3}],"order":[],"orderClasses":false,"orderCellsTop":true}},"evals":[],"jsHooks":[]}</script>
+<div class="datatables html-widget html-fill-item" id="htmlwidget-7d2771b6623e841087a6" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-7d2771b6623e841087a6">{"x":{"filter":"top","vertical":false,"filterHTML":"<tr>\n  <td><\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n<\/tr>","data":[["1","2","3","4","5","6"],["Conditional distribution","Empirical Research","Inference","Model (scientific)","Random Variable","Regression"],["“The distribution of one variable given the value of another variable”","\"Any research that uses structured observations from the real world to attempt to answer questions\"","\"Using mathematical models to make general claims from particular data.\"","A simplified representation of a phenomenon. The Stanford Encyclopedia offers <a href =\"https://plato.stanford.edu/entries/models-science/\">a long discussion on models in science<\/a>","“A variable whose outcome is uncertain.” Formally, a rand is a function.","“A method that allows researchers to summarize how predictions or average values of an outcome vary across individuals defined by a set of predictors.\""],["<a href=\"https://theeffectbook.net/\">The Effect<\/a>","<a href=\"https://theeffectbook.net/\">The Effect<\/a>","<a href = \"https://avehtari.github.io/ROS-Examples/\">Regression and Other Stories<\/a>",null,"<a href = \"https://cbpbu.ac.in/userfiles/file/2020/STUDY_MAT/ECO/2.pdf\">Wooldridge, Introductory Econometrics","<a href = \"https://avehtari.github.io/ROS-Examples/\">Regression and Other Stories<\/a>"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Word<\/th>\n      <th>Definition<\/th>\n      <th>Source<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":10,"scrollY":true,"scrollX":true,"autoWidth":true,"columnDefs":[{"orderable":false,"targets":0},{"name":" ","targets":0},{"name":"Word","targets":1},{"name":"Definition","targets":2},{"name":"Source","targets":3}],"order":[],"orderClasses":false,"orderCellsTop":true}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 
@@ -246,6 +261,212 @@ Note
 </section>
 
 </main> <!-- /main -->
+<script>
+
+/* update total correct if #webex-total_correct exists */
+update_total_correct = function() {
+  console.log("webex: update total_correct");
+
+  var t = document.getElementsByClassName("webex-total_correct");
+  for (var i = 0; i < t.length; i++) {
+    p = t[i].parentElement;
+    var correct = p.getElementsByClassName("webex-correct").length;
+    var solvemes = p.getElementsByClassName("webex-solveme").length;
+    var radiogroups = p.getElementsByClassName("webex-radiogroup").length;
+    var selects = p.getElementsByClassName("webex-select").length;
+
+    t[i].innerHTML = correct + " of " + (solvemes + radiogroups + selects) + " correct";
+  }
+}
+
+/* webex-solution button toggling function */
+b_func = function() {
+  console.log("webex: toggle hide");
+
+  var cl = this.parentElement.classList;
+  if (cl.contains('open')) {
+    cl.remove("open");
+  } else {
+    cl.add("open");
+  }
+}
+
+/* check answers */
+check_func = function() {
+  console.log("webex: check answers");
+
+  var cl = this.parentElement.classList;
+  if (cl.contains('unchecked')) {
+    cl.remove("unchecked");
+    this.innerHTML = "Hide Answers";
+  } else {
+    cl.add("unchecked");
+    this.innerHTML = "Show Answers";
+  }
+}
+
+/* function for checking solveme answers */
+solveme_func = function(e) {
+  console.log("webex: check solveme");
+
+  var real_answers = JSON.parse(this.dataset.answer);
+  var my_answer = this.value;
+  var cl = this.classList;
+  if (cl.contains("ignorecase")) {
+    my_answer = my_answer.toLowerCase();
+  }
+  if (cl.contains("nospaces")) {
+    my_answer = my_answer.replace(/ /g, "")
+  }
+
+  if (my_answer == "") {
+    cl.remove("webex-correct");
+    cl.remove("webex-incorrect");
+  } else if (real_answers.includes(my_answer)) {
+    cl.add("webex-correct");
+    cl.remove("webex-incorrect");
+  } else {
+    cl.add("webex-incorrect");
+    cl.remove("webex-correct");
+  }
+
+  // match numeric answers within a specified tolerance
+  if(this.dataset.tol > 0){
+    var tol = JSON.parse(this.dataset.tol);
+    var matches = real_answers.map(x => Math.abs(x - my_answer) < tol)
+    if (matches.reduce((a, b) => a + b, 0) > 0) {
+      cl.add("webex-correct");
+    } else {
+      cl.remove("webex-correct");
+    }
+  }
+
+  // added regex bit
+  if (cl.contains("regex")){
+    answer_regex = RegExp(real_answers.join("|"))
+    if (answer_regex.test(my_answer)) {
+      cl.add("webex-correct");
+    }
+  }
+
+  update_total_correct();
+}
+
+/* function for checking select answers */
+select_func = function(e) {
+  console.log("webex: check select");
+
+  var cl = this.classList
+
+  /* add style */
+  cl.remove("webex-incorrect");
+  cl.remove("webex-correct");
+  if (this.value == "answer") {
+    cl.add("webex-correct");
+  } else if (this.value != "blank") {
+    cl.add("webex-incorrect");
+  }
+
+  update_total_correct();
+}
+
+/* function for checking radiogroups answers */
+radiogroups_func = function(e) {
+  console.log("webex: check radiogroups");
+
+  var checked_button = document.querySelector('input[name=' + this.id + ']:checked');
+  var cl = checked_button.parentElement.classList;
+  var labels = checked_button.parentElement.parentElement.children;
+
+  /* get rid of styles */
+  for (i = 0; i < labels.length; i++) {
+    labels[i].classList.remove("webex-incorrect");
+    labels[i].classList.remove("webex-correct");
+  }
+
+  /* add style */
+  if (checked_button.value == "answer") {
+    cl.add("webex-correct");
+  } else {
+    cl.add("webex-incorrect");
+  }
+
+  update_total_correct();
+}
+
+window.onload = function() {
+  console.log("webex onload");
+  /* set up solution buttons */
+  var buttons = document.getElementsByTagName("button");
+
+  for (var i = 0; i < buttons.length; i++) {
+    if (buttons[i].parentElement.classList.contains('webex-solution')) {
+      buttons[i].onclick = b_func;
+    }
+  }
+
+  var check_sections = document.getElementsByClassName("webex-check");
+  console.log("check:", check_sections.length);
+  for (var i = 0; i < check_sections.length; i++) {
+    check_sections[i].classList.add("unchecked");
+
+    let btn = document.createElement("button");
+    btn.innerHTML = "Show Answers";
+    btn.classList.add("webex-check-button");
+    btn.onclick = check_func;
+    check_sections[i].appendChild(btn);
+
+    let spn = document.createElement("span");
+    spn.classList.add("webex-total_correct");
+    check_sections[i].appendChild(spn);
+  }
+
+  /* set up webex-solveme inputs */
+  var solveme = document.getElementsByClassName("webex-solveme");
+
+  for (var i = 0; i < solveme.length; i++) {
+    /* make sure input boxes don't auto-anything */
+    solveme[i].setAttribute("autocomplete","off");
+    solveme[i].setAttribute("autocorrect", "off");
+    solveme[i].setAttribute("autocapitalize", "off");
+    solveme[i].setAttribute("spellcheck", "false");
+    solveme[i].value = "";
+
+    /* adjust answer for ignorecase or nospaces */
+    var cl = solveme[i].classList;
+    var real_answer = solveme[i].dataset.answer;
+    if (cl.contains("ignorecase")) {
+      real_answer = real_answer.toLowerCase();
+    }
+    if (cl.contains("nospaces")) {
+      real_answer = real_answer.replace(/ /g, "");
+    }
+    solveme[i].dataset.answer = real_answer;
+
+    /* attach checking function */
+    solveme[i].onkeyup = solveme_func;
+    solveme[i].onchange = solveme_func;
+
+    solveme[i].insertAdjacentHTML("afterend", " <span class='webex-icon'></span>")
+  }
+
+  /* set up radiogroups */
+  var radiogroups = document.getElementsByClassName("webex-radiogroup");
+  for (var i = 0; i < radiogroups.length; i++) {
+    radiogroups[i].onchange = radiogroups_func;
+  }
+
+  /* set up selects */
+  var selects = document.getElementsByClassName("webex-select");
+  for (var i = 0; i < selects.length; i++) {
+    selects[i].onchange = select_func;
+    selects[i].insertAdjacentHTML("afterend", " <span class='webex-icon'></span>")
+  }
+
+  update_total_correct();
+}
+
+</script>
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {

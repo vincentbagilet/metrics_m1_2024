@@ -453,6 +453,14 @@ class: titled, middle
 
 ---
 
+class: right, middle, inverse
+
+# Going Further
+
+## Repeated Regressions
+
+---
+
 class: titled, middle
 
 &lt;img src=&quot;data:image/png;base64,#slides_2_properties_files/figure-html/sim_data-1.png&quot; width=&quot;70%&quot; style=&quot;display: block; margin: auto;&quot; /&gt;
@@ -502,7 +510,7 @@ class: titled, middle
 
 # Properties of our estimator
 
-- Are they valid? 
+- Are our estimates valid? 
 
 - Are they a good approximation of the population parameters? 
 
@@ -530,13 +538,13 @@ class: titled, middle
 
 - For the same estimator, different samples `\(\Rightarrow\)` different estimates
 
-- Can study properties of the estimator based on one sample only
+- We can however study the properties of an estimator based on one sample only
 
 ---
 
 # Properties of our estimator
 
-- Here, we could derive properties because we had many samples
+- Here, we were able to derive properties because we had many samples
 
 - What if, like in actual settings,
 
@@ -615,7 +623,7 @@ class: titled, middle
 ---
 class: right, middle, inverse
 
-# Properties
+# Estimator Properties
 
 ---
 class: titled, middle
@@ -624,9 +632,11 @@ class: titled, middle
 
 - **Bias** of the estimator `\(\hat{\beta}\)`: Bias = `\(\mathbb{E}[\hat{\beta}|X] - \beta\)`
 
-- **Unbiasedness**: bias = 0
+- **Unbiasedness**:
 
-- Distribution of our estimates centered around the true population parameter
+  - Bias = 0
+
+  - Distribution of the estimator centered around the true population parameter
 
 - If bias &gt; 0, estimator positively biased (there is an upward bias)
 
@@ -637,7 +647,7 @@ class: titled, middle
 
 - An estimator is efficient if **its variance is smaller than that of the other estimators**
 
-- We want estimates from any to be close from one another
+- We want estimates from any sample to be close from one another
 
 - Efficiency is **relative** and is used to compare estimators that use the same information
 
@@ -678,11 +688,11 @@ class: titled, middle
 
 # Gauss-Markov theorem
 
-- Conditions under which the OLS estimator is **optimal**
+- Gives the conditions under which the OLS estimator is **optimal**
 
-- Optimal: unbiased estimator with the smallest possible variance (Best Linear Unbiased Estimator, BLUE)
+- Optimal means: the unbiased linear estimator with the smallest possible variance (Best Linear Unbiased Estimator, BLUE)
 
-- Often violated in practice
+- Ideal situation, often violated in practice
 
 - Use correction and alternative estimators to recover valid estimates
 
@@ -734,6 +744,20 @@ class: titled, middle
 - Homoscedasticity and no serial correlation
 
 `$$\mathbb{E}[e&#39;e | X] = \sigma^2 I$$`
+---
+class: titled, middle
+
+# OLS Properties and Conditions
+
+- Assume linearity and no perfect colinearity,
+
+- If in addition we have
+
+  - **Exogeneity**, the OLS estimator is **unbiased**
+  
+  - **Exogeneity** and **spherical errors**, the OLS estimator is **efficient** among *linear* estimators (BLUE)
+  
+  - That + **normally distributed errors**, the OLS estimator is **normally distributed**
 
 ---
 class: right, middle, inverse
@@ -763,9 +787,9 @@ class: titled, middle
 
 - Regression is a helpful tool to answer research questions
 
-- The OLS estimator, under some conditions has some neat properties
+- The OLS estimator, under some conditions, has some neat properties
 
-- We described these properties and some necessary conditions for these properties to hold
+- We described these **properties** and some of the **necessary conditions** for these properties to hold
 
 ---
 class: right, middle, inverse

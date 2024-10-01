@@ -10,7 +10,7 @@ engine: knitr
 ::: callout-tip
 ## Objective
 
-In the previous session, we have discussed the uses of the OLS estimator and how to derive it. In this session, we will study it in more details, in particular its properties.
+The OLS estimator, under some conditions, has some neat properties. In this session, we will described these properties and some of the necessary conditions for these properties to hold.
 :::
 
 ## Session Outline
@@ -18,9 +18,9 @@ In the previous session, we have discussed the uses of the OLS estimator and how
 1.  Quizz
 1.  Discussion on research questions
 3.  Estimates and uncertainty
-4.  Properties of the OLS estimator
-5.  Optimality conditions
-5.  Mathematical derivation
+4.  Some properties estimators can have
+5.  Optimality conditions: conditions under which the OLS estimator has some of these properties
+5.  Mathematical derivation (bias and variance of the OLS estimator)
 
 ## Materials
 

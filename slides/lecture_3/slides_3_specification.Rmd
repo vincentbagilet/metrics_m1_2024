@@ -1,0 +1,263 @@
+---
+title: "Lecture 3 - Specification"
+subtitle: "<br> Econometrics 1"
+author: "Vincent Bagilet"
+date: "2024-10-01"
+output:
+  xaringan::moon_reader:
+    self_contained: true
+    lib_dir: libs
+    css: mediocre-themer.css
+    nature:
+      countIncrementalSlides: no
+      highlightLines: yes
+      highlightStyle: github
+      ratio: '16:9'
+      titleSlideClass: [right, middle, inverse]
+---
+
+```{r themer, include=FALSE}
+library(tidyverse)
+library(knitr)
+library(xaringan)
+library(mediocrethemes)
+library(here)
+
+# set knit directory to "Document directory"
+
+set.seed(12)
+
+xaringan_mediocre(pal = "portal")
+```
+
+class: right, middle, inverse
+
+# Quizz
+
+---
+
+class: right, middle, inverse
+
+# Summary from last week
+
+---
+class: titled, middle
+
+# Outline
+
+- What are good research questions
+
+- Avoid data mining
+
+- Estimators are random variables: different samples $\Rightarrow$ different estimates
+
+- Review of statistics (expected value, variance, probability function)
+
+- Estimator properties
+
+- Gauss-Markov conditions
+
+???
+
+- What are good research questions? Can be answered, improve our understanding of the world
+
+---
+# Estimator porperties
+
+- There are some neat properties an estimator can have:
+
+--
+  
+  - Unbiasedness
+  
+  - Efficiency
+  
+  - Asymptotic Consistency
+  
+  - Asymptotic Normality
+  
+--
+
+- Under some conditions (the **Gauss-Markov conditions**), the OLS estimator has some of these properties
+
+???
+
+- What does each property mean?
+
+- Unbiasedness and efficiency are **sample** properties
+
+- 
+
+---
+class: titled, middle
+
+# OLS Properties and Conditions
+
+- Assume linearity and no perfect colinearity,
+
+- If in addition we have
+
+  - **Exogeneity**, the OLS estimator is **unbiased**
+  
+  - **Exogeneity** and **spherical errors**, the OLS estimator is **efficient** among *linear* estimators (BLUE)
+  
+  - That + **normally distributed errors**, the OLS estimator is **normally distributed**
+  
+---
+
+class: right, middle, inverse
+
+# Math Catch-up
+
+## Variance of the OLS estimator
+  
+---
+
+class: right, middle, inverse
+
+# Model Specification
+
+## Introduction
+
+---
+class: titled, middle
+
+# What is Model Specification?
+
+- Select the **set of variables** in the model + their **functional form**
+
+- This impacts performance of the estimator (bias and variance)
+
+- Specification error when the model incorrectly represents the DGP
+
+???
+
+- Perf: why? bias: OVB
+
+---
+class: titled, middle
+
+# Pros of a Linear Model
+
+- **Partial effects**: link between unit difference in $x$ and $y$
+
+- Separability $\Rightarrow$ coefficients can be interpreted * **ceteris paribus** *, *ie*, everything else equal
+
+- Never actually *ceteris paribus* in practice (otherwise the relationship would actually be causal)
+
+- `r fontawesome::fa("triangle-exclamation") `  A linear model means **linear in the parameters** not necessarily in the original variables
+
+---
+class: titled, middle
+
+# Introducing Non-Linearities
+
+- **Transform** variables before fitting the model, *eg*: 
+
+  - Take the log or square ( $log(wage)$ or $exp^2$ )
+
+- Add **indicator variables** (dummies) to account for group specific effects
+
+- Add **interactions** to measure a coefficient conditional on the value of another variable
+
+---
+
+class: right, middle, inverse
+
+# Scaling and standardization
+
+---
+class: titled, middle
+
+# Scaling
+
+- The scale of variables might be difficult to interpret 
+
+  - *eg* when using US data in miles or gallons for instance
+
+- We can **rescale** them
+
+- It does not change the properites but changes the interpretation
+
+---
+class: titled, middle
+
+# Standardization
+
+- When the scale is difficult to interpret, can standardize it
+
+  - *eg* test scores. Allows to compare across tests
+
+$$z = \dfrac{x - \bar{x}}{\hat{\sigma_{x}}}$$
+- Inform about how one observation compares with the population
+
+- $\hat{\beta}$ is then interpreted in regards with **"a one s.d. difference in $x$"**
+
+- If standardize every variable, measures the importance of each variable in explaining the response
+
+---
+
+class: right, middle, inverse
+
+# Logarithms
+
+---
+class: titled, middle
+
+# Usefulness
+
+- Model non-linear relationships
+
+- Interpretation in **percentage changes** (when change is small)
+
+- Does not change the order between values
+
+- Many responses bound by 0 $\Rightarrow$ we should use a limited response function
+
+---
+class: titled, middle
+
+# Percentage Change Interpretation
+
+$$\log(wage) = \beta_0 + \beta_1 educ + e$$
+- Parameter interpretation: $\Delta \% wage \simeq 100 \hat{\beta_1} \Delta educ$
+
+- $\hat{\beta_1}$ roughly represents the percentage difference in $y$ associated with a unit difference in $x$
+
+---
+# Log-transform 
+
+| Specification | Response | Input | Interpretation |
+|---------------| -------- | ----- | -------------- |
+| Level-level   | y        | x     | $\Delta y = \beta \Delta x$ |
+| Log-level     | log(y)   | x     | $\Delta \% y \simeq 100 \beta \Delta x$ |
+| Level-log     | y        | log(x)    | $\Delta y \simeq \frac{\beta}{100} \% \Delta x$ |
+| Log-log     | log(y)        | log(x)    | $\Delta \% y \simeq \beta \% \Delta x$ |
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+
+---
+class: right, middle, inverse
+
+# Thanks!
+
+ 
+
+
+
+
+

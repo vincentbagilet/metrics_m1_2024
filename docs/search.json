@@ -39,14 +39,14 @@
     "href": "content/definitions.html",
     "title": "Definitions, Terminology and Notations",
     "section": "",
-    "text": "For nn individuals indexed by ii (i=1,…,ni = 1,\\dots,n), in the linear regression model yi=β0+β1x1i+...+βkxki+eiy_i = \\beta_0 + \\beta_1 x_{1i} + ... + \\beta_k x_{ki} + e_i,\n\nyy is called the dependent variable, the regressand, the explained variable, or the left-hand side variable,\nx1,...,xkx_{1}, ..., x_{k} are the kk independent variables, the regressors, the explanatory variables, or the right-hand side variables,\nx↦β0+β1xx \\mapsto \\beta_0 + \\beta_1 x is the population regression function,\nβ0\\beta_0 is the intercept,\nβ1\\beta_1 is the slope parameter associated with x1x_1,\nTogether β0\\beta_0 and β1\\beta_1 are the coefficients or parameters of the regression model,\neie_i is the error or disturbance term.\n\nIn vector form, this is equivalent to y=β0+β1x1+...+βkxk+ey = \\beta_0 + \\beta_1 x_1 + ... + \\beta_k x_{k} + e where:\ny=[y1⋮yn]n×1,∀j∈{1,..,k}xj=[xj1⋮xjn]n×1ande=[e1⋮en]n×1y = \\begin{bmatrix}\n                    y_1\\\\ \n                    \\vdots\\\\\n                    y_n\n                \\end{bmatrix}_{n\\times 1},\n    \\quad       \\forall j \\in \\{1, .., k\\} \\quad\n     x_j = \\begin{bmatrix}\n                    x_{j1}\\\\ \n                    \\vdots\\\\\n                    x_{jn}\n                \\end{bmatrix}_{n\\times 1}\n     \\quad and \\quad        \n     e = \\begin{bmatrix}\n                    e_1\\\\ \n                    \\vdots\\\\\n                    e_n\n                \\end{bmatrix}_{n\\times 1}\nIn matrix form, this equivalent to y=Xβ+ey = X\\beta + e where:\nX=[1x11...xk11x12...xk2⋮⋮⋮1x1n...xkn]n×(k+1)andβ=[β0⋮βk](k+1)×1X = \\begin{bmatrix}\n            1 & x_{11} & ... & x_{k1}\\\\ \n            1 & x_{12} & ... & x_{k2}\\\\ \n            \\vdots & \\vdots & & \\vdots\\\\\n            1 & x_{1n} & ... & x_{kn}\\\\ \n        \\end{bmatrix}_{n\\times (k + 1)}\n      \\quad and \\quad   \n      \\beta = \\begin{bmatrix}\n                    \\beta_{0}\\\\ \n                    \\vdots\\\\\n                    \\beta_{k}\n                \\end{bmatrix}_{(k+1)\\times 1}\n                \n\n\n\n\n\n\nNote\n\n\n\nIn this class, vectors are in lower case (eg yy) and matrices in caps (eg XX). Most of the time, individual observations will be indexed by ii (eg yiy_i); these are scalars."
+    "text": "For nn individuals indexed by ii (i=1,…,ni = 1,\\dots,n), in the linear regression model yi=β0+β1x1i+...+βkxki+eiy_i = \\beta_0 + \\beta_1 x_{1i} + ... + \\beta_k x_{ki} + e_i,\n\nyy is called the dependent variable, the regressand, the explained variable, or the left-hand side variable,\nx1,...,xkx_{1}, ..., x_{k} are the kk independent variables, the regressors, the explanatory variables, or the right-hand side variables,\nx↦β0+β1xx \\mapsto \\beta_0 + \\beta_1 x is the population regression function,\nβ0\\beta_0 is the intercept,\nβ1\\beta_1 is the slope parameter associated with x1x_1,\nTogether β0\\beta_0 and β1\\beta_1 are the coefficients or parameters of the regression model,\neie_i is the error or disturbance term.\n\nIn vector form, this is equivalent to y=β0+β1x1+...+βkxk+ey = \\beta_0 + \\beta_1 x_1 + ... + \\beta_k x_{k} + e where:\ny=[y1⋮yn]n×1,∀j∈{1,..,k}xj=[xj,1⋮xj,n]n×1ande=[e1⋮en]n×1y = \\begin{bmatrix}\n                    y_1\\\\ \n                    \\vdots\\\\\n                    y_n\n                \\end{bmatrix}_{n\\times 1},\n    \\quad       \\forall j \\in \\{1, .., k\\} \\quad\n     x_j = \\begin{bmatrix}\n                    x_{j,1}\\\\ \n                    \\vdots\\\\\n                    x_{j,n}\n                \\end{bmatrix}_{n\\times 1}\n     \\quad and \\quad        \n     e = \\begin{bmatrix}\n                    e_1\\\\ \n                    \\vdots\\\\\n                    e_n\n                \\end{bmatrix}_{n\\times 1}\nIn matrix form, this equivalent to y=Xβ+ey = X\\beta + e where:\nX=[1x1,1...xk,11x1,2...xk,2⋮⋮⋮1x1,n...xk,n]n×(k+1)andβ=[β0⋮βk](k+1)×1X = \\begin{bmatrix}\n            1 & x_{1,1} & ... & x_{k,1}\\\\ \n            1 & x_{1,2} & ... & x_{k,2}\\\\ \n            \\vdots & \\vdots & & \\vdots\\\\\n            1 & x_{1,n} & ... & x_{k,n}\\\\ \n        \\end{bmatrix}_{n\\times (k + 1)}\n      \\quad and \\quad   \n      \\beta = \\begin{bmatrix}\n                    \\beta_{0}\\\\ \n                    \\vdots\\\\\n                    \\beta_{k}\n                \\end{bmatrix}_{(k+1)\\times 1}\n                \n\n\n\n\n\n\nNote\n\n\n\nIn this class, vectors are in lower case (eg yy) and matrices in caps (eg XX). Most of the time, individual observations will be indexed by ii (eg yiy_i); these are scalars."
   },
   {
     "objectID": "content/definitions.html#terminology-and-notation",
     "href": "content/definitions.html#terminology-and-notation",
     "title": "Definitions, Terminology and Notations",
     "section": "",
-    "text": "For nn individuals indexed by ii (i=1,…,ni = 1,\\dots,n), in the linear regression model yi=β0+β1x1i+...+βkxki+eiy_i = \\beta_0 + \\beta_1 x_{1i} + ... + \\beta_k x_{ki} + e_i,\n\nyy is called the dependent variable, the regressand, the explained variable, or the left-hand side variable,\nx1,...,xkx_{1}, ..., x_{k} are the kk independent variables, the regressors, the explanatory variables, or the right-hand side variables,\nx↦β0+β1xx \\mapsto \\beta_0 + \\beta_1 x is the population regression function,\nβ0\\beta_0 is the intercept,\nβ1\\beta_1 is the slope parameter associated with x1x_1,\nTogether β0\\beta_0 and β1\\beta_1 are the coefficients or parameters of the regression model,\neie_i is the error or disturbance term.\n\nIn vector form, this is equivalent to y=β0+β1x1+...+βkxk+ey = \\beta_0 + \\beta_1 x_1 + ... + \\beta_k x_{k} + e where:\ny=[y1⋮yn]n×1,∀j∈{1,..,k}xj=[xj1⋮xjn]n×1ande=[e1⋮en]n×1y = \\begin{bmatrix}\n                    y_1\\\\ \n                    \\vdots\\\\\n                    y_n\n                \\end{bmatrix}_{n\\times 1},\n    \\quad       \\forall j \\in \\{1, .., k\\} \\quad\n     x_j = \\begin{bmatrix}\n                    x_{j1}\\\\ \n                    \\vdots\\\\\n                    x_{jn}\n                \\end{bmatrix}_{n\\times 1}\n     \\quad and \\quad        \n     e = \\begin{bmatrix}\n                    e_1\\\\ \n                    \\vdots\\\\\n                    e_n\n                \\end{bmatrix}_{n\\times 1}\nIn matrix form, this equivalent to y=Xβ+ey = X\\beta + e where:\nX=[1x11...xk11x12...xk2⋮⋮⋮1x1n...xkn]n×(k+1)andβ=[β0⋮βk](k+1)×1X = \\begin{bmatrix}\n            1 & x_{11} & ... & x_{k1}\\\\ \n            1 & x_{12} & ... & x_{k2}\\\\ \n            \\vdots & \\vdots & & \\vdots\\\\\n            1 & x_{1n} & ... & x_{kn}\\\\ \n        \\end{bmatrix}_{n\\times (k + 1)}\n      \\quad and \\quad   \n      \\beta = \\begin{bmatrix}\n                    \\beta_{0}\\\\ \n                    \\vdots\\\\\n                    \\beta_{k}\n                \\end{bmatrix}_{(k+1)\\times 1}\n                \n\n\n\n\n\n\nNote\n\n\n\nIn this class, vectors are in lower case (eg yy) and matrices in caps (eg XX). Most of the time, individual observations will be indexed by ii (eg yiy_i); these are scalars."
+    "text": "For nn individuals indexed by ii (i=1,…,ni = 1,\\dots,n), in the linear regression model yi=β0+β1x1i+...+βkxki+eiy_i = \\beta_0 + \\beta_1 x_{1i} + ... + \\beta_k x_{ki} + e_i,\n\nyy is called the dependent variable, the regressand, the explained variable, or the left-hand side variable,\nx1,...,xkx_{1}, ..., x_{k} are the kk independent variables, the regressors, the explanatory variables, or the right-hand side variables,\nx↦β0+β1xx \\mapsto \\beta_0 + \\beta_1 x is the population regression function,\nβ0\\beta_0 is the intercept,\nβ1\\beta_1 is the slope parameter associated with x1x_1,\nTogether β0\\beta_0 and β1\\beta_1 are the coefficients or parameters of the regression model,\neie_i is the error or disturbance term.\n\nIn vector form, this is equivalent to y=β0+β1x1+...+βkxk+ey = \\beta_0 + \\beta_1 x_1 + ... + \\beta_k x_{k} + e where:\ny=[y1⋮yn]n×1,∀j∈{1,..,k}xj=[xj,1⋮xj,n]n×1ande=[e1⋮en]n×1y = \\begin{bmatrix}\n                    y_1\\\\ \n                    \\vdots\\\\\n                    y_n\n                \\end{bmatrix}_{n\\times 1},\n    \\quad       \\forall j \\in \\{1, .., k\\} \\quad\n     x_j = \\begin{bmatrix}\n                    x_{j,1}\\\\ \n                    \\vdots\\\\\n                    x_{j,n}\n                \\end{bmatrix}_{n\\times 1}\n     \\quad and \\quad        \n     e = \\begin{bmatrix}\n                    e_1\\\\ \n                    \\vdots\\\\\n                    e_n\n                \\end{bmatrix}_{n\\times 1}\nIn matrix form, this equivalent to y=Xβ+ey = X\\beta + e where:\nX=[1x1,1...xk,11x1,2...xk,2⋮⋮⋮1x1,n...xk,n]n×(k+1)andβ=[β0⋮βk](k+1)×1X = \\begin{bmatrix}\n            1 & x_{1,1} & ... & x_{k,1}\\\\ \n            1 & x_{1,2} & ... & x_{k,2}\\\\ \n            \\vdots & \\vdots & & \\vdots\\\\\n            1 & x_{1,n} & ... & x_{k,n}\\\\ \n        \\end{bmatrix}_{n\\times (k + 1)}\n      \\quad and \\quad   \n      \\beta = \\begin{bmatrix}\n                    \\beta_{0}\\\\ \n                    \\vdots\\\\\n                    \\beta_{k}\n                \\end{bmatrix}_{(k+1)\\times 1}\n                \n\n\n\n\n\n\nNote\n\n\n\nIn this class, vectors are in lower case (eg yy) and matrices in caps (eg XX). Most of the time, individual observations will be indexed by ii (eg yiy_i); these are scalars."
   },
   {
     "objectID": "content/definitions.html#definitions",
@@ -54,6 +54,34 @@
     "title": "Definitions, Terminology and Notations",
     "section": "Definitions",
     "text": "Definitions"
+  },
+  {
+    "objectID": "content/2_properties.html",
+    "href": "content/2_properties.html",
+    "title": "OLS Properties",
+    "section": "",
+    "text": "Objective\n\n\n\nThe OLS estimator, under some conditions, has some neat properties. In this session, we will described these properties and some of the necessary conditions for these properties to hold."
+  },
+  {
+    "objectID": "content/2_properties.html#session-outline",
+    "href": "content/2_properties.html#session-outline",
+    "title": "OLS Properties",
+    "section": "Session Outline",
+    "text": "Session Outline\n\nQuizz\nDiscussion on research questions\nEstimates and uncertainty\nSome properties estimators can have\nOptimality conditions: conditions under which the OLS estimator has some of these properties\nMathematical derivation (bias and variance of the OLS estimator)"
+  },
+  {
+    "objectID": "content/2_properties.html#materials",
+    "href": "content/2_properties.html#materials",
+    "title": "OLS Properties",
+    "section": "Materials",
+    "text": "Materials\n Open slides"
+  },
+  {
+    "objectID": "content/2_properties.html#additional-resources",
+    "href": "content/2_properties.html#additional-resources",
+    "title": "OLS Properties",
+    "section": "Additional Resources",
+    "text": "Additional Resources\n\nSeeing Theory provides a nice introduction to probability and statistics based on interactive web applications\nThe material from your L3 econometrics class\nChapter 2 of The Effect on good research questions\nChapter 4 of The Effect for a review of linear regression"
   },
   {
     "objectID": "content/1_linear_regression.html",
@@ -84,39 +112,81 @@
     "text": "Additional Resources\n\nSeeing Theory provides a nice introduction to probability and statistics based on interactive web applications\nThe material from your L3 econometrics class\nChapter 2 of The Effect on good research questions\nChapter 4 of The Effect for a review of linear regression\nChapter 3 of Sciences Po’s Introduction to Econometrics with R: same\nMLU-explain on linear regression: same but from a machine learning perspective"
   },
   {
-    "objectID": "content/2_properties.html",
-    "href": "content/2_properties.html",
-    "title": "OLS Properties",
+    "objectID": "content/3_specification.html",
+    "href": "content/3_specification.html",
+    "title": "Model Specification",
     "section": "",
-    "text": "Objective\n\n\n\nIn the previous session, we have discussed the uses of the OLS estimator and how to derive it. In this session, we will study it in more details, in particular its properties."
+    "text": "Objective\n\n\n\nUsing OLS does not mean that everything has to be linear in the model; it means that the model has to be linear in its parameters. In this session, we will discuss why and how we can introduce non-linearities in our model."
   },
   {
-    "objectID": "content/2_properties.html#session-outline",
-    "href": "content/2_properties.html#session-outline",
-    "title": "OLS Properties",
+    "objectID": "content/3_specification.html#session-outline",
+    "href": "content/3_specification.html#session-outline",
+    "title": "Model Specification",
     "section": "Session Outline",
-    "text": "Session Outline\n\nQuizz\nDiscussion on research questions\nEstimates and uncertainty\nProperties of the OLS estimator\nOptimality conditions\nMathematical derivation"
+    "text": "Session Outline\n\nQuizz\nRecap’ from last week (+ derivation formula of the variance of the OLS estimator)\nIntroduction to model specification\nLogarithms\nQuadratics\nIndicators\nInteractions\n\n Open slides"
   },
   {
-    "objectID": "content/2_properties.html#materials",
-    "href": "content/2_properties.html#materials",
-    "title": "OLS Properties",
-    "section": "Materials",
-    "text": "Materials\n Open slides"
+    "objectID": "content/3_specification.html#exercise",
+    "href": "content/3_specification.html#exercise",
+    "title": "Model Specification",
+    "section": "Exercise",
+    "text": "Exercise\nNow that you have a basic knowledge of R, we will implement a simple analysis in R. You can find the exercise here."
   },
   {
-    "objectID": "content/2_properties.html#additional-resources",
-    "href": "content/2_properties.html#additional-resources",
-    "title": "OLS Properties",
+    "objectID": "content/3_specification.html#additional-resources",
+    "href": "content/3_specification.html#additional-resources",
+    "title": "Model Specification",
     "section": "Additional Resources",
     "text": "Additional Resources\n\nSeeing Theory provides a nice introduction to probability and statistics based on interactive web applications\nThe material from your L3 econometrics class\nChapter 2 of The Effect on good research questions\nChapter 4 of The Effect for a review of linear regression"
   },
   {
-    "objectID": "content/examples/example_linear_regression.html",
-    "href": "content/examples/example_linear_regression.html",
-    "title": "Example linear regression",
+    "objectID": "content/exercises/ex_01_linear_regression.html",
+    "href": "content/exercises/ex_01_linear_regression.html",
+    "title": "Exercise - Hands-on linear regression",
     "section": "",
-    "text": "First, load the tidyverse package.\nThen, look at the cars data set. What are its dimensions? What do the variables represent? Use the help function.\nHow are dist and speed related?\n\ncar |&gt; \n  ggplot(aes(x = , y = )) +\n  geom_point() +\n  geom_smooth(method = \"lm\")\n\nRun a regression using the lm function.\nInterpret the results."
+    "text": "Instructions\n\n\n\nThis page describe the instructions and some interactive snippets. You will have to run most of your code on RStudio, on your own computer.\nFirst, let’s load useful packages. For now, we will only need the tidyverse package.\nCode\nlibrary(tidyverse)\nWe will work with the airquality data set."
+  },
+  {
+    "objectID": "content/exercises/ex_01_linear_regression.html#exploring-the-data-set",
+    "href": "content/exercises/ex_01_linear_regression.html#exploring-the-data-set",
+    "title": "Exercise - Hands-on linear regression",
+    "section": "Exploring the data set",
+    "text": "Exploring the data set\nThis data set is automatically loaded to your R environment; you can call it directly. What are its dimensions?\n rows and  columns.\nWhat does each variable represent? Use the help function to answer this question.\n\n\n\n\n\n\nTip\n\n\n\nThere is a shortcut for the help function: just put a ? before the function or data set you want help for, eg, help(print) and ?print will have the same effect. Try it out!"
+  },
+  {
+    "objectID": "content/exercises/ex_01_linear_regression.html#ploting-the-relationship",
+    "href": "content/exercises/ex_01_linear_regression.html#ploting-the-relationship",
+    "title": "Exercise - Hands-on linear regression",
+    "section": "Ploting the relationship",
+    "text": "Ploting the relationship\nHow are Ozone and Wind related? First, we will plot the raw data using a scatter plot and ggplot.\n\n\n\n\n\n\nImportant\n\n\n\nggplot is a tool that allows you to make awesome plots in R. It is based on the Grammar of Graphics, a theoretical approach to make graph, that essentially builds graphs layer by layer.\n\n\nWhich variable should you put on the \\(y\\) axis?  . Why?\nNow, fill in the blanks in the following chunk of code to plot a graph describing the relationship between the two variables. To do so, replace x_variable and y_variable with the name of the variables you want to plot.\n\nggplot(data = airquality, aes(x = x_variable, y = y_variable)) +\n  geom_point() +\n  geom_smooth(method = \"lm\") +\n  labs(\n    title = \"\",\n    x = \"\",\n    y = \"\"\n  )\n\nDo not forget to label the axes (indicating the units) and give a title to your graph. You can also play around with the various lines, for instance adding them one after the other, to understand their use. You will learn more about ggplot in TD."
+  },
+  {
+    "objectID": "content/exercises/ex_01_linear_regression.html#a-first-regression",
+    "href": "content/exercises/ex_01_linear_regression.html#a-first-regression",
+    "title": "Exercise - Hands-on linear regression",
+    "section": "A first regression",
+    "text": "A first regression\nNow that we have quickly plotted the data, let’s run our first regression. To do so, we will use the lm() function. What does lm stands for? .\nTo regress, y on x, we need to write the formula y ~ x. Write your formula of interest for the airquality dataset and run the function.\n\nlm(formula = y_variable ~ x_variable, data = airquality)\n\nYou can store the result fo this regression, in the reg variable for instance. Use the “assignment” sign &lt;- and this will create the reg variable.\n\nreg &lt;- lm(formula = y_variable ~ x_variable, data = airquality)\n\nThe nice thing with this is that you then can call the summary() function on this object:\n\nsummary(reg)\n\nRun this function. There is a lot of information there. What is the value of the coefficient of interest? .\nInterpret this coefficient. What word should your sentence start with? .\nAs always, there is some uncertainty associated with the value of this coefficient. What is the standard error of this coefficient? . Is the estimate statistically significant? YesNo.\n\nSpecification"
+  },
+  {
+    "objectID": "content/exercises/ex_01_linear_regression.html#multiple-regression",
+    "href": "content/exercises/ex_01_linear_regression.html#multiple-regression",
+    "title": "Exercise - Hands-on linear regression",
+    "section": "Multiple regression",
+    "text": "Multiple regression\nLet’s consider a different model, including temperature. Assume that \\(\\forall i \\in \\{1, .., n\\}\\), we have:\n\\[Ozone_i = \\beta_0 + \\beta_1 Wind_i + \\beta_2 Temp_i + e_i\\] Run a longer regression by adding one predictor to the model. To do so, you need to replace the ... by .\n\nreg_temp &lt;- lm(formula = ..., data = airquality)\n\nsummary(reg_temp)\n\nWhat is the coefficient associated with Wind? .\nIs it close to the one we had before, including only Wind as a predictor? YesNo. Why is that different?\nMake a sentence to interpret this coefficient, starting with the same word as usual ()."
+  },
+  {
+    "objectID": "content/exercises/ex_01_linear_regression.html#scaling",
+    "href": "content/exercises/ex_01_linear_regression.html#scaling",
+    "title": "Exercise - Hands-on linear regression",
+    "section": "Scaling",
+    "text": "Scaling\nWhat is the unit of Wind? . Is it easily interpretable for you? Not really. Let’s transform it into something we are more familiar with: .\nWhich dplyr function would you use to create a new variable? .\nTo get from Wind to your new variable, your need to MultiplyDivide Wind by 1.609. Implement this and run your new regression.\n\nairquality_scaled &lt;- airquality |&gt; \n  ...\n\nreg_scaled &lt;- lm(formula = ..., data = airquality_scaled)\n\nsummary(reg_scaled)\n\nHow do you interpret the coefficient of interest?"
+  },
+  {
+    "objectID": "content/exercises/ex_01_linear_regression.html#linear-rellationship",
+    "href": "content/exercises/ex_01_linear_regression.html#linear-rellationship",
+    "title": "Exercise - Hands-on linear regression",
+    "section": "Linear rellationship?",
+    "text": "Linear rellationship?\nYou plotted the data earlier. Does the relationship between Ozone and Wind actually seem linear? YesNo. What physical process could explain this relationship?"
   },
   {
     "objectID": "content/syllabus.html",

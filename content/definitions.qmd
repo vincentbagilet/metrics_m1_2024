@@ -29,9 +29,9 @@ $$y = \begin{bmatrix}
                 \end{bmatrix}_{n\times 1},
     \quad       \forall j \in \{1, .., k\} \quad
      x_j = \begin{bmatrix}
-                    x_{j1}\\ 
+                    x_{j,1}\\ 
                     \vdots\\
-                    x_{jn}
+                    x_{j,n}
                 \end{bmatrix}_{n\times 1}
      \quad and \quad        
      e = \begin{bmatrix}
@@ -43,10 +43,10 @@ $$y = \begin{bmatrix}
 In matrix form, this equivalent to $y = X\beta + e$ where:
 
 $$X = \begin{bmatrix}
-            1 & x_{11} & ... & x_{k1}\\ 
-            1 & x_{12} & ... & x_{k2}\\ 
+            1 & x_{1,1} & ... & x_{k,1}\\ 
+            1 & x_{1,2} & ... & x_{k,2}\\ 
             \vdots & \vdots & & \vdots\\
-            1 & x_{1n} & ... & x_{kn}\\ 
+            1 & x_{1,n} & ... & x_{k,n}\\ 
         \end{bmatrix}_{n\times (k + 1)}
       \quad and \quad   
       \beta = \begin{bmatrix}
