@@ -555,9 +555,15 @@ class: titled, middle
 `$$\log(wage) = \beta_0 + \beta_1 educ + e$$`
 - Parameter interpretation: `\(\Delta \% wage \simeq 100 \hat{\beta_1} \Delta educ\)`
 
-- `\(\hat{\beta_1}\)` roughly represents the percentage difference in `\(y\)` associated with a unit difference in `\(x\)`
+- `\(\hat{\beta_1}\)` can roughly be interpreted as the **percentage difference in `\(y\)` associated with a unit difference in `\(x\)`**
+
+- Assume estimation yields `\(\widehat{\log(wage)} = 0.58 + 0.083 educ\)`:
+ 
+  - An additional year of education is on average associated with a `\(\simeq 8.3\%\)` larger wage
 
 ---
+class: titled, middle
+
 # Log-transform 
 
 | Specification | Response | Input | Interpretation |
@@ -568,20 +574,49 @@ class: titled, middle
 | Log-log     | log(y)        | log(x)    | `\(\Delta \% y \simeq \beta \% \Delta x\)` |
 
 ---
+class: titled, middle
+
+# Thechnical (but Important) Usefulness
+
+- Often, the log transformation allows to **better satisfy the optimality conditions**:
+  
+  - Logarithm concave `\(\Rightarrow\)` often decreases the heteroskedasticity problem
+  
+  - Can make the errors more normal (essential for inference)
+  
+  - Decreases outlier issues
 
 ---
+# When to Use the Log Transformation?
+
+- We often **consider the log of**:
+
+--
+  
+  - Variables measuring money (salaries, sales, market values)
+  
+  - Large integer values (*eg* population)
+  
+--
+
+- Generally **use levels for**:
+
+--
+
+  - Smaller integer values (*eg* level of education)
+  
+--
+  
+- Be careful with log:
+
+  - *log-log* transformation `\(\leftrightarrow\)` multiplicative  relationship (*eg* Cobb-Douglass)
+
+  - When variable skewed towards 0, the log creates large negative values
 
 ---
+class: right, middle
 
----
-
----
-
----
-
----
-
----
+# I will add the rest after next week&#39;s class
 
 ---
 class: right, middle, inverse

@@ -6,9 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2024-10-01">
+<meta name="dcterms.date" content="2024-10-02">
 
-<title>Econometrics M1 - Exercise - Hands-on linear regression</title>
+<title>Econometrics M1 - Exercise - Specification</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -4692,44 +4692,6 @@ vertical-align: -.125em;
   }
 }</script>
 
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-  
-  <script>
-    (function () {
-      var script = document.createElement("script");
-      script.type = "text/javascript";
-      script.src  = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js";
-      document.getElementsByTagName("head")[0].appendChild(script);
-    })();
-  </script>
-
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
 
 <style type="text/css">:root {
 --incorrect: #983E82;
@@ -4916,13 +4878,6 @@ margin: 1em 0;
   <ul>
   <li><a href="#exploring-the-data-set" id="toc-exploring-the-data-set" class="nav-link active" data-scroll-target="#exploring-the-data-set">Exploring the data set</a></li>
   <li><a href="#ploting-the-relationship" id="toc-ploting-the-relationship" class="nav-link" data-scroll-target="#ploting-the-relationship">Ploting the relationship</a></li>
-  <li><a href="#a-first-regression" id="toc-a-first-regression" class="nav-link" data-scroll-target="#a-first-regression">A first regression</a>
-  <ul class="collapse">
-  <li><a href="#specification" id="toc-specification" class="nav-link" data-scroll-target="#specification">Specification</a></li>
-  </ul></li>
-  <li><a href="#multiple-regression" id="toc-multiple-regression" class="nav-link" data-scroll-target="#multiple-regression">Multiple regression</a></li>
-  <li><a href="#scaling" id="toc-scaling" class="nav-link" data-scroll-target="#scaling">Scaling</a></li>
-  <li><a href="#linear-rellationship" id="toc-linear-rellationship" class="nav-link" data-scroll-target="#linear-rellationship">Linear rellationship?</a></li>
   </ul>
 </nav>
     </div>
@@ -4931,8 +4886,8 @@ margin: 1em 0;
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Exercise - Hands-on linear regression</h1>
-<p class="subtitle lead">A first exercise to get started with regression analysis in R</p>
+<h1 class="title">Exercise - Specification</h1>
+<p class="subtitle lead">Why use particular functional transformations for the variables?</p>
 </div>
 
 
@@ -4943,7 +4898,7 @@ margin: 1em 0;
     <div>
     <div class="quarto-title-meta-heading">Date</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">October 1, 2024</p>
+      <p class="date">October 2, 2024</p>
     </div>
   </div>
   
@@ -4968,116 +4923,28 @@ Instructions
 <p>This page describe the instructions and some interactive snippets. You will have to run most of your code on <code>RStudio</code>, on your own computer.</p>
 </div>
 </div>
-<p>First, let’s load useful packages. For now, we will only need the <code>tidyverse</code> package.</p>
+<p>First, let’s load useful packages. We need the <code>tidyverse</code> package but also to install the <code>gapminder</code> package (it contains the dataset we are interested in).</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages(&quot;gapminder&quot;)</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gapminder)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<p>We will work with the <code>airquality</code> data set.</p>
 <section id="exploring-the-data-set" class="level2">
 <h2 class="anchored" data-anchor-id="exploring-the-data-set">Exploring the data set</h2>
-<p>This data set is automatically loaded to your <code>R environment</code>; you can call it directly. What are its dimensions?</p>
-<p><input class="webex-solveme nospaces" size="3" data-answer="[&quot;153&quot;]"> rows and <input class="webex-solveme nospaces" size="1" data-answer="[&quot;6&quot;]"> columns.</p>
-<p>What does each variable represent? Use the <code>help</code> function to answer this question.</p>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Tip
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>There is a shortcut for the <code>help</code> function: just put a <code>?</code> before the function or data set you want help for, <em>eg</em>, <code>help(print)</code> and <code>?print</code> will have the same effect. Try it out!</p>
-</div>
-</div>
+<p>Load the package by calling <code>gapminder::gapminder</code>. What does each variable represent?</p>
 </section>
 <section id="ploting-the-relationship" class="level2">
 <h2 class="anchored" data-anchor-id="ploting-the-relationship">Ploting the relationship</h2>
-<p>How are <code>Ozone</code> and <code>Wind</code> related? First, we will plot the raw data using a scatter plot and <code>ggplot</code>.</p>
-<div class="callout callout-style-default callout-important callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Important
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p><code>ggplot</code> is a tool that allows you to make awesome plots in R. It is based on the Grammar of Graphics, a theoretical approach to make graph, that essentially builds graphs layer by layer.</p>
-</div>
-</div>
-<p>Which variable should you put on the <span class="math inline">\(y\)</span> axis? <input class="webex-solveme nospaces" size="5" data-answer="[&quot;Ozone&quot;]"> . Why?</p>
-<p>Now, fill in the blanks in the following chunk of code to plot a graph describing the relationship between the two variables. To do so, replace <code>x_variable</code> and <code>y_variable</code> with the name of the variables you want to plot.</p>
+<p>Plot a scatter plot of <code>lifeExp</code> as a function of <code>gdpPercap</code>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> airquality, <span class="fu">aes</span>(<span class="at">x =</span> Wind, <span class="at">y =</span> Ozone)) <span class="sc">+</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;lm&quot;</span>) <span class="sc">+</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">&quot;&quot;</span>,</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">&quot;Wind (in mph)&quot;</span>,</span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">&quot;Ozone (in ppb)&quot;</span></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">#plot</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Do not forget to label the axes (indicating the units) and give a title to your graph. You can also play around with the various lines, for instance adding them one after the other, to understand their use. You will learn more about <code>ggplot</code> in TD.</p>
-</section>
-<section id="a-first-regression" class="level2">
-<h2 class="anchored" data-anchor-id="a-first-regression">A first regression</h2>
-<p>Now that we have quickly plotted the data, let’s run our first regression. To do so, we will use the <code>lm()</code> function. What does <code>lm</code> stands for? <input class="webex-solveme nospaces ignorecase regex" size="15" data-answer="[&quot;linear models?$&quot;]">.</p>
-<p>To regress, <code>y</code> on <code>x</code>, we need to write the formula <code>y ~ x</code>. Write your formula of interest for the <code>airquality</code> dataset and run the function.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">lm</span>(<span class="at">formula =</span> y_variable <span class="sc">~</span> x_variable, <span class="at">data =</span> airquality)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>You can store the result fo this regression, in the <code>reg</code> variable for instance. Use the “assignment” sign <code>&lt;-</code> and this will create the <code>reg</code> variable.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>reg <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="at">formula =</span> Ozone <span class="sc">~</span> Wind, <span class="at">data =</span> airquality)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>The nice thing with this is that you then can call the <code>summary()</code> function on this object:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(reg)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>Run this function. There is a lot of information there. What is the value of the coefficient of interest? <input class="webex-solveme nospaces" data-tol="0.1" size="5" data-answer="[&quot;-5.55&quot;]">.</p>
-<p>Interpret this coefficient. What word should your sentence start with? <input class="webex-solveme nospaces ignorecase" size="9" data-answer="[&quot;comparing&quot;]">.</p>
-<p>As always, there is some uncertainty associated with the value of this coefficient. What is the standard error of this coefficient? <input class="webex-solveme nospaces" data-tol="0.01" size="4" data-answer="[&quot;0.69&quot;,&quot;.69&quot;]">. Is the estimate statistically significant? <select class="webex-select"><option value="blank"></option><option value="answer">Yes</option><option value>No</option></select>.</p>
-<section id="specification" class="level3">
-<h3 class="anchored" data-anchor-id="specification">Specification</h3>
-</section>
-</section>
-<section id="multiple-regression" class="level2">
-<h2 class="anchored" data-anchor-id="multiple-regression">Multiple regression</h2>
-<p>Let’s consider a different model, including temperature. Assume that <span class="math inline">\(\forall i \in \{1, .., n\}\)</span>, we have:</p>
-<p><span class="math display">\[Ozone_i = \beta_0 + \beta_1 Wind_i + \beta_2 Temp_i + e_i\]</span> Run a longer regression by adding one predictor to the model. To do so, you need to replace the <code>...</code> by <input class="webex-solveme nospaces" size="19" data-answer="[&quot;Ozone ~ Wind + Temp&quot;,&quot;Ozone ~ Temp + Wind&quot;]">.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>reg_temp <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="at">formula =</span> ..., <span class="at">data =</span> airquality)</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(reg_temp)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>What is the coefficient associated with <code>Wind</code>? <input class="webex-solveme nospaces" data-tol="0.1" size="2" data-answer="[&quot;-3&quot;]">.</p>
-<p>Is it close to the one we had before, including only <code>Wind</code> as a predictor? <select class="webex-select"><option value="blank"></option><option value>Yes</option><option value="answer">No</option></select>. Why is that different?</p>
-<p>Make a sentence to interpret this coefficient, starting with the same word as usual (<input class="webex-solveme nospaces ignorecase" size="9" data-answer="[&quot;comparing&quot;]">).</p>
-</section>
-<section id="scaling" class="level2">
-<h2 class="anchored" data-anchor-id="scaling">Scaling</h2>
-<p>What is the unit of <code>Wind</code>? <input class="webex-solveme nospaces ignorecase" size="3" data-answer="[&quot;mph&quot;]">. Is it easily interpretable for you? Not really. Let’s transform it into something we are more familiar with: <input class="webex-solveme nospaces ignorecase regex" size="4" data-answer="[&quot;km/h&quot;,&quot;kmh&quot;]">.</p>
-<p>Which <code>dplyr</code> function would you use to create a new variable? <input class="webex-solveme nospaces" size="6" data-answer="[&quot;mutate&quot;]">.</p>
-<p>To get from <code>Wind</code> to your new variable, your need to <select class="webex-select"><option value="blank"></option><option value="answer">Multiply</option><option value>Divide</option></select> <code>Wind</code> by 1.609. Implement this and run your new regression.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>airquality_scaled <span class="ot">&lt;-</span> airquality <span class="sc">|&gt;</span> </span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  ...</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>reg_scaled <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="at">formula =</span> ..., <span class="at">data =</span> airquality_scaled)</span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(reg_scaled)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>How do you interpret the coefficient of interest?</p>
-</section>
-<section id="linear-rellationship" class="level2">
-<h2 class="anchored" data-anchor-id="linear-rellationship">Linear rellationship?</h2>
-<p>You plotted the data earlier. Does the relationship between <code>Ozone</code> and <code>Wind</code> actually seem linear? <select class="webex-select"><option value="blank"></option><option value>Yes</option><option value="answer">No</option></select>. What physical process could explain this relationship?</p>
+<p>Does the relationship look linear? <select class="webex-select"><option value="blank"></option><option value>Yes</option><option value="answer">No</option></select></p>
+<p>What if you plot the log of <code>gdpPercap</code>? <select class="webex-select"><option value="blank"></option><option value="answer">Yes</option><option value>No</option></select>. Of <code>lifeExp</code> <select class="webex-select"><option value="blank"></option><option value>Yes</option><option value="answer">No</option></select></p>
 
 
 </section>

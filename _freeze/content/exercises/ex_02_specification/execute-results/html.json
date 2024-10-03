@@ -1,0 +1,15 @@
+{
+  "hash": "74dc9a526f2ea546ea3677a7aa8f8488",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"Exercise - Specification\"\nsubtitle: \"Why use particular functional transformations for the variables?\"\npublished-title: \"Date\"\ndate: \"2024-10-02\"\nself-contained: true\nengine: knitr\n---\n\n::: {.cell}\n\n:::\n\n\n::: {.callout-important title=\"Instructions\"}\nThis page describe the instructions and some interactive snippets. You will have to run most of your code on `RStudio`, on your own computer.\n:::\n\nFirst, let's load useful packages. We need the `tidyverse` package but also to install the `gapminder` package (it contains the dataset we are interested in).\n\n\n::: {.cell}\n\n```{.r .cell-code  code-fold=\"true\"}\n# install.packages(\"gapminder\")\n\nlibrary(tidyverse)\nlibrary(gapminder)\n```\n:::\n\n\n## Exploring the data set\n\nLoad the package by calling `gapminder::gapminder`. What does each variable represent?\n\n## Ploting the relationship\n\nPlot a scatter plot of `lifeExp` as a function of `gdpPercap`.\n\n\n::: {.cell}\n\n```{.r .cell-code}\n#plot\n```\n:::\n\n\nDoes the relationship look linear? <select class='webex-select'><option value='blank'></option><option value=''>Yes</option><option value='answer'>No</option></select>\n\nWhat if you plot the log of `gdpPercap`? <select class='webex-select'><option value='blank'></option><option value='answer'>Yes</option><option value=''>No</option></select>. Of `lifeExp` <select class='webex-select'><option value='blank'></option><option value=''>Yes</option><option value='answer'>No</option></select>\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

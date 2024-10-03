@@ -2,7 +2,7 @@
 title: "Model Specification"
 subtitle: ""
 published-title: "Date"
-date: "2024-10-02"
+date: "2024-10-01"
 self-contained: true
 engine: knitr
 ---
@@ -17,19 +17,20 @@ Using OLS does not mean that everything has to be linear in the model; it means 
 
 1.  Quizz
 2.  Recap' from last week (+ derivation formula of the variance of the OLS estimator)
+2.  Exercise: Hands-on linear regression
 3.  Introduction to model specification
 4.  Logarithms
-5.  Quadratics
-6.  Indicators
-7.  Interactions
+<!-- 5.  Quadratics -->
+<!-- 6.  Indicators -->
+<!-- 7.  Interactions -->
 
 `r fontawesome::fa("file-powerpoint")` 
-<!-- [Open slides](../slides/lecture_3/slides_3_specification.html) -->
+[Open slides](../slides/lecture_3/slides_3_specification.html)
 
 ```{r out.width='100%'}
 #| echo: false
 
-# knitr::include_url("https://vincentbagilet.github.io/metrics_m1_2024/slides/lecture_2/slides_2_properties.html")
+knitr::include_url("../slides/lecture_3/slides_3_specification.html")
 ```
 
 ## Exercise

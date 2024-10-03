@@ -1,0 +1,47 @@
+---
+title: "Exercise - Specification"
+subtitle: "Why use particular functional transformations for the variables?"
+published-title: "Date"
+date: "2024-10-02"
+self-contained: true
+engine: knitr
+---
+
+```{r packages_hidden}
+#| echo: false
+#| message: false
+
+library(webexercises)
+```
+
+::: {.callout-important title="Instructions"}
+This page describe the instructions and some interactive snippets. You will have to run most of your code on `RStudio`, on your own computer.
+:::
+
+First, let's load useful packages. We need the `tidyverse` package but also to install the `gapminder` package (it contains the dataset we are interested in).
+
+```{r packages}
+#| message: false
+#| code-fold: true
+
+# install.packages("gapminder")
+
+library(tidyverse)
+library(gapminder)
+```
+
+## Exploring the data set
+
+Load the package by calling `gapminder::gapminder`. What does each variable represent?
+
+## Ploting the relationship
+
+Plot a scatter plot of `lifeExp` as a function of `gdpPercap`.
+
+```{r}
+#plot
+```
+
+Does the relationship look linear? `r mcq(c("Yes", answer = "No"))`
+
+What if you plot the log of `gdpPercap`? `r mcq(c(answer = "Yes", "No"))`. Of `lifeExp` `r mcq(c("Yes", answer = "No"))`

@@ -2,7 +2,7 @@
 title: "Exercise - Hands-on linear regression"
 subtitle: "A first exercise to get started with regression analysis in R"
 published-title: "Date"
-date: "2024-10-02"
+date: "2024-10-01"
 self-contained: true
 engine: knitr
 ---
@@ -60,13 +60,13 @@ Which variable should you put on the $y$ axis? `r fitb("Ozone")` . Why?
 Now, fill in the blanks in the following chunk of code to plot a graph describing the relationship between the two variables. To do so, replace `x_variable` and `y_variable` with the name of the variables you want to plot.
 
 ```{r plot, eval=FALSE}
-ggplot(data = airquality, aes(x = x_variable, y = y_variable)) +
+ggplot(data = airquality, aes(x = Wind, y = Ozone)) +
   geom_point() +
   geom_smooth(method = "lm") +
   labs(
     title = "",
-    x = "",
-    y = ""
+    x = "Wind (in mph)",
+    y = "Ozone (in ppb)"
   )
 ```
 
@@ -85,7 +85,7 @@ lm(formula = y_variable ~ x_variable, data = airquality)
 You can store the result fo this regression, in the `reg` variable for instance. Use the "assignment" sign `<-` and this will create the `reg` variable.
 
 ```{r store_reg, eval = FALSE}
-reg <- lm(formula = y_variable ~ x_variable, data = airquality)
+reg <- lm(formula = Ozone ~ Wind, data = airquality)
 ```
 
 The nice thing with this is that you then can call the `summary()` function on this object:
