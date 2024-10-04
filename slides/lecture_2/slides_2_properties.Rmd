@@ -528,9 +528,13 @@ class: titled, middle
 
 # Spherical errors
 
-- Constant conditional variance of the error term
+- Spherical errors are a combination of: 
 
-- Homoscedasticity and no serial correlation
+  - **Homoskedasticity**: the variance of the errors does not depend on $X$ ( $\mathbb{V}[e_i|X] = \sigma $ )
+  
+  - **No serial correlation** or **independent errors**: $e_i \perp e_j | X$ 
+
+- Combined togehter, this gives
 
 $$\mathbb{E}[e'e | X] = \sigma^2 I$$
 ---

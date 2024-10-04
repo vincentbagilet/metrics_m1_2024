@@ -122,7 +122,7 @@ Make a sentence to interpret this coefficient, starting with the same word as us
 
 ## Scaling
 
-What is the unit of `Wind`? `r fitb("mph", ignore_case = TRUE)`. Is it easily interpretable for you? Not really. Let's transform it into something we are more familiar with: `r fitb(c("km/h", "kmh"), ignore_case = TRUE, regex = TRUE)`. 
+What is the unit of `Wind`? `r fitb("mph", ignore_case = TRUE)`. Is it easily interpretable for you? Not really. Let's transform it into something we are more familiar with: `r fitb(c("km/h", "kmh"), ignore_case = TRUE, regex = TRUE)`.
 
 Which `dplyr` function would you use to create a new variable? `r fitb("mutate")`.
 
@@ -137,7 +137,7 @@ reg_scaled <- lm(formula = ..., data = airquality_scaled)
 summary(reg_scaled)
 ```
 
-How do you interpret the coefficient of interest? 
+How do you interpret the coefficient of interest?
 
 ## Linear rellationship?
 

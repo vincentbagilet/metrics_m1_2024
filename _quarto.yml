@@ -33,6 +33,8 @@ website:
       menu:
       - text: 1 - Hands-on Linear Regression
         href: content/exercises/ex_01_linear_regression.qmd
+      - text: 2 - Specification
+        href: content/exercises/ex_02_specification.qmd
     - href: content/syllabus.qmd
       text: Syllabus
     - href: content/definitions.qmd

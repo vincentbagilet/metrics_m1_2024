@@ -6,7 +6,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2024-10-02">
+<meta name="dcterms.date" content="2024-10-08">
 
 <title>Econometrics M1 - Exercise - Specification</title>
 <style>
@@ -4692,6 +4692,44 @@ vertical-align: -.125em;
   }
 }</script>
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  
+  <script>
+    (function () {
+      var script = document.createElement("script");
+      script.type = "text/javascript";
+      script.src  = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js";
+      document.getElementsByTagName("head")[0].appendChild(script);
+    })();
+  </script>
+
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <style type="text/css">:root {
 --incorrect: #983E82;
@@ -4846,6 +4884,10 @@ margin: 1em 0;
     <a class="dropdown-item" href="../../content/exercises/ex_01_linear_regression.html">
  <span class="dropdown-text">1 - Hands-on Linear Regression</span></a>
   </li>  
+        <li>
+    <a class="dropdown-item" href="../../content/exercises/ex_02_specification.html">
+ <span class="dropdown-text">2 - Specification</span></a>
+  </li>  
     </ul>
   </li>
   <li class="nav-item">
@@ -4876,8 +4918,19 @@ margin: 1em 0;
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#exploring-the-data-set" id="toc-exploring-the-data-set" class="nav-link active" data-scroll-target="#exploring-the-data-set">Exploring the data set</a></li>
-  <li><a href="#ploting-the-relationship" id="toc-ploting-the-relationship" class="nav-link" data-scroll-target="#ploting-the-relationship">Ploting the relationship</a></li>
+  <li><a href="#exploring-the-data-set" id="toc-exploring-the-data-set" class="nav-link active" data-scroll-target="#exploring-the-data-set">Exploring the data set</a>
+  <ul class="collapse">
+  <li><a href="#the-data" id="toc-the-data" class="nav-link" data-scroll-target="#the-data">The data</a></li>
+  <li><a href="#research-question" id="toc-research-question" class="nav-link" data-scroll-target="#research-question">“Research” question</a></li>
+  <li><a href="#plot" id="toc-plot" class="nav-link" data-scroll-target="#plot">Plot</a></li>
+  </ul></li>
+  <li><a href="#model-and-estimation" id="toc-model-and-estimation" class="nav-link" data-scroll-target="#model-and-estimation">Model and estimation</a>
+  <ul class="collapse">
+  <li><a href="#model" id="toc-model" class="nav-link" data-scroll-target="#model">Model</a></li>
+  <li><a href="#regression" id="toc-regression" class="nav-link" data-scroll-target="#regression">Regression</a></li>
+  <li><a href="#heteroskedasticity" id="toc-heteroskedasticity" class="nav-link" data-scroll-target="#heteroskedasticity">Heteroskedasticity</a></li>
+  <li><a href="#distribution-of-the-residuals" id="toc-distribution-of-the-residuals" class="nav-link" data-scroll-target="#distribution-of-the-residuals">Distribution of the residuals</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -4887,7 +4940,7 @@ margin: 1em 0;
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
 <h1 class="title">Exercise - Specification</h1>
-<p class="subtitle lead">Why use particular functional transformations for the variables?</p>
+<p class="subtitle lead">Why use particular functional transformations for the variables in your model?</p>
 </div>
 
 
@@ -4898,7 +4951,7 @@ margin: 1em 0;
     <div>
     <div class="quarto-title-meta-heading">Date</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">October 2, 2024</p>
+      <p class="date">October 8, 2024</p>
     </div>
   </div>
   
@@ -4920,7 +4973,7 @@ Instructions
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>This page describe the instructions and some interactive snippets. You will have to run most of your code on <code>RStudio</code>, on your own computer.</p>
+<p>This page gives both instructions and some interactive snippets. You will have to run most of your code on <code>RStudio</code>, on your own computer.</p>
 </div>
 </div>
 <p>First, let’s load useful packages. We need the <code>tidyverse</code> package but also to install the <code>gapminder</code> package (it contains the dataset we are interested in).</p>
@@ -4935,18 +4988,121 @@ Instructions
 </div>
 <section id="exploring-the-data-set" class="level2">
 <h2 class="anchored" data-anchor-id="exploring-the-data-set">Exploring the data set</h2>
-<p>Load the package by calling <code>gapminder::gapminder</code>. What does each variable represent?</p>
+<section id="the-data" class="level3">
+<h3 class="anchored" data-anchor-id="the-data">The data</h3>
+<p>Load the package by calling <code>gapminder</code>.</p>
+<p>What does each variable represent? (use the <code>help()</code> function). How many countries are there in this data set? <input class="webex-solveme nospaces" size="3" data-answer="[&quot;142&quot;]">.</p>
 </section>
-<section id="ploting-the-relationship" class="level2">
-<h2 class="anchored" data-anchor-id="ploting-the-relationship">Ploting the relationship</h2>
-<p>Plot a scatter plot of <code>lifeExp</code> as a function of <code>gdpPercap</code>.</p>
+<section id="research-question" class="level3">
+<h3 class="anchored" data-anchor-id="research-question">“Research” question</h3>
+<div class="callout callout-style-default callout-important callout-titled" title="Objective">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Objective
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Here, we will study the relationship between <code>lifeExp</code> and <code>gdpPercap</code>.</p>
+</div>
+</div>
+<p>The goal is to study the relationship between GDP per capita and life expectancy at birth. We can ask questions like: do “richer” countries have a larger life expectancy on average? On average, how different is life expectancy between two countries that have a 1 billion difference in GDP per capita?</p>
+<p>Think about other interesting questions you could answer with this data set (start simple).</p>
+</section>
+<section id="plot" class="level3">
+<h3 class="anchored" data-anchor-id="plot">Plot</h3>
+<p>Plot a scatter plot of <code>lifeExp</code> as a function of <code>gdpPercap</code>. To do so, use the <a href="../../content/exercises/ex_01_linear_regression.html">same lines of code as in the previous exercise on airquality</a>, changing the relevant variables names.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">#plot</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Does the relationship look linear? <select class="webex-select"><option value="blank"></option><option value>Yes</option><option value="answer">No</option></select></p>
-<p>What if you plot the log of <code>gdpPercap</code>? <select class="webex-select"><option value="blank"></option><option value="answer">Yes</option><option value>No</option></select>. Of <code>lifeExp</code> <select class="webex-select"><option value="blank"></option><option value>Yes</option><option value="answer">No</option></select></p>
+<p>Interpret this graph. For which level of GDP/capita is the difference between two countries having relatively similar GDP per capita the largest?</p>
+<p>Does the relationship described on the graph you plotted look linear? <select class="webex-select"><option value="blank"></option><option value>Yes, roughly</option><option value="answer">Not at all</option></select></p>
+<p>What if you plot the log of <code>gdpPercap</code>, replacing <code>gdpPercap</code> by <code>log(gdpPercap)</code>? <select class="webex-select"><option value="blank"></option><option value="answer">Yes, roughly</option><option value>Not at all</option></select>.</p>
+<p>Why does the log allow to have a more linear relationship here? Plot the distribution of the <code>gdpPercap</code>, using the following lines of code, filling in the blanks. Which variable should you put on the x-axis? <input class="webex-solveme nospaces" size="9" data-answer="[&quot;gdpPercap&quot;]"></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> ..., <span class="fu">aes</span>(<span class="at">x =</span> ...)) <span class="sc">+</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>What do you notice about this distribution? Is it surprising to you?</p>
+<p>If instead you plot the distribution of <code>log(gdpPercap)</code> (using the previous lines of code), this distribution seems roughly <input class="webex-solveme nospaces ignorecase" size="6" data-answer="[&quot;normal&quot;]">. Importantly, it is relatively cetered around its mean.</p>
+</section>
+</section>
+<section id="model-and-estimation" class="level2">
+<h2 class="anchored" data-anchor-id="model-and-estimation">Model and estimation</h2>
+<section id="model" class="level3">
+<h3 class="anchored" data-anchor-id="model">Model</h3>
+<p>Assume you want to write a model to estimate the relationship between <code>gdpPercap</code> and <code>lifeExp</code> (or transformed versions of these variables) with OLS. For the resulting model to accurately represent the data generating process, the relationship between the variables therefore has to be linear. You want to write a model of the form</p>
+<p><span class="math display">\[y = \alpha + \beta x + e\]</span> What should be <span class="math inline">\(y\)</span> in your case? <input class="webex-solveme nospaces" size="7" data-answer="[&quot;lifeExp&quot;]">. And x? <input class="webex-solveme nospaces" size="14" data-answer="[&quot;log(gdpPercap)&quot;]">.</p>
+</section>
+<section id="regression" class="level3">
+<h3 class="anchored" data-anchor-id="regression">Regression</h3>
+<p>To estimate this model, we will use the <code>lm</code> function. Which formula should you pass to the function? <input class="webex-solveme nospaces" size="24" data-answer="[&quot;lifeExp ~ log(gdpPercap)&quot;]">. Run the estimtion and display the output using the <code>summary()</code> function.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>reg <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="at">data =</span> ..., <span class="at">formula =</span> ...)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(...)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Before doing the next questions, please read the slides, including the few that we did not have time to cover in class, they will help you answer the questions.</p>
+</div>
+</div>
+<p>What is the point estimate for <code>lifeExp</code>? <input class="webex-solveme nospaces" data-tol="0.1" size="3" data-answer="[&quot;8.4&quot;]">. How would you interpret this coefficient?</p>
+<div id="radio_FITYBGDKRF" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_FITYBGDKRF" value> <span>Comparing two countries, we expect a country in which the GDP per capita is $1 larger than in the other to have a life expectancy that is on average 8.4 years larger</span></label><label><input type="radio" autocomplete="off" name="radio_FITYBGDKRF" value> <span>Comparing two countries, we expect a country in which the GDP per capita is 1% larger than in the other to have a life expectancy that is on average 8.4 years larger</span></label><label><input type="radio" autocomplete="off" name="radio_FITYBGDKRF" value> <span>Comparing two countries, we expect a country in which the GDP per capita is $1 larger than in the other to have a life expectancy that is on average 8.4% larger</span></label><label><input type="radio" autocomplete="off" name="radio_FITYBGDKRF" value="answer"> <span>Comparing two countries, we expect a country in which the GDP per capita is 1% larger than in the other to have a life expectancy that is on average 0.084 years larger</span></label><label><input type="radio" autocomplete="off" name="radio_FITYBGDKRF" value> <span>Comparing two countries, we expect a country in which the GDP per capita is 1% larger than in the other to have a life expectancy that is on average 8.4% larger</span></label><label><input type="radio" autocomplete="off" name="radio_FITYBGDKRF" value> <span>Comparing two countries, we expect a country in which the GDP per capita is 1% larger than in the other to have a life expectancy that is on average 0.084% larger</span></label>
+</div>
+<p>Is this number exact or is it an approximation? <select class="webex-select"><option value="blank"></option><option value>Exact</option><option value="answer">Approximation</option></select></p>
+<p>Does this number seem reasonable to you? Think about what it entails.</p>
+</section>
+<section id="heteroskedasticity" class="level3">
+<h3 class="anchored" data-anchor-id="heteroskedasticity">Heteroskedasticity</h3>
+<p>Let’s now look at the residuals of this regression in order to explore potential risks of heteroskedasticity. We can retrieve the residuals of a regression with the function <code>resid &lt;- residuals(reg)</code> or by extracting them from the output of the regression: <code>resid &lt;- reg$residuals</code>. Try these two approaches and look at the resulting vecotrs.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>resid <span class="ot">&lt;-</span> <span class="fu">residuals</span>(reg)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>resid <span class="ot">&lt;-</span> reg<span class="sc">$</span>residuals</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Remember what heteroskedasticity is. Which scatter plot should we plot to observe it, if there is any to observe? <input class="webex-solveme nospaces" size="5" data-answer="[&quot;resid&quot;]"> against <input class="webex-solveme nospaces" size="14" data-answer="[&quot;log(gdpPercap)&quot;,&quot;x&quot;,&quot;X&quot;]">.</p>
+<p>To do that, we should store these variable into a dataframe, using the tibble function. Let’s call them <code>x1</code> and <code>x2</code> for the sake of the example. Replace <code>x1</code> and <code>x2</code> by the relevant variables in the following code. Note that to access variables in the <code>gapminder</code> dataset, you need to use <code>$</code>: for instance to access the variable year, write <code>gapminder$year</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>data_residuals <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">name_x1 =</span> x1, <span class="at">name_x2 =</span> x2)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> data_residuals, <span class="fu">aes</span>(<span class="at">x =</span> .., <span class="at">y =</span> ..)) <span class="sc">+</span> </span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Does there seem to be some heteroskedasticity here? <select class="webex-select"><option value="blank"></option><option value="answer">Yes</option><option value>No</option></select></p>
+<p>Why is it problematic?</p>
+<p>There are actually formal test for heteroskedasticity. We will not have time to cover them in my section of the class but</p>
+</section>
+<section id="distribution-of-the-residuals" class="level3">
+<h3 class="anchored" data-anchor-id="distribution-of-the-residuals">Distribution of the residuals</h3>
+<p>We saw in class that when the residuals are normally distributed, our estimator has nice properties. Plot an histogram to describe the distribution of the residuals. Which function should you use? <input class="webex-solveme nospaces" size="14" data-answer="[&quot;geom_histogram&quot;]"></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> data_residuals, <span class="fu">aes</span>(<span class="at">x =</span> .., <span class="at">y =</span> ..)) <span class="sc">+</span> </span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  ...</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Does that seem roughly normally distributed? <select class="webex-select"><option value="blank"></option><option value="answer">Yes</option><option value>No</option></select></p>
+<p>To actually test for normality, there is a bunch of tests one can implement but you will learn more about these later. For example, we can plot the residuals against draws from a normal distribution. If the residuals are normally distributed, the resulting points will be on the identity line. To plot this, we can use the <code>geom_qq()</code> function (<code>geom_qq_line()</code> plots the identity line):</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>data_residuals <span class="sc">|&gt;</span> </span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">sample =</span> resid)) <span class="sc">+</span> </span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_qq</span>() <span class="sc">+</span> </span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_qq_line</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
