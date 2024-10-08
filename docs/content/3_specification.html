@@ -4800,7 +4800,10 @@ margin: 1em 0;
     <a class="dropdown-item" href="../content/3_specification.html">
  <span class="dropdown-text">3 - Model Specification</span></a>
   </li>  
-        <li class="dropdown-header">4 - Covariates Selection</li>
+        <li>
+    <a class="dropdown-item" href="../content/4_model_selection.html">
+ <span class="dropdown-text">4 - Model Selection</span></a>
+  </li>  
     </ul>
   </li>
   <li class="nav-item dropdown ">
@@ -4890,7 +4893,7 @@ Objective
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Using OLS does not mean that everything has to be linear in the model; it means that the model has to be linear in its parameters. In this session, we will discuss why and how we can introduce non-linearities in our model.</p>
+<p>A linear regression does not mean that everything has to be linear in the model; it means that the model has to be linear in its parameters. In this session, we will discuss why and how we can introduce non-linearities in our model and model heterogeneity.</p>
 </div>
 </div>
 <section id="session-outline" class="level2">
@@ -4900,7 +4903,10 @@ Objective
 <li>Recap’ from last week (+ derivation formula of the variance of the OLS estimator)</li>
 <li>Exercise: Hands-on linear regression</li>
 <li>Introduction to model specification</li>
-<li>Logarithms <!-- 5.  Quadratics --> <!-- 6.  Indicators --> <!-- 7.  Interactions --></li>
+<li>Logarithms</li>
+<li>Quadratics</li>
+<li>Indicators</li>
+<li>Interactions</li>
 </ol>
 <p><svg aria-hidden="true" role="img" viewbox="0 0 384 512" style="height:1em;width:0.75em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M64 464c-8.8 0-16-7.2-16-16V64c0-8.8 7.2-16 16-16H224v80c0 17.7 14.3 32 32 32h80V448c0 8.8-7.2 16-16 16H64zM64 0C28.7 0 0 28.7 0 64V448c0 35.3 28.7 64 64 64H320c35.3 0 64-28.7 64-64V154.5c0-17-6.7-33.3-18.7-45.3L274.7 18.7C262.7 6.7 246.5 0 229.5 0H64zm72 208c-13.3 0-24 10.7-24 24V336v56c0 13.3 10.7 24 24 24s24-10.7 24-24V360h44c42 0 76-34 76-76s-34-76-76-76H136zm68 104H160V256h44c15.5 0 28 12.5 28 28s-12.5 28-28 28z" /></svg> <a href="../slides/lecture_3/slides_3_specification.html">Open slides</a></p>
 <div class="cell">
@@ -4910,15 +4916,13 @@ Objective
 </section>
 <section id="exercise" class="level2">
 <h2 class="anchored" data-anchor-id="exercise">Exercise</h2>
-<p>Now that you have a basic knowledge of <code>R</code>, we will implement a simple analysis in <code>R</code>. You can find the exercise <a href="content/exercises/ex_01_linear_regression.qmd">here</a>.</p>
+<p>Why use particular functional transformations for the variables in your model?</p>
+<p>Let’s try to answer part of this question using an example. You can find the associated exercise <a href="content/exercises/ex_02_specification.qmd">here</a>.</p>
 </section>
 <section id="additional-resources" class="level2">
 <h2 class="anchored" data-anchor-id="additional-resources">Additional Resources</h2>
 <ul>
-<li><a href="https://seeing-theory.brown.edu/">Seeing Theory</a> provides a nice introduction to probability and statistics based on interactive web applications</li>
-<li>The material from your L3 econometrics class</li>
-<li><a href="https://theeffectbook.net/ch-ResearchQuestions.html">Chapter 2 of <em>The Effect</em></a> on good research questions</li>
-<li><a href="https://theeffectbook.net/ch-DescribingRelationships.html">Chapter 4 of <em>The Effect</em></a> for a review of linear regression</li>
+<li>On interpretation of log-transforms: section “incorporating nonlinearities in Simple regression” in the Chapter 2 of Wooldridge, <a href="https://books.google.fr/books?id=GHoJzgEACAAJ&amp;hl=fr&amp;source=gbs_book_other_versions"><em>Introductory Econometrics: A Modern Approach</em></a> or <a href="https://www.econometrics-with-r.org/8.2-nfoasiv.html#logarithms">a discussion in Introduction to Econometrics with R</a></li>
 </ul>
 
 

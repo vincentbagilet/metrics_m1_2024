@@ -10,7 +10,7 @@ engine: knitr
 ::: callout-tip
 ## Objective
 
-Using OLS does not mean that everything has to be linear in the model; it means that the model has to be linear in its parameters. In this session, we will discuss why and how we can introduce non-linearities in our model.
+A linear regression does not mean that everything has to be linear in the model; it means that the model has to be linear in its parameters. In this session, we will discuss why and how we can introduce non-linearities in our model and model heterogeneity.
 :::
 
 ## Session Outline
@@ -20,9 +20,9 @@ Using OLS does not mean that everything has to be linear in the model; it means 
 2.  Exercise: Hands-on linear regression
 3.  Introduction to model specification
 4.  Logarithms
-<!-- 5.  Quadratics -->
-<!-- 6.  Indicators -->
-<!-- 7.  Interactions -->
+5.  Quadratics
+6.  Indicators
+7.  Interactions
 
 `r fontawesome::fa("file-powerpoint")` 
 [Open slides](../slides/lecture_3/slides_3_specification.html)
@@ -35,11 +35,10 @@ knitr::include_url("../slides/lecture_3/slides_3_specification.html")
 
 ## Exercise
 
-Now that you have a basic knowledge of `R`, we will implement a simple analysis in `R`. You can find the exercise [here](content/exercises/ex_01_linear_regression.qmd).
+Why use particular functional transformations for the variables in your model?
+
+Let's try to answer part of this question using an example. You can find the associated exercise [here](content/exercises/ex_02_specification.qmd).
 
 ## Additional Resources
 
--   [Seeing Theory](https://seeing-theory.brown.edu/) provides a nice introduction to probability and statistics based on interactive web applications
--   The material from your L3 econometrics class
--   [Chapter 2 of *The Effect*](https://theeffectbook.net/ch-ResearchQuestions.html) on good research questions
--   [Chapter 4 of *The Effect*](https://theeffectbook.net/ch-DescribingRelationships.html) for a review of linear regression
+- On interpretation of log-transforms: section "incorporating nonlinearities in Simple regression" in the Chapter 2 of Wooldridge, [*Introductory Econometrics: A Modern Approach*](https://books.google.fr/books?id=GHoJzgEACAAJ&hl=fr&source=gbs_book_other_versions) or [a discussion in Introduction to Econometrics with R](https://www.econometrics-with-r.org/8.2-nfoasiv.html#logarithms)

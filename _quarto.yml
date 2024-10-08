@@ -9,6 +9,7 @@ project:
   - slides_1_linear_regression.html
   - slides_2_properties.html
   - slides_3_specification.html
+  - slides_4_model_selection.html
   - sim_results.RDS
   output-dir: docs
 execute:
@@ -28,7 +29,8 @@ website:
         href: content/2_properties.qmd
       - text: 3 - Model Specification
         href: content/3_specification.qmd
-      - text: 4 - Covariates Selection
+      - text: 4 - Model Selection
+        href: content/4_model_selection.qmd
     - text: Exercises
       menu:
       - text: 1 - Hands-on Linear Regression

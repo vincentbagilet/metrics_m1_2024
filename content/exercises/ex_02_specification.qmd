@@ -150,7 +150,7 @@ Does there seem to be some heteroskedasticity here? `r mcq(c(answer = "Yes", "No
 
 Why is it problematic? 
 
-There are actually formal test for heteroskedasticity. We will not have time to cover them in my section of the class but 
+There are actually formal tests for heteroskedasticity. They however go beyond what is covered in this section of the class.
 
 ### Distribution of the residuals
 

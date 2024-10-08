@@ -84,30 +84,58 @@
     "text": "Linear rellationship?\nYou plotted the data earlier. Does the relationship between Ozone and Wind actually seem linear? YesNo. What physical process could explain this relationship?"
   },
   {
-    "objectID": "content/3_specification.html",
-    "href": "content/3_specification.html",
-    "title": "Model Specification",
+    "objectID": "content/4_model_selection.html",
+    "href": "content/4_model_selection.html",
+    "title": "Model Selection",
     "section": "",
-    "text": "Objective\n\n\n\nUsing OLS does not mean that everything has to be linear in the model; it means that the model has to be linear in its parameters. In this session, we will discuss why and how we can introduce non-linearities in our model."
+    "text": "Objective\n\n\n\nAt the end of this session, you should understand the risks associated with the omission of relevant variables and the inclusion of irrelevant ones. You should also be able to choose between different models using \\(R^2\\)"
   },
   {
-    "objectID": "content/3_specification.html#session-outline",
-    "href": "content/3_specification.html#session-outline",
-    "title": "Model Specification",
-    "section": "Session Outline",
-    "text": "Session Outline\n\nQuizz\nRecap’ from last week (+ derivation formula of the variance of the OLS estimator)\nExercise: Hands-on linear regression\nIntroduction to model specification\nLogarithms   \n\n Open slides"
+    "objectID": "content/4_model_selection.html#summary",
+    "href": "content/4_model_selection.html#summary",
+    "title": "Model Selection",
+    "section": "Summary",
+    "text": "Summary\nSo far, we have discussed how to estimate a model with OLS (lecture 1), the necessary conditions for the estimator to have nice properties (lecture 2), how to consider various functional forms in our model (lecture 3). In this session, we explore how we can choose which variables to include in our model. What happens if we omit some important variables? What if we have irrelevant variables in our econometrics model?\n\nSession Outline\n\nQuizz\nFinishing last week’s material (Quadratics, indicators, interactions)\nOmitted variables\nOver-specification\nModel selection\n\n Open slides"
   },
   {
-    "objectID": "content/3_specification.html#exercise",
-    "href": "content/3_specification.html#exercise",
-    "title": "Model Specification",
+    "objectID": "content/4_model_selection.html#exercise",
+    "href": "content/4_model_selection.html#exercise",
+    "title": "Model Selection",
     "section": "Exercise",
-    "text": "Exercise\nNow that you have a basic knowledge of R, we will implement a simple analysis in R. You can find the exercise here."
+    "text": "Exercise\nI will publish the exercise shortly."
   },
   {
-    "objectID": "content/3_specification.html#additional-resources",
-    "href": "content/3_specification.html#additional-resources",
-    "title": "Model Specification",
+    "objectID": "content/4_model_selection.html#additional-resources",
+    "href": "content/4_model_selection.html#additional-resources",
+    "title": "Model Selection",
+    "section": "Additional Resources",
+    "text": "Additional Resources\n\nOn interpretation of log-transforms: section “incorporating nonlinearities in Simple regression” in the Chapter 2 of Wooldridge, Introductory Econometrics: A Modern Approach"
+  },
+  {
+    "objectID": "content/2_properties.html",
+    "href": "content/2_properties.html",
+    "title": "OLS Properties",
+    "section": "",
+    "text": "Objective\n\n\n\nThe OLS estimator, under some conditions, has some neat properties. In this session, we will described these properties and some of the necessary conditions for these properties to hold."
+  },
+  {
+    "objectID": "content/2_properties.html#session-outline",
+    "href": "content/2_properties.html#session-outline",
+    "title": "OLS Properties",
+    "section": "Session Outline",
+    "text": "Session Outline\n\nQuizz\nDiscussion on research questions\nEstimates and uncertainty\nSome properties estimators can have\nOptimality conditions: conditions under which the OLS estimator has some of these properties\nMathematical derivation (bias and variance of the OLS estimator)"
+  },
+  {
+    "objectID": "content/2_properties.html#materials",
+    "href": "content/2_properties.html#materials",
+    "title": "OLS Properties",
+    "section": "Materials",
+    "text": "Materials\n Open slides"
+  },
+  {
+    "objectID": "content/2_properties.html#additional-resources",
+    "href": "content/2_properties.html#additional-resources",
+    "title": "OLS Properties",
     "section": "Additional Resources",
     "text": "Additional Resources\n\nSeeing Theory provides a nice introduction to probability and statistics based on interactive web applications\nThe material from your L3 econometrics class\nChapter 2 of The Effect on good research questions\nChapter 4 of The Effect for a review of linear regression"
   },
@@ -140,32 +168,32 @@
     "text": "Additional Resources\n\nSeeing Theory provides a nice introduction to probability and statistics based on interactive web applications\nThe material from your L3 econometrics class\nChapter 2 of The Effect on good research questions\nChapter 4 of The Effect for a review of linear regression\nChapter 3 of Sciences Po’s Introduction to Econometrics with R: same\nMLU-explain on linear regression: same but from a machine learning perspective"
   },
   {
-    "objectID": "content/2_properties.html",
-    "href": "content/2_properties.html",
-    "title": "OLS Properties",
+    "objectID": "content/3_specification.html",
+    "href": "content/3_specification.html",
+    "title": "Model Specification",
     "section": "",
-    "text": "Objective\n\n\n\nThe OLS estimator, under some conditions, has some neat properties. In this session, we will described these properties and some of the necessary conditions for these properties to hold."
+    "text": "Objective\n\n\n\nA linear regression does not mean that everything has to be linear in the model; it means that the model has to be linear in its parameters. In this session, we will discuss why and how we can introduce non-linearities in our model and model heterogeneity."
   },
   {
-    "objectID": "content/2_properties.html#session-outline",
-    "href": "content/2_properties.html#session-outline",
-    "title": "OLS Properties",
+    "objectID": "content/3_specification.html#session-outline",
+    "href": "content/3_specification.html#session-outline",
+    "title": "Model Specification",
     "section": "Session Outline",
-    "text": "Session Outline\n\nQuizz\nDiscussion on research questions\nEstimates and uncertainty\nSome properties estimators can have\nOptimality conditions: conditions under which the OLS estimator has some of these properties\nMathematical derivation (bias and variance of the OLS estimator)"
+    "text": "Session Outline\n\nQuizz\nRecap’ from last week (+ derivation formula of the variance of the OLS estimator)\nExercise: Hands-on linear regression\nIntroduction to model specification\nLogarithms\nQuadratics\nIndicators\nInteractions\n\n Open slides"
   },
   {
-    "objectID": "content/2_properties.html#materials",
-    "href": "content/2_properties.html#materials",
-    "title": "OLS Properties",
-    "section": "Materials",
-    "text": "Materials\n Open slides"
+    "objectID": "content/3_specification.html#exercise",
+    "href": "content/3_specification.html#exercise",
+    "title": "Model Specification",
+    "section": "Exercise",
+    "text": "Exercise\nWhy use particular functional transformations for the variables in your model?\nLet’s try to answer part of this question using an example. You can find the associated exercise here."
   },
   {
-    "objectID": "content/2_properties.html#additional-resources",
-    "href": "content/2_properties.html#additional-resources",
-    "title": "OLS Properties",
+    "objectID": "content/3_specification.html#additional-resources",
+    "href": "content/3_specification.html#additional-resources",
+    "title": "Model Specification",
     "section": "Additional Resources",
-    "text": "Additional Resources\n\nSeeing Theory provides a nice introduction to probability and statistics based on interactive web applications\nThe material from your L3 econometrics class\nChapter 2 of The Effect on good research questions\nChapter 4 of The Effect for a review of linear regression"
+    "text": "Additional Resources\n\nOn interpretation of log-transforms: section “incorporating nonlinearities in Simple regression” in the Chapter 2 of Wooldridge, Introductory Econometrics: A Modern Approach or a discussion in Introduction to Econometrics with R"
   },
   {
     "objectID": "content/definitions.html",
@@ -207,7 +235,7 @@
     "href": "content/exercises/ex_02_specification.html#model-and-estimation",
     "title": "Exercise - Specification",
     "section": "Model and estimation",
-    "text": "Model and estimation\n\nModel\nAssume you want to write a model to estimate the relationship between gdpPercap and lifeExp (or transformed versions of these variables) with OLS. For the resulting model to accurately represent the data generating process, the relationship between the variables therefore has to be linear. You want to write a model of the form\n\\[y = \\alpha + \\beta x + e\\] What should be \\(y\\) in your case? . And x? .\n\n\nRegression\nTo estimate this model, we will use the lm function. Which formula should you pass to the function? . Run the estimtion and display the output using the summary() function.\n\nreg &lt;- lm(data = ..., formula = ...)\n\n\nsummary(...)\n\n\n\n\n\n\n\nNote\n\n\n\nBefore doing the next questions, please read the slides, including the few that we did not have time to cover in class, they will help you answer the questions.\n\n\nWhat is the point estimate for lifeExp? . How would you interpret this coefficient?\n\n Comparing two countries, we expect a country in which the GDP per capita is $1 larger than in the other to have a life expectancy that is on average 8.4 years larger Comparing two countries, we expect a country in which the GDP per capita is 1% larger than in the other to have a life expectancy that is on average 8.4 years larger Comparing two countries, we expect a country in which the GDP per capita is $1 larger than in the other to have a life expectancy that is on average 8.4% larger Comparing two countries, we expect a country in which the GDP per capita is 1% larger than in the other to have a life expectancy that is on average 0.084 years larger Comparing two countries, we expect a country in which the GDP per capita is 1% larger than in the other to have a life expectancy that is on average 8.4% larger Comparing two countries, we expect a country in which the GDP per capita is 1% larger than in the other to have a life expectancy that is on average 0.084% larger\n\nIs this number exact or is it an approximation? ExactApproximation\nDoes this number seem reasonable to you? Think about what it entails.\n\n\nHeteroskedasticity\nLet’s now look at the residuals of this regression in order to explore potential risks of heteroskedasticity. We can retrieve the residuals of a regression with the function resid &lt;- residuals(reg) or by extracting them from the output of the regression: resid &lt;- reg$residuals. Try these two approaches and look at the resulting vecotrs.\n\nresid &lt;- residuals(reg)\nresid &lt;- reg$residuals\n\nRemember what heteroskedasticity is. Which scatter plot should we plot to observe it, if there is any to observe?  against .\nTo do that, we should store these variable into a dataframe, using the tibble function. Let’s call them x1 and x2 for the sake of the example. Replace x1 and x2 by the relevant variables in the following code. Note that to access variables in the gapminder dataset, you need to use $: for instance to access the variable year, write gapminder$year.\n\ndata_residuals &lt;- tibble(name_x1 = x1, name_x2 = x2)\n  \nggplot(data = data_residuals, aes(x = .., y = ..)) + \n  geom_point() + \n  geom_smooth()\n\nDoes there seem to be some heteroskedasticity here? YesNo\nWhy is it problematic?\nThere are actually formal test for heteroskedasticity. We will not have time to cover them in my section of the class but\n\n\nDistribution of the residuals\nWe saw in class that when the residuals are normally distributed, our estimator has nice properties. Plot an histogram to describe the distribution of the residuals. Which function should you use? \n\nggplot(data = data_residuals, aes(x = .., y = ..)) + \n  ...\n\nDoes that seem roughly normally distributed? YesNo\nTo actually test for normality, there is a bunch of tests one can implement but you will learn more about these later. For example, we can plot the residuals against draws from a normal distribution. If the residuals are normally distributed, the resulting points will be on the identity line. To plot this, we can use the geom_qq() function (geom_qq_line() plots the identity line):\n\ndata_residuals |&gt; \n  ggplot(aes(sample = resid)) + \n  geom_qq() + \n  geom_qq_line()"
+    "text": "Model and estimation\n\nModel\nAssume you want to write a model to estimate the relationship between gdpPercap and lifeExp (or transformed versions of these variables) with OLS. For the resulting model to accurately represent the data generating process, the relationship between the variables therefore has to be linear. You want to write a model of the form\n\\[y = \\alpha + \\beta x + e\\] What should be \\(y\\) in your case? . And x? .\n\n\nRegression\nTo estimate this model, we will use the lm function. Which formula should you pass to the function? . Run the estimtion and display the output using the summary() function.\n\nreg &lt;- lm(data = ..., formula = ...)\n\n\nsummary(...)\n\n\n\n\n\n\n\nNote\n\n\n\nBefore doing the next questions, please read the slides, including the few that we did not have time to cover in class, they will help you answer the questions.\n\n\nWhat is the point estimate for lifeExp? . How would you interpret this coefficient?\n\n Comparing two countries, we expect a country in which the GDP per capita is $1 larger than in the other to have a life expectancy that is on average 8.4 years larger Comparing two countries, we expect a country in which the GDP per capita is 1% larger than in the other to have a life expectancy that is on average 8.4 years larger Comparing two countries, we expect a country in which the GDP per capita is $1 larger than in the other to have a life expectancy that is on average 8.4% larger Comparing two countries, we expect a country in which the GDP per capita is 1% larger than in the other to have a life expectancy that is on average 0.084 years larger Comparing two countries, we expect a country in which the GDP per capita is 1% larger than in the other to have a life expectancy that is on average 8.4% larger Comparing two countries, we expect a country in which the GDP per capita is 1% larger than in the other to have a life expectancy that is on average 0.084% larger\n\nIs this number exact or is it an approximation? ExactApproximation\nDoes this number seem reasonable to you? Think about what it entails.\n\n\nHeteroskedasticity\nLet’s now look at the residuals of this regression in order to explore potential risks of heteroskedasticity. We can retrieve the residuals of a regression with the function resid &lt;- residuals(reg) or by extracting them from the output of the regression: resid &lt;- reg$residuals. Try these two approaches and look at the resulting vecotrs.\n\nresid &lt;- residuals(reg)\nresid &lt;- reg$residuals\n\nRemember what heteroskedasticity is. Which scatter plot should we plot to observe it, if there is any to observe?  against .\nTo do that, we should store these variable into a dataframe, using the tibble function. Let’s call them x1 and x2 for the sake of the example. Replace x1 and x2 by the relevant variables in the following code. Note that to access variables in the gapminder dataset, you need to use $: for instance to access the variable year, write gapminder$year.\n\ndata_residuals &lt;- tibble(name_x1 = x1, name_x2 = x2)\n  \nggplot(data = data_residuals, aes(x = .., y = ..)) + \n  geom_point() + \n  geom_smooth()\n\nDoes there seem to be some heteroskedasticity here? YesNo\nWhy is it problematic?\nThere are actually formal tests for heteroskedasticity. They however go beyond what is covered in this section of the class.\n\n\nDistribution of the residuals\nWe saw in class that when the residuals are normally distributed, our estimator has nice properties. Plot an histogram to describe the distribution of the residuals. Which function should you use? \n\nggplot(data = data_residuals, aes(x = .., y = ..)) + \n  ...\n\nDoes that seem roughly normally distributed? YesNo\nTo actually test for normality, there is a bunch of tests one can implement but you will learn more about these later. For example, we can plot the residuals against draws from a normal distribution. If the residuals are normally distributed, the resulting points will be on the identity line. To plot this, we can use the geom_qq() function (geom_qq_line() plots the identity line):\n\ndata_residuals |&gt; \n  ggplot(aes(sample = resid)) + \n  geom_qq() + \n  geom_qq_line()"
   },
   {
     "objectID": "content/syllabus.html",

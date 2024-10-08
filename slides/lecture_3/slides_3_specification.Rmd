@@ -22,10 +22,12 @@ library(knitr)
 library(xaringan)
 library(mediocrethemes)
 library(here)
+library(wooldridge)
+library(gapminder)
 
 # set knit directory to "Document directory"
 
-set.seed(12)
+set.seed(2)
 
 xaringan_mediocre(pal = "portal")
 ```
@@ -202,6 +204,45 @@ class: right, middle, inverse
 # Logarithms
 
 ---
+
+
+```{r log_graph, echo=FALSE, message=FALSE, warning=FALSE, fig.dpi=300, fig.asp=0.8, out.width='70%', fig.align='center'}
+log_graph <- gapminder::gapminder |> 
+  ggplot(aes(x = gdpPercap, y = lifeExp)) + 
+  geom_point() + 
+  labs(
+    title = "Life Expectancy Against GDP per Capita",
+    x = "GDP per capita (in $)",
+    y = "Life Expectancy (in years)"
+  ) 
+
+log_graph
+```
+
+---
+
+
+```{r log_fit_graph, echo=FALSE, message=FALSE, warning=FALSE, fig.dpi=300, fig.asp=0.8, out.width='70%', fig.align='center'}
+log_graph + 
+  geom_smooth(method = "lm", se = FALSE)
+```
+
+---
+
+```{r lifeExp_loggdp_graph, echo=FALSE, message=FALSE, warning=FALSE, fig.dpi=300, fig.asp=0.8, out.width='70%', fig.align='center'}
+gapminder::gapminder |>
+  ggplot(aes(x = log(gdpPercap), y = lifeExp)) + 
+  geom_point() + 
+  labs(
+    title = "Life Expectancy Against the log of GDP per Capita",
+    x = "Log of GDP per capita",
+    y = "Life Expectancy (in years)"
+  ) + 
+  geom_smooth(method = "lm", se = FALSE)
+```
+
+
+---
 class: titled, middle
 
 # Usefulness
@@ -214,44 +255,6 @@ class: titled, middle
 
 - Many responses bound by 0 $\Rightarrow$ we should use a limited response function
 
----
-class: titled, middle
-
-# Percentage Change Interpretation
-
-$$\log(wage) = \beta_0 + \beta_1 educ + e$$
-- Parameter interpretation: $\Delta \% wage \simeq 100 \hat{\beta_1} \Delta educ$
-
-- $\hat{\beta_1}$ can roughly be interpreted as the **percentage difference in $y$ associated with a unit difference in $x$**
-
-- Assume estimation yields $\widehat{\log(wage)} = 0.58 + 0.083 educ$:
- 
-  - An additional year of education is on average associated with a $\simeq 8.3\%$ larger wage
-
----
-class: titled, middle
-
-# Log-transform 
-
-| Specification | Response | Input | Interpretation |
-|---------------| -------- | ----- | -------------- |
-| Level-level   | y        | x     | $\Delta y = \beta \Delta x$ |
-| Log-level     | log(y)   | x     | $\Delta \% y \simeq 100 \beta \Delta x$ |
-| Level-log     | y        | log(x)    | $\Delta y \simeq \frac{\beta}{100} \% \Delta x$ |
-| Log-log     | log(y)        | log(x)    | $\Delta \% y \simeq \beta \% \Delta x$ |
-
----
-class: titled, middle
-
-# Thechnical (but Important) Usefulness
-
-- Often, the log transformation allows to **better satisfy the optimality conditions**:
-  
-  - Logarithm concave $\Rightarrow$ often decreases the heteroskedasticity problem
-  
-  - Can make the errors more normal (essential for inference)
-  
-  - Decreases outlier issues
 
 ---
 # When to Use the Log Transformation?
@@ -262,7 +265,7 @@ class: titled, middle
   
   - Variables measuring money (salaries, sales, market values)
   
-  - Large integer values (*eg* population)
+  - Large integer values (*eg* population) 
   
 --
 
@@ -281,15 +284,510 @@ class: titled, middle
   - When variable skewed towards 0, the log creates large negative values
 
 ---
-class: right, middle
+class: titled, middle
 
-# I will add the rest after next week's class
+# Percentage Change Interpretation
+
+$$\log(wage) = \beta_0 + \beta_1 educ + e$$
+- Parameter interpretation: $\Delta \% wage \simeq 100 \hat{\beta_1} \Delta educ$
+
+- $\hat{\beta_1}$ can roughly be interpreted as the **percentage difference in $y$ associated with a unit difference in $x$**
+
+- Assume estimation yields $\widehat{\log(wage)} = \underset{(.097)}{0.58} + \underset{(.0075)}{0.083} educ$:
+
+--
+ 
+  - An additional year of education is on average associated with a $\simeq 8.3\%$ larger wage
+
+---
+class: titled, middle
+
+# Log-transform 
+
+| Specification | Response | Input | Interpretation |
+|---------------| -------- | ----- | -------------- |
+| Level-level   | y        | x     | $\Delta y = \beta \Delta x$ |
+| Log-level     | log(y)   | x     | $% \Delta y \simeq 100 \beta \Delta x$ |
+| Level-log     | y        | log(x)    | $\Delta y \simeq \frac{\beta}{100} \% \Delta x$ |
+| Log-log     | log(y)        | log(x)    | $% \Delta y \simeq \beta \% \Delta x$ |
+
+---
+class: titled, middle
+
+# Interpretation: level-log
+
+
+```{r lifeExp, eval=FALSE, echo=FALSE}
+library(gapminder)
+
+gapminder |> 
+  lm(formula = lifeExp ~ log(gdpPercap)) |> 
+  summary()
+```
+
+$$\widehat{lifeExp_i} = \underset{(1.2)}{-9.1} + \underset{(.15)}{8.4} \log(gdpPercap_i)$$
+--
+
+- A 1% larger per capita GDP is on average associated with a $0.084$ years larger life expectancy
+
+- Is this relationship causal?
+
+- Does this analysis make sense? 
+
+- Source: [`gapminder`](https://www.gapminder.org/data/)
+
+???
+
+- No weighting?
+
+---
+class: titled, middle
+
+# Interpretation: log-log
+
+```{r pop_gdp, eval=FALSE, echo=FALSE}
+gapminder |> 
+  fixest::feols(fml = log(gdpPercap) ~ log(pop) | country) 
+```
+
+$$\widehat{\log(gdpPercap_{ct})} = \underset{(.00723)}{0.55} \log(pop_{ct}) + ctry_{c}$$
+--
+
+- Comparing years within a country, a population that is 1% larger is on average associated with a 0.55% larger per capita GDP
+
+- Source: [`gapminder`](https://www.gapminder.org/data/)
+
+---
+# Illustartion: within estimator
+
+```{r pop_gdp_graph, echo=FALSE, message=FALSE, warning=FALSE, fig.dpi=300, fig.asp=0.7, out.width='70%', fig.align='center'}
+gapminder::gapminder |> 
+  ggplot(aes(x = log(pop), y = log(gdpPercap))) + 
+  geom_point() + 
+  labs(
+    title = "Population Against GDP per Capita",
+    x = "log(Population)",
+    y = "log(gdpPercapita)"
+  )
+```
+
+---
+# Illustartion: within estimator
+
+```{r pop_gdp_graph_country, echo=FALSE, message=FALSE, warning=FALSE, fig.dpi=300, fig.asp=0.7, out.width='70%', fig.align='center'}
+gapminder::gapminder |> 
+  mutate(
+    country_name = paste(country),
+    display_country = ifelse(str_starts(country_name, "T"), country_name, NA)
+  ) |> 
+  ggplot(aes(x = log(pop), y = log(gdpPercap), color = display_country)) + 
+  geom_point() + 
+  labs(
+    title = "Within Country Population Against GDP per Capita",
+    subtitle = "For a subset of countries",
+    x = "log(Population)",
+    y = "log(gdpPercapita)",
+    color = NULL
+  ) 
+```
+
+
+---
+class: titled, middle
+
+# Interpretation: level-level
+
+```{r save_eurostat, eval=FALSE, echo=FALSE}
+library(eurostat)
+
+#unemployment share
+eurostat_data <- get_eurostat(id = "met_lfu3rt") |>
+  mutate(
+    female = (sex == "F"),
+    female_name = ifelse(female, "Female", "Other")
+  )
+
+eurostat_data <- saveRDS(
+  eurostat_data,
+  here::here("slides", "lecture_3", "data", "eurostat_data.RDS")
+)
+```
+
+
+```{r eurostat, include=FALSE, echo=FALSE}
+eurostat_data <- readRDS(
+  here::here("slides", "lecture_3", "data", "eurostat_data.RDS")
+)
+
+
+eurostat_data |> 
+  lm(formula = values ~ female) |> 
+  summary()
+```
+
+
+$$\widehat{unempl_i} = \underset{(.043)}{10.9} + \underset{(.077)}{0.82} female_i$$
+--
+
+- On average, **in this data set**, females have a higher unemployment rate of 0.82 percentage points. 
+
+- Source: [Eurostat](https://ec.europa.eu/eurostat/databrowser/view/met_lfu3rt/default/table?lang=en)
+
+---
+
+```{r plot_unemp_raw, echo=FALSE, message=FALSE, warning=FALSE, fig.dpi=300, fig.asp=0.8, out.width='70%', fig.align='center'}
+eurostat_data |> 
+  ggplot(aes(x = female_name, y = values)) + 
+  geom_point() +
+  labs(
+    title = "Relative Share of Unemployment among Females",
+    subtitle = "Raw plot",
+    x = NULL,
+    y = "Unemployment Share"
+  )
+```
+
+---
+
+```{r plot_unemp_better, echo=FALSE, message=FALSE, warning=FALSE, fig.dpi=300, fig.asp=0.8, out.width='70%', fig.align='center'}
+eurostat_data |> 
+  ggplot(aes(x = female_name, y = values)) + 
+  geom_jitter(alpha = 0.1) +
+  labs(
+    title = "Relative Share of Unemployment among Females",
+    subtitle = "A slightly better plot",
+    y = "Unemployment Share"
+  )
+```
+
+---
+
+```{r plot_unemp_distrib, echo=FALSE, message=FALSE, warning=FALSE, fig.dpi=300, fig.asp=0.8, out.width='70%', fig.align='center'}
+eurostat_data |> 
+  ggplot(aes(x = values, fill = female_name, color = female_name)) + 
+  geom_density(alpha = 0.4) +
+  labs(
+    title = "Distribution of Share of Unemployment",
+    subtitle = "Comparison between females and others",
+    x = "Unemployment Share",
+    y = "Density",
+    fill = NULL, 
+    color = NULL
+  )
+```
+
+---
+class: titled, middle
+
+# Thechnical (but Important) Note
+
+- Often, the log transformation allows to **better satisfy the optimality conditions**:
+  
+  - Logarithm concave $\Rightarrow$ often decreases the heteroskedasticity problem
+  
+  - Can make the errors more normal (essential for inference)
+  
+  - Decreases outlier issues
+  
+---
+class: right, middle, inverse
+
+# Quadratics
+
+
+---
+
+```{r quad_graph, echo=FALSE, message=FALSE, warning=FALSE, fig.dpi=300, fig.asp=0.8, out.width='70%', fig.align='center'}
+n <- 200
+
+hwage_data <- 
+  tibble(
+    exp = rnorm(n, 11, 5),
+    educ = rnorm(n, 6, 2),
+    hwage = 1 + 0.1*educ + 2 * exp - 0.065 * exp ^ 2 + rnorm(n, 0, 2)
+  ) 
+
+# lm(data = hwage_data, hwage ~ educ + exp + I(exp^2))  |> summary()
+
+hwage_data |> 
+  ggplot(aes(x = exp, y = hwage)) + 
+  geom_point() + 
+  labs(
+    title = "Evolution of hourly wage with experience",
+    subtitle = "Fake data, generated from sratch",
+    x = "Experience (in years)",
+    y = "Hourly wage ($)"
+  )
+```
+
+---
+
+# Potential Interpretation
+
+- Does this figure make sense?
+
+- Why would we observe this?
+
+--
+
+  - Decreasing marginal returns of experience
+  
+- Would linear variables capture it?
+
+--
+
+  - Consider $hwage_i = \alpha + \beta exp_i + e_i$
+  
+  - $\frac{\partial \widehat{hwage}}{\partial exp} = \hat{\beta} = \text{cst}$
+  
+- How could we capture this non-linearity?
+
+---
+class: titled, middle
+
+# Interpretation
+
+- Quadratics used to capture **increasing or decreasing marginal effects**
+
+$$hwage_i = \beta_0 + \beta_1 educ_i + \beta_2 exp_i + \beta_3 exp^2_i + e_i$$
+- The slope in the relationship between hourly wage ( $hwage$ ) and experience ( $exp$ ) depends on the value of $exp$:
+
+$$\frac{\partial \widehat{hwage}}{\partial exp} = \hat{\beta_2} + 2 \hat{\beta_3} exp $$
+
+- Interpretation of $\hat{\beta_3}$ not straightforward
+
+---
+class: titled, middle
+
+# Example Interpretation
+
+
+```{r wage_quad, eval=FALSE, echo=FALSE}
+library(wooldridge)
+
+wage1 |> 
+  lm(formula = wage ~ educ + exper + I(exper^2)) |> 
+  summary()
+```
+
+$$\widehat{hwage} = \underset{(.75)}{- 4.0} + \underset{(.053)}{0.60} educ + \underset{(.037)}{.27} exp - \underset{(.0008)}{.0046}exp^2$$
+
+--
+
+- A negative coefficient on the square of experience ( $\hat{\beta_3}$ ) implies decreasing marginal returns of education
+
+--
+
+- Comparing two individuals with the same number of years of education and with 4 and 5 years of experience respectively, on average, we expect the latter one to earn 
+
+--
+
+ - $0.23 more per hour (= 0.27 - 2 x 0.0046 x 4)
+
+---
+class: right, middle, inverse
+
+# Indicators
+
+---
+
+```{r gender, echo=FALSE, message=FALSE, warning=FALSE, fig.dpi=300, fig.asp=0.8, out.width='70%', fig.align='center'}
+wage_data <- wooldridge::wage1 |> 
+  as_tibble() |> 
+  mutate(
+    female_name = ifelse(female, "Female", "Other")
+  ) 
+
+wage_reg <- lm(data = wage_data, wage ~ educ + female_name)
+
+wage_data |> 
+  ggplot(aes(x = educ, y = wage, color = female_name)) +
+  geom_jitter(alpha = 0.6) + 
+  geom_smooth(
+    aes(y = predict(wage_reg, wage_data)), 
+    method = "lm", 
+    se = FALSE, 
+    fullrange = TRUE
+  ) +
+  labs(
+    title = "For a given level of education, female earn less",
+    subtitle = "Wage and education, female vs not",
+    x = "Number of years of education",
+    y = "Hourly wage ($)",
+    color = NULL
+  )
+```
+
+
+---
+# Definitions
+
+- What if we want to look at differences across groups?
+
+--
+
+ - *eg*, Marital status, gender, race, country, etc
+
+- Often need to include qualitative factors, *ie*, add **categorical variables**
+  
+- Indicators are **binary** categorical variables
+
+- They take the value 0 or 1 (or equivalently True or False)
+
+--
+
+- Implicitly define a **reference** category:
+
+  - The category for which the assigned value is 0
+  
+  - *eg* defining a "married" category implies that the reference is non-married
+
+---
+class: titled, middle
+
+# Model and interpretation
+
+$$wage_i = \beta_0 + \beta_1 female_i + \beta_2 educ_i + e_i$$
+- $female_i = 1$ when $i$ is female and 0 otherwise
+
+- Interpretation of $\hat{\beta_1}$ ?
+
+--
+
+- Comparing two individuals with the same level of education, on average, we expect a female to earn $\hat{\beta_1}$ more (or less, depending on the sign of $\hat{\beta_1}$) than a non-female individual
+
+- Adding a non-female dummy would introduce perfect collinearity
+
+---
+class: titled, middle
+
+# Example
+
+
+```{r indicator, eval=FALSE, echo=FALSE}
+library(wooldridge)
+
+wooldridge::wage1 |> 
+  as_tibble() |> 
+  lm(formula = wage ~ female + educ) |> 
+  summary()
+```
+
+
+$$\widehat{wage_i} = \underset{(.67)}{.62} - \underset{(.28)}{2.3} female_i + \underset{(.05)}{0.5} educ_i$$
+--
+
+- On average, female have a lower wage of $2.3 points, for a given level of education 
+
+- Equivalent to considering that female have a different constant term:
+
+  - $\widehat{wage_i} =  (\hat{\beta_0} + \hat{\beta_1}) + \hat{\beta_2} educ_i$ for females
+  
+  - $\widehat{wage_i} =  \hat{\beta_0} + \hat{\beta_2} educ_i$ for non-females
+
+- Source: `wooldridge::wage1`
+
+---
+class: right, middle, inverse
+
+# Interactions
+
+---
+
+```{r interaction_asia, echo=FALSE, message=FALSE, warning=FALSE, fig.dpi=300, fig.asp=0.8, out.width='70%', fig.align='center'}
+gapminder |> 
+  mutate(
+    asia = ifelse(continent == "Asia", "Asian Countries", " Non-asian Countries")
+  ) |> 
+  ggplot(aes(x = log(gdpPercap), y = lifeExp, color = asia, fill = asia)) +
+  geom_jitter(alpha = 0.4) +
+  geom_smooth(method = "lm") + 
+  labs(
+    title = "Life Expectancy Against the log of GDP per Capita",
+    subtitle = "Comparison between asian countries and others",
+    x = "Log of GDP per capita",
+    y = "Life Expectancy (in years)",
+    color = NULL,
+    fill = NULL
+  ) 
+```
+
+---
+# Model
+
+- Interaction when the link between the explained and explanatory variable varies with another explanatory variable
+
+$$lifeExp_c = \beta_0 + \beta_1 log(GDPc_c) + \beta_2 log(GDPc_c) \times Asia_c + \beta_3 Asia_c + e_c$$
+
+- $Asia_c = 1$:
+
+--
+
+$$ \widehat{lifeExp_c} = \hat{\beta_0} + (\hat{\beta_1} + \hat{\beta_2} ) log(GDPc_c) + \hat{\beta_3} $$
+  
+--
+
+- $Asia_c = 0$:
+
+--
+
+$$ \widehat{lifeExp_c} = \hat{\beta_0} + \hat{\beta_1}  log(GDPc_c) $$
+ 
+- Do **not** have to be an indicator
+
+---
+class: titled, middle
+
+# Continuous variables
+
+$$ y = \beta_0 + \beta_1 x_i + \beta_2 x_i \times z_i + \beta_3 z_i + e_i$$
+- **Partial "effect"** of $x$ on $y$:
+
+$$\dfrac{\partial \hat{y}}{\partial x} = \hat{\beta_1} + \hat{\beta_2} z$$
+
+- The interaction also changes the interpretation of $\hat{\beta_1}$
+
+--
+
+- $\hat{\beta_1}$ is the average difference in $\hat{y}$ associated with a unit difference in $x$ **for z = 0**
+
+
+---
+class: right, middle, inverse
+
+# Summary
+
+---
+class: titled, middle
+
+# Summary
+
+- Can introduce **non-linearities** in the the **linear** model
+
+- Also allow to have different interpretations of estimates (*eg* as percentage differences)
+
+- Indicators allow to introduce heterogeneity
+
+- Visualize your raw data! 
 
 ---
 class: right, middle, inverse
 
 # Thanks!
 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
  
 
 
