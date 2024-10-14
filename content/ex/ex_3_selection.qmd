@@ -1,0 +1,303 @@
+---
+title: "Exercise - Selection"
+subtitle: "Why to select one model or another?"
+published-title: "Date"
+date: "2024-10-15"
+self-contained: true
+engine: knitr
+---
+
+```{r packages_hidden}
+#| echo: false
+#| message: false
+
+library(webexercises)
+```
+
+::: {.callout-important title="Instructions"}
+This page gives both instructions and some interactive snippets. You will have to run most of your code on `RStudio`, on your own computer.
+:::
+
+First, let's load useful packages. We need the `tidyverse` package but also to install the `wooldridge` package (it contains the dataset we are interested in).
+
+```{r packages}
+#| message: false
+#| code-fold: true
+
+# install.packages("wooldridge")
+
+library(tidyverse)
+library(wooldridge)
+```
+
+## Exploring the Data Set
+
+### The Data
+
+Load the data by calling `wage1` (after loading the package using `library(wooldridge)`).
+
+Print the dataset. It prints in a different format than what we are used to. It is stored in a dataframe and not the tibbles we are used to. Let's create a tibble version of this data set, using the function `as_tibble()`; run the following line of code:
+
+```{r tibble}
+wage <- as_tibble(wage1)
+```
+
+What does each variable represent? (use the `help()` function). How many observations are there in this data set? `r fitb(526)`.
+
+### "Research" Question
+
+::: {.callout-tip title="Objective"}
+We will study how to better explain/predict hourly wage, based on the set of covariates available in the data set
+:::
+
+We want to build a model that accurately describes the variation in wage. Why can understanding how wage evolves with various covariates matter for economics research?
+
+### Summarising the Data
+
+Before anything, let's quickly explore the data. To have an overview of the dataset, we can use the function `glimpse(wage)`.
+
+What type of variable does `profocc` seem to be? `r mcq(c("Continuous", answer = "Binary"))` Confirm this by exploring the documentation for the data set (the `help`)
+
+The `summary()` function can also provide interesting information on the dataset. Call this function. What is the median number of years of educations in the data set? `r fitb(12, tol = 0.1)`
+
+What is the proportion of married individuals in this data set? `r fitb(0.6, tol = 0.01)`[^1]
+
+[^1]: This information is directly accessible through `summary(wage)`
+
+### Distribution of Wage
+
+We want to study the variation in `wage`, before anything, let's plot its distribution as we did in [the previous exercise](ex_2_specification.qmd)!
+
+```{r plot_distrib_wage}
+# plot distrib wage
+```
+
+Do you notice anything weird or erroneous? <!-- There is a negative value -->
+
+### Relationship between wage and education
+
+We can then explore its correlation with education. Which `ggplot` function should we use? `r fitb("geom_point")`
+
+```{r plot_wage_educ}
+# plot relationship between wage and education
+```
+
+What do we notice?
+
+In addition, larger levels of education seem to be associated with `r mcq(c(answer = "larger", "smaller"))` hourly wages.
+
+We may also be interested in disparities by gender. We can plot the same graph distinguishing by gender. To do so, add `color = female` within the `aes()` function: `aes(x = ..., y = ..., color = female)`.
+
+`ggplot` treats `female` as a continuous variable (an integer). Instead, this variable is binary. To transform it as categorical variable, we can use the `as_factor()` function: `aes(x = ..., y = ..., color = as_factor(female))`.
+
+For a given level of education, the wage of female individuals seems to be `r mcq(c("larger", answer = "lower", "identical"))` than the wage of non-female ones.
+
+Does the relationship between wage and education seem different for female and non-female?
+
+### Relationship Between Wage and Other Variables
+
+Go on with this data exploration: look at the correlation between wage and experience, tenure and their squares. Can you see a clear relationship between the square of experience and wage? `r mcq(c("Yes", answer = "No"))`
+
+Does that mean that there is no statistical relationship between these two variables? `r mcq(c("Yes", answer = "No"))`
+
+How would you expect this relationship to be `r mcq(c("positive", "null", answer = "negative"))` Why?
+
+::: callout-note
+You can do a lot more data exploration using graphs but also tables. We will however now turn to modeling.
+:::
+
+## Quadratics
+
+Let's first explore the relationship between hourly wage, level of education, experience and experience squared. Regress wage on these variables, as we did last weeks.
+
+::: callout-tip
+The variable `expersq` is already in the data set; you can call it directly. If you use `exper^2` in your regression, what happens? To remedy this, you need to tell `R` that you are actually creating a new variable, using the function `I(exper^2)`: `formula = ... ~ ... + I(exper^2)`.
+:::
+
+```{r reg}
+# regression
+```
+
+What is the point estimate for `educ`? `r fitb(0.59, tol = 0.01)`. How would you interpret this coefficient?
+
+```{r interpretation_educ}
+#| echo: false
+
+interpretation_educ <- c(
+  "Comparing two individuals with the same level of experience, we expect one with one more year of education to earn on average 0.6% more per hour than the other",
+  "Comparing two individuals, we expect one with one more year of education to earn on average $0.6 more per hour than the other",
+  answer = "Comparing two individuals with the same level of experience, we expect one with one more year of education to earn on average $0.6 more per hour than the other",
+  "Comparing two individuals with the same level of experience, we expect one with one more year of education to earn on average 6% more per hour than the other",
+  "None of the above"
+)
+```
+
+`r longmcq(interpretation_educ)`
+
+What is the point estimate for `exper`? `r fitb(0.26, tol = 0.01)`. How would you interpret this coefficient?
+
+```{r interpretation_exper}
+#| echo: false
+
+interpretation_exper <- c(
+  "Comparing two individuals with the same level of education, we expect one with one more year of experience to earn on average 0.27% more per hour than the other",
+  "Comparing two individuals with the same level of education, we expect one with one more year of experience to earn on average $0.27 more per hour than the other",
+  "Comparing two individuals with the same level of education, we expect one with one more year of experience to earn on average 2.7% more per hour than the other",
+  answer = "None of the above"
+)
+```
+
+`r longmcq(interpretation_exper)`
+
+For how many years of experience could you easily interpret this coefficient? `r fitb(c(0, 1))`. The presence of which variable in the analysis can explain this difference? `r mcq(c("wage", "educ", "exper", answer = "expersq"))`
+
+Comparing two individuals with the same level of education, we expect one with 3 years of experience to earn on average `r fitb("0.25", tol = 0.01)` more per hour than one with 2 years of experience. What is the general formula to compute this quantity?
+
+`r hide("Answer")` $$\frac{\partial \widehat{wage}}{\partial exp} = \hat{\beta_2} + 2 \hat{\beta_3} exp $$ `r unhide()`
+
+How do you interpret the sign of `expersq`?
+
+`r hide("Answer")` There are decreasing marginal returns to experience. `r unhide()`
+
+## Indicators
+
+We will now explore how the relationship between level of education and wage varies by marital status. If we add a `married` dummy, what is the coefficient for `educ`? `r fitb(0.583786, tol = 0.01)`
+
+How do we interpret it?
+
+```{r interpretation_dummy}
+#| echo: false
+
+interpretation_dummy <- c(
+  "Comparing two individuals with the same level of education, we expect one with one more year of experience to earn on average $0.58 more per hour than the other",
+  "Comparing two individuals with the same level of experience, we expect one with one more year of education to earn on average $0.58 more per hour than the other",
+  answer = "Comparing two individuals with the same level of experience and marital status, we expect one with one more year of education to earn on average $0.58 more per hour than the other"
+)
+```
+
+`r longmcq(interpretation_dummy)`
+
+For a given level of education, on average, we expect married individual to earn `r fitb(0.507491, tol = 0.01)` dollars more/less per hour than non married one.
+
+Does the relationship between level of education and wage varies by marital status? `r mcq(c("Yes", answer = "No"))`
+
+If you plot the regression lines for both groups, they will be `r fitb("parallel")`
+
+## Interactions
+
+To make this relationship vary by marital status, we can interact the variable of interest, `educ`, with `married`. To interact two variables, we can use `:`: *eg* `y ~ x:z`.
+
+Which variables do we need to include in the model?
+
+`r hide("Answer")` `educ`, `married`, `educ:married`, `exper` and `expersq` `r unhide()`
+
+::: callout-tip
+Try only having `educ*married`, `exper` and `expersq` in your formula. What happens to your results? What does the `*` do?
+:::
+
+Comparing two married individuals with the same level of experience, we expect one with one more year of education to earn on average `r fitb(0.633126, tol = 0.01)` more per hour than the other.
+
+Comparing two non-married individuals with the same level of experience, we expect one with one more year of education to earn on average `r fitb(0.509667, tol = 0.01)` more per hour than the other.
+
+Plot the relationship between wage and education. Add a regression line. To do so, we need to use the `r fitb("geom_smooth")` function.
+
+```{r}
+#plot
+```
+
+Let's now plot separate lines for married vs non-married individuals. To do so, we need to add the `color = married` aesthetic (`aes(..., color = married)`).
+
+## Model selection
+
+Let's now dive into model selection.
+
+### $R^2$
+
+What is the $R^2$ of the regression of wage on the level of education, the level of experience and its square? `r fitb(0.2692, tol = 0.01)`[^2]
+
+[^2]: Run the regression and print its summary.
+
+What is the adjusted$-R^2$? `r fitb(0.265, tol = 0.01)`. Is the difference with the $R^2$ large? Why so?
+
+How would you interpret the $R^2$ (or the adjusted$-R^2$)?
+
+```{r interpretation_r2}
+#| echo: false
+
+interpretation_r2 <- c(
+  "The model explains 0.27% of the variation in education",
+  "The model explains 27% of the variation in education",
+  answer = "The model explains 27% of the variation in wage",
+  "The model explains 0.27% of the variation in wage"
+)
+```
+
+`r longmcq(interpretation_r2)`
+
+Add `nonwhite`, `tenure`, `female`, `married`, `numdep` to the model. Does the this model explains a larger proportion of the variation in wage? `r mcq(c(answer = "Yes", "No"))`
+
+Does the coefficient for `educ` vary? Why?
+
+Is the interpretation of this coefficient the same as before? `r mcq(c("Yes", answer = "No"))`
+
+### Misspecification
+
+Let's get back to our simple model of wage on the level of education, the level of experience and its square. Does including `female` affect the coefficient for `educ`? `r mcq(c(answer = "Yes", "No"))` Why?
+
+```{r mcq_bias}
+#| echo: false
+
+mcq_bias <- c(
+  "This is only noise",
+  "Female is correlated with education",
+  answer = "Female is correlated with both wage and education",
+  "Female is correlated with wage"
+)
+```
+
+`r longmcq(mcq_bias)`
+
+In the first specification, `female` is an `r fitb("omitted variable")`. What other variables in the data set could have similar effects? Should we include them in the model? `r mcq(c(answer = "Yes", "No"))`
+
+Should we include any variables in the model? `r mcq(c("Yes", answer = "No"))` Why? 
+
+```{r mcq_var}
+#| echo: false
+
+mcq_var <- c(
+  "Irrelevant variables will create a bias",
+  answer = "Irrelevant variables will increase the variance of the estimator",
+  "Irrelevant variables make the model imposible to estimate"
+)
+```
+
+`r longmcq(mcq_var)`
+
+Variable selection involves arbitrating this bias-variance trade-off.
+
+### Information Criteria
+
+To select which variables to include and not to include, a basic and usual approach is to use Information Criteria. We will choose the model that minimizes an information criterion, either the Akaike Information Criterion (AIC) or the Bayesian Information Criterion (BIC). The associated functions are `AIC` and `BIC`.
+
+Write several models including some of the following variables, in addition of `educ`: `exper`, `expersq`, `married`, `tenure`, `female`, `numdep` and `nonwhite`.
+
+```{r}
+#| eval: false
+
+reg_1 <- lm(...)
+reg_2 <- lm(...)
+reg_3 <- lm(...)
+reg_4 <- lm(...)
+
+AIC(reg_1, reg_2, reg_3, reg_4)
+
+BIC(reg_1, reg_2, reg_3, reg_4)
+```
+
+Which model would you choose?
+
+In particular, estimate the model including all the covariates, compute its AIC. Then do the same thing but excluding `nonwhite`. Which model would you choose?^[Here the line between the two is pretty fine and the difference not particularly stark.]
+
+
+
+

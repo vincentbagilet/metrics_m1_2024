@@ -1,0 +1,43 @@
+---
+title: "Model Specification"
+subtitle: ""
+published-title: "Date"
+date: "2024-10-01"
+self-contained: true
+engine: knitr
+---
+
+::: callout-tip
+## Objective
+
+A linear regression does not mean that everything has to be linear in the model; it means that the model has to be linear in its parameters. In this session, we will discuss why and how we can introduce non-linearities in our model and model heterogeneity.
+:::
+
+## Session Outline
+
+1.  Quizz
+2.  Recap' from last week (+ derivation formula of the variance of the OLS estimator)
+3.  Exercise: Hands-on linear regression
+4.  Introduction to model specification
+5.  Logarithms
+6.  Quadratics
+7.  Indicators
+8.  Interactions
+
+`r fontawesome::fa("file-powerpoint")` [Open slides](../../slides/lecture_3/slides_3_specification.html)
+
+```{r out.width='100%'}
+#| echo: false
+
+knitr::include_url("../../slides/lecture_3/slides_3_specification.html")
+```
+
+## Exercise
+
+Why use particular functional transformations for the variables in your model?
+
+Let's try to answer part of this question using an example. You can find the associated exercise [here](content/ex/ex_2_specification.qmd).
+
+## Additional Resources
+
+-   On interpretation of log-transforms: section "incorporating nonlinearities in Simple regression" in the Chapter 2 of Wooldridge, [*Introductory Econometrics: A Modern Approach*](https://books.google.fr/books?id=GHoJzgEACAAJ&hl=fr&source=gbs_book_other_versions) or [a discussion in Introduction to Econometrics with R](https://www.econometrics-with-r.org/8.2-nfoasiv.html#logarithms)

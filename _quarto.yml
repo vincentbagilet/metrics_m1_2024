@@ -9,7 +9,7 @@ project:
   - slides_1_linear_regression.html
   - slides_2_properties.html
   - slides_3_specification.html
-  - slides_4_model_selection.html
+  - slides_4_selection.html
   - sim_results.RDS
   output-dir: docs
 execute:
@@ -24,19 +24,21 @@ website:
     - text: Lectures
       menu:
       - text: 1 - Linear Regression
-        href: content/1_linear_regression.qmd
+        href: content/lect/lect_1_linear_regression.qmd
       - text: 2 - OLS Properties
-        href: content/2_properties.qmd
+        href: content/lect/lect_2_properties.qmd
       - text: 3 - Model Specification
-        href: content/3_specification.qmd
+        href: content/lect/lect_3_specification.qmd
       - text: 4 - Model Selection
-        href: content/4_model_selection.qmd
+        href: content/lect/lect_4_selection.qmd
     - text: Exercises
       menu:
       - text: 1 - Hands-on Linear Regression
-        href: content/exercises/ex_01_linear_regression.qmd
+        href: content/ex/ex_1_linear_regression.qmd
       - text: 2 - Specification
-        href: content/exercises/ex_02_specification.qmd
+        href: content/ex/ex_2_specification.qmd
+      - text: 3 - Selection
+        href: content/ex/ex_3_selection.qmd
     - href: content/syllabus.qmd
       text: Syllabus
     - href: content/definitions.qmd

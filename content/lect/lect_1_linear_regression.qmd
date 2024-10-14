@@ -1,0 +1,52 @@
+---
+title: "Linear Regression"
+subtitle: "Introduction and refresher to linear regression"
+published-title: "Date"
+date: "2024-09-17"
+self-contained: true
+engine: knitr
+---
+
+::: callout-tip
+## Objective
+
+In this session, we review the basics of linear regression and derive the formula for the OLS estimator.
+:::
+
+## Summary
+
+As researchers (academic or not), we want to answer research questions. To do so, we build theories and often want to take them to the data to assess their validity and quantify the values of parameters of interest. This involves studying relationships between variables. Regression is an helpful tool to do so. It allows us to estimate our model, using methods such as Ordinary Least-Squares (OLS) for instance. In this session, we review the basics of linear regression and derive the formula for the OLS estimator, an essential tool in any empirical economic analysis.
+
+### Session Outline
+
+1.  Introduction: estimating a production function
+2.  Course logistics
+3.  Example: the link between the level of education and earnings
+4.  Mathematical derivation of the OLS estimator
+
+## Materials
+
+`r fontawesome::fa("file-powerpoint")` [Open slides](../../slides/lecture_1/slides_1_linear_regression.html)
+
+```{r out.width='100%'}
+#| echo: false
+
+knitr::include_url("(../../slides/lecture_1/slides_1_linear_regression.html")
+```
+
+These slides are built on the material Clément Gorin taught two years ago.
+
+<!-- ## Exercise -->
+
+<!-- *This section will describe the exercise that we will do in class and provide links to the data sets and tools used.* -->
+
+<!-- Since the TDs have not yet started, we will use Google Collabs to run today's code online. In the future, you will use R Studio. -->
+
+## Additional Resources
+
+-   [Seeing Theory](https://seeing-theory.brown.edu/) provides a nice introduction to probability and statistics based on interactive web applications
+-   The material from your L3 econometrics class
+-   [Chapter 2 of *The Effect*](https://theeffectbook.net/ch-ResearchQuestions.html) on good research questions
+-   [Chapter 4 of *The Effect*](https://theeffectbook.net/ch-DescribingRelationships.html) for a review of linear regression
+-   [Chapter 3 of Sciences Po's *Introduction to Econometrics with R*](https://scpoecon.github.io/ScPoEconometrics/linreg.html): same
+-   [*MLU-explain* on linear regression](https://mlu-explain.github.io/linear-regression/): same but from a machine learning perspective

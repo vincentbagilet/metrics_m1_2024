@@ -36,10 +36,10 @@ The second part (last four lectures), will discuss in depth the theoretical unde
 
 More specifically, the course content will be divided into eight 3h-long lectures:
 
-1.  [Linear regression](1_linear_regression.qmd): Introduction and refresher to linear regression
-2.  [OLS properties](2_ols_properties.qmd): What are the properties and assumptions behind OLS?
-3.  [Model specification](3_model_selection.qmd): How to define a sensible model describing the relationships between the variables of interest?
-4.  [Covariates selection](4_covariates_selection.qmd): How to decide which variables to include in the model?
+1.  [Linear regression](lect/lect_1_linear_regression.qmd): Introduction and refresher to linear regression
+2.  [OLS properties](lect/lect_2_ols_properties.qmd): What are the properties and assumptions behind OLS?
+3.  [Model specification](lect/lect_3_specification.qmd): How to define a sensible model describing the relationships between the variables of interest?
+4.  [Covariates selection](lect/lect_4_selection.qmd): How to decide which variables to include in the model?
 5.  [Convergence in](4_convergence.qmd)[probability](5_convergence.qmd): How to show the convergence of an extremum estimator?
 6.  [Asymptotic normality](6_asynorm.qmd): How to derive the asymptotic distribution of an estimator?
 7.  [Hypothesis testing - Theory](7_test_theo.qmd): How to construct a good statistical test?

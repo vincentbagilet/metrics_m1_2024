@@ -1,0 +1,46 @@
+---
+title: "OLS Properties"
+subtitle: ""
+published-title: "Date"
+date: "2024-09-24"
+self-contained: true
+engine: knitr
+---
+
+::: callout-tip
+## Objective
+
+The OLS estimator, under some conditions, has some neat properties. In this session, we will described these properties and some of the necessary conditions for these properties to hold.
+:::
+
+## Session Outline
+
+1.  Quizz
+2.  Discussion on research questions
+3.  Estimates and uncertainty
+4.  Some properties estimators can have
+5.  Optimality conditions: conditions under which the OLS estimator has some of these properties
+6.  Mathematical derivation (bias and variance of the OLS estimator)
+
+## Materials
+
+`r fontawesome::fa("file-powerpoint")` [Open slides](../../slides/lecture_2/slides_2_properties.html)
+
+```{r out.width='100%'}
+#| echo: false
+
+knitr::include_url("../../slides/lecture_2/slides_2_properties.html")
+```
+
+<!-- These slides are built on the material Clément Gorin taught two years ago. -->
+
+<!-- *This section will describe the exercise that we will do in class and provide links to the data sets and tools used.* -->
+
+<!-- Since the TDs have not yet started, we will use Google Collabs to run today's code online. In the future, you will use R Studio. -->
+
+## Additional Resources
+
+-   [Seeing Theory](https://seeing-theory.brown.edu/) provides a nice introduction to probability and statistics based on interactive web applications
+-   The material from your L3 econometrics class
+-   [Chapter 2 of *The Effect*](https://theeffectbook.net/ch-ResearchQuestions.html) on good research questions
+-   [Chapter 4 of *The Effect*](https://theeffectbook.net/ch-DescribingRelationships.html) for a review of linear regression

@@ -1,0 +1,17 @@
+{
+  "hash": "cd7766f468d049fb78db3c433d996d9e",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"Model Specification\"\nsubtitle: \"\"\npublished-title: \"Date\"\ndate: \"2024-10-01\"\nself-contained: true\nengine: knitr\n---\n\n\n::: callout-tip\n## Objective\n\nA linear regression does not mean that everything has to be linear in the model; it means that the model has to be linear in its parameters. In this session, we will discuss why and how we can introduce non-linearities in our model and model heterogeneity.\n:::\n\n## Session Outline\n\n1.  Quizz\n2.  Recap' from last week (+ derivation formula of the variance of the OLS estimator)\n3.  Exercise: Hands-on linear regression\n4.  Introduction to model specification\n5.  Logarithms\n6.  Quadratics\n7.  Indicators\n8.  Interactions\n\n`<svg aria-hidden=\"true\" role=\"img\" viewBox=\"0 0 384 512\" style=\"height:1em;width:0.75em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;\"><path d=\"M64 464c-8.8 0-16-7.2-16-16V64c0-8.8 7.2-16 16-16H224v80c0 17.7 14.3 32 32 32h80V448c0 8.8-7.2 16-16 16H64zM64 0C28.7 0 0 28.7 0 64V448c0 35.3 28.7 64 64 64H320c35.3 0 64-28.7 64-64V154.5c0-17-6.7-33.3-18.7-45.3L274.7 18.7C262.7 6.7 246.5 0 229.5 0H64zm72 208c-13.3 0-24 10.7-24 24V336v56c0 13.3 10.7 24 24 24s24-10.7 24-24V360h44c42 0 76-34 76-76s-34-76-76-76H136zm68 104H160V256h44c15.5 0 28 12.5 28 28s-12.5 28-28 28z\"/></svg>`{=html} [Open slides](../../slides/lecture_3/slides_3_specification.html)\n\n\n::: {.cell}\n<iframe src=\"../../slides/lecture_3/slides_3_specification.html\" width=\"100%\" height=\"400px\" data-external=\"1\"></iframe>\n:::\n\n\n## Exercise\n\nWhy use particular functional transformations for the variables in your model?\n\nLet's try to answer part of this question using an example. You can find the associated exercise [here](content/ex/ex_2_specification.qmd).\n\n## Additional Resources\n\n-   On interpretation of log-transforms: section \"incorporating nonlinearities in Simple regression\" in the Chapter 2 of Wooldridge, [*Introductory Econometrics: A Modern Approach*](https://books.google.fr/books?id=GHoJzgEACAAJ&hl=fr&source=gbs_book_other_versions) or [a discussion in Introduction to Econometrics with R](https://www.econometrics-with-r.org/8.2-nfoasiv.html#logarithms)\n",
+    "supporting": [
+      "lect_3_specification_files"
+    ],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

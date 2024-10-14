@@ -1,0 +1,45 @@
+---
+title: "Model Selection"
+subtitle: ""
+published-title: "Date"
+date: "2024-10-08"
+self-contained: true
+engine: knitr
+---
+
+::: callout-tip
+## Objective
+
+At the end of this session, you should understand the risks associated with the omission of relevant variables and the inclusion of irrelevant ones. You should also be able to choose between different models using $R^2$
+:::
+
+## Summary
+
+So far, we have discussed how to estimate a model with OLS (lecture 1), the necessary conditions for the estimator to have nice properties (lecture 2), how to consider various functional forms in our model (lecture 3). In this session, we explore how we can choose which variables to include in our model. What happens if we omit some important variables? What if we have irrelevant variables in our econometrics model?
+
+### Session Outline
+
+1.  Quizz
+2.  Finishing last week's material (Quadratics, indicators, interactions)
+3.  Omitted variables
+4.  Over-specification
+5.  Model selection
+
+`r fontawesome::fa("file-powerpoint")` [Open slides](../../slides/lecture_4/slides_4_selection.html)
+
+```{r out.width='100%'}
+#| echo: false
+
+knitr::include_url("../../slides/lecture_4/slides_4_selection.html")
+```
+
+## Exercise
+
+
+Which variables to include in our model?
+
+Let's try to answer part of this question using an example. You can find the associated exercise [here](content/ex/ex_2_selection.qmd).
+
+## Additional Resources
+
+-   On interpretation of log-transforms: section "incorporating nonlinearities in Simple regression" in the Chapter 2 of Wooldridge, [*Introductory Econometrics: A Modern Approach*](https://books.google.fr/books?id=GHoJzgEACAAJ&hl=fr&source=gbs_book_other_versions)

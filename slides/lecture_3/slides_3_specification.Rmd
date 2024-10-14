@@ -307,9 +307,9 @@ class: titled, middle
 | Specification | Response | Input | Interpretation |
 |---------------| -------- | ----- | -------------- |
 | Level-level   | y        | x     | $\Delta y = \beta \Delta x$ |
-| Log-level     | log(y)   | x     | $% \Delta y \simeq 100 \beta \Delta x$ |
-| Level-log     | y        | log(x)    | $\Delta y \simeq \frac{\beta}{100} \% \Delta x$ |
-| Log-log     | log(y)        | log(x)    | $% \Delta y \simeq \beta \% \Delta x$ |
+| Log-level     | log(y)   | x     | $\% \Delta y \simeq 100 \beta \Delta x$ |
+| Level-log     | y        | log(x)   | $\Delta y \simeq \frac{\beta}{100} \% \Delta x$ |
+| Log-log     | log(y)        | log(x)    | $\% \Delta y \simeq \beta \% \Delta x$ |
 
 ---
 class: titled, middle

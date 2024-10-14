@@ -1,0 +1,17 @@
+{
+  "hash": "f6ed5d994d6634b4f9b3a133d8d67322",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"Model Selection\"\nsubtitle: \"\"\npublished-title: \"Date\"\ndate: \"2024-10-08\"\nself-contained: true\nengine: knitr\n---\n\n\n::: callout-tip\n## Objective\n\nAt the end of this session, you should understand the risks associated with the omission of relevant variables and the inclusion of irrelevant ones. You should also be able to choose between different models using $R^2$\n:::\n\n## Summary\n\nSo far, we have discussed how to estimate a model with OLS (lecture 1), the necessary conditions for the estimator to have nice properties (lecture 2), how to consider various functional forms in our model (lecture 3). In this session, we explore how we can choose which variables to include in our model. What happens if we omit some important variables? What if we have irrelevant variables in our econometrics model?\n\n### Session Outline\n\n1.  Quizz\n2.  Finishing last week's material (Quadratics, indicators, interactions)\n3.  Omitted variables\n4.  Over-specification\n5.  Model selection\n\n`<svg aria-hidden=\"true\" role=\"img\" viewBox=\"0 0 384 512\" style=\"height:1em;width:0.75em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;\"><path d=\"M64 464c-8.8 0-16-7.2-16-16V64c0-8.8 7.2-16 16-16H224v80c0 17.7 14.3 32 32 32h80V448c0 8.8-7.2 16-16 16H64zM64 0C28.7 0 0 28.7 0 64V448c0 35.3 28.7 64 64 64H320c35.3 0 64-28.7 64-64V154.5c0-17-6.7-33.3-18.7-45.3L274.7 18.7C262.7 6.7 246.5 0 229.5 0H64zm72 208c-13.3 0-24 10.7-24 24V336v56c0 13.3 10.7 24 24 24s24-10.7 24-24V360h44c42 0 76-34 76-76s-34-76-76-76H136zm68 104H160V256h44c15.5 0 28 12.5 28 28s-12.5 28-28 28z\"/></svg>`{=html} [Open slides](../../slides/lecture_4/slides_4_selection.html)\n\n\n::: {.cell}\n<iframe src=\"../../slides/lecture_4/slides_4_selection.html\" width=\"100%\" height=\"400px\" data-external=\"1\"></iframe>\n:::\n\n\n## Exercise\n\n\nWhich variables to include in our model?\n\nLet's try to answer part of this question using an example. You can find the associated exercise [here](content/ex/ex_2_selection.qmd).\n\n## Additional Resources\n\n-   On interpretation of log-transforms: section \"incorporating nonlinearities in Simple regression\" in the Chapter 2 of Wooldridge, [*Introductory Econometrics: A Modern Approach*](https://books.google.fr/books?id=GHoJzgEACAAJ&hl=fr&source=gbs_book_other_versions)\n",
+    "supporting": [
+      "lect_4_selection_files"
+    ],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

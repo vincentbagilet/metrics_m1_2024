@@ -3,7 +3,7 @@
   --incorrect_alpha: #edaddd;
   --correct: #59935B;
   --correct_alpha: #c0edc2;
-  --highlight: #467AAC;
+  --highlight: #204F93;
 }
 
 .webex-check {}
@@ -87,12 +87,13 @@ input.webex-solveme.webex-correct,
     border-radius: 5px;
 }
 .webex-solution button, .webex-check-button {
-    height: 2em;
+    height: 1.8em;
     margin-bottom: 0.5em;
     border-radius: 0.5em;
-    background-color: var(--highlight);
-    color: white;
+    background-color: white;
+    color: var(--highlight);
     padding: 0 0.5em;
+    border-radius: 4px;
 }
 .webex-solution pre.sourceCode {
     border-color: var(--correct);
