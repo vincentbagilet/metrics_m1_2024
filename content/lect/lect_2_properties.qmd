@@ -10,10 +10,16 @@ engine: knitr
 ::: callout-tip
 ## Objective
 
-The OLS estimator, under some conditions, has some neat properties. In this session, we will described these properties and some of the necessary conditions for these properties to hold.
+After this session you should understand basic and crucial properties of the OLS estimator, along with the associated necessary assumptions.
 :::
 
-## Session Outline
+## Summary
+
+The OLS estimator, under some conditions, has some neat properties (unbiasedness, efficiency, asymptotic consistency and normality). In this session, we describe these properties and some of the necessary conditions for these properties to hold. This session is very much centered around maths, may be a bit arid but is a cornerstone for everything we will learn afterwards.
+
+We start by discussing and illustrating the fact that estimators are random variables (estimates are realizations of these random variables) and therefore come with uncertainty. After some probability reviews, we discuss some properties estimator can have and then the condition under which these properties holds. Once this has been discuss, we derive the mathematical expression for the bias and variance of the OLS estimator, underlying where the assumptions come to play.
+
+### Session Outline
 
 1.  Quizz
 2.  Discussion on research questions

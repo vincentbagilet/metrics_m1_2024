@@ -4854,7 +4854,10 @@ margin: 1em 0;
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#session-outline" id="toc-session-outline" class="nav-link active" data-scroll-target="#session-outline">Session Outline</a></li>
+  <li><a href="#summary" id="toc-summary" class="nav-link active" data-scroll-target="#summary">Summary</a>
+  <ul class="collapse">
+  <li><a href="#session-outline" id="toc-session-outline" class="nav-link" data-scroll-target="#session-outline">Session Outline</a></li>
+  </ul></li>
   <li><a href="#exercise" id="toc-exercise" class="nav-link" data-scroll-target="#exercise">Exercise</a></li>
   <li><a href="#additional-resources" id="toc-additional-resources" class="nav-link" data-scroll-target="#additional-resources">Additional Resources</a></li>
   </ul>
@@ -4898,11 +4901,14 @@ Objective
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>A linear regression does not mean that everything has to be linear in the model; it means that the model has to be linear in its parameters. In this session, we will discuss why and how we can introduce non-linearities in our model and model heterogeneity.</p>
+<p>After this session, you should be familiar with a couple of ways to introduce non-linearity in your model and to account for heterogeneity in the effect you are interested in.</p>
 </div>
 </div>
-<section id="session-outline" class="level2">
-<h2 class="anchored" data-anchor-id="session-outline">Session Outline</h2>
+<section id="summary" class="level2">
+<h2 class="anchored" data-anchor-id="summary">Summary</h2>
+<p>A linear regression does not mean that everything has to be linear in the model; it means that the model has to be linear in its parameters. In this session, we will discuss why and how we can introduce non-linearities in our model and model heterogeneity. Specifically, we will underline how this allows to have more flexible and complex interpretations of the parameters of the model, how it enable to better satisfy some of the necessary assumptions discussed in lecture 2 and how it allows to introduce heterogenity in the effect we are interested in.</p>
+<section id="session-outline" class="level3">
+<h3 class="anchored" data-anchor-id="session-outline">Session Outline</h3>
 <ol type="1">
 <li>Quizz</li>
 <li>Recap’ from last week (+ derivation formula of the variance of the OLS estimator)</li>
@@ -4918,6 +4924,7 @@ Objective
 <iframe src="../../slides/lecture_3/slides_3_specification.html" width="100%" height="400px" data-external="1">
 </iframe>
 </div>
+</section>
 </section>
 <section id="exercise" class="level2">
 <h2 class="anchored" data-anchor-id="exercise">Exercise</h2>

@@ -259,7 +259,7 @@ mcq_bias <- c(
 
 In the first specification, `female` is an `r fitb("omitted variable")`. What other variables in the data set could have similar effects? Should we include them in the model? `r mcq(c(answer = "Yes", "No"))`
 
-Should we include any variables in the model? `r mcq(c("Yes", answer = "No"))` Why? 
+Should we include any variables in the model? `r mcq(c("Yes", answer = "No"))` Why?
 
 ```{r mcq_var}
 #| echo: false
@@ -296,8 +296,6 @@ BIC(reg_1, reg_2, reg_3, reg_4)
 
 Which model would you choose?
 
-In particular, estimate the model including all the covariates, compute its AIC. Then do the same thing but excluding `nonwhite`. Which model would you choose?^[Here the line between the two is pretty fine and the difference not particularly stark.]
+In particular, estimate the model including all the covariates, compute its AIC. Then do the same thing but excluding `nonwhite`. Which model would you choose?[^3]
 
-
-
-
+[^3]: Here the line between the two is pretty fine and the difference not particularly stark.

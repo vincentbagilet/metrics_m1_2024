@@ -10,10 +10,14 @@ engine: knitr
 ::: callout-tip
 ## Objective
 
-A linear regression does not mean that everything has to be linear in the model; it means that the model has to be linear in its parameters. In this session, we will discuss why and how we can introduce non-linearities in our model and model heterogeneity.
+After this session, you should be familiar with a couple of ways to introduce non-linearity in your model and to account for heterogeneity in the effect you are interested in.
 :::
 
-## Session Outline
+## Summary
+
+A linear regression does not mean that everything has to be linear in the model; it means that the model has to be linear in its parameters. In this session, we will discuss why and how we can introduce non-linearities in our model and model heterogeneity. Specifically, we will underline how this allows to have more flexible and complex interpretations of the parameters of the model, how it enable to better satisfy some of the necessary assumptions discussed in lecture 2 and how it allows to introduce heterogenity in the effect we are interested in.
+
+### Session Outline
 
 1.  Quizz
 2.  Recap' from last week (+ derivation formula of the variance of the OLS estimator)

@@ -35,7 +35,6 @@ knitr::include_url("../../slides/lecture_4/slides_4_selection.html")
 
 ## Exercise
 
-
 Which variables to include in our model?
 
 Let's try to answer part of this question using an example. You can find the associated exercise [here](content/ex/ex_2_selection.qmd).

@@ -34,9 +34,9 @@ library(gapminder)
 
 ### The data
 
-Load the data by calling `gapminder` (after loading the package using `library(gapminder)`). 
+Load the data by calling `gapminder` (after loading the package using `library(gapminder)`).
 
-What does each variable represent? (use the `help()` function). How many countries are there in this data set? `r fitb(142)`. 
+What does each variable represent? (use the `help()` function). How many countries are there in this data set? `r fitb(142)`.
 
 ### "Research" question
 
@@ -46,11 +46,11 @@ Here, we will study the relationship between `lifeExp` and `gdpPercap`.
 
 The goal is to study the relationship between GDP per capita and life expectancy at birth. We can ask questions like: do "richer" countries have a larger life expectancy on average? On average, how different is life expectancy between two countries that have a 1 billion difference in GDP per capita?
 
-Think about other interesting questions you could answer with this data set (start simple). 
+Think about other interesting questions you could answer with this data set (start simple).
 
 ### Plot
 
-Plot a scatter plot of `lifeExp` as a function of `gdpPercap`. To do so, use the [same lines of code as in the previous exercise on airquality](ex_1_linear_regression.qmd), changing the relevant variables names. 
+Plot a scatter plot of `lifeExp` as a function of `gdpPercap`. To do so, use the [same lines of code as in the previous exercise on airquality](ex_1_linear_regression.qmd), changing the relevant variables names.
 
 ```{r}
 #plot
@@ -60,7 +60,7 @@ Interpret this graph. For which level of GDP/capita is the difference between tw
 
 Does the relationship described on the graph you plotted look linear? `r mcq(c("Yes, roughly", answer = "Not at all"))`
 
-What if you plot the log of `gdpPercap`, replacing `gdpPercap` by `log(gdpPercap)`? `r mcq(c(answer = "Yes, roughly", "Not at all"))`. 
+What if you plot the log of `gdpPercap`, replacing `gdpPercap` by `log(gdpPercap)`? `r mcq(c(answer = "Yes, roughly", "Not at all"))`.
 
 Why does the log allow to have a more linear relationship here? Plot the distribution of the `gdpPercap`, using the following lines of code, filling in the blanks. Which variable should you put on the x-axis? `r fitb("gdpPercap")`
 
@@ -71,9 +71,9 @@ ggplot(data = ..., aes(x = ...)) +
   geom_histogram()
 ```
 
-What do you notice about this distribution? Is it surprising to you? 
+What do you notice about this distribution? Is it surprising to you?
 
-If instead you plot the distribution of `log(gdpPercap)` (using the previous lines of code), this distribution seems roughly `r fitb("normal", ignore_case = TRUE)`. Importantly, it is relatively centered around its mean. 
+If instead you plot the distribution of `log(gdpPercap)` (using the previous lines of code), this distribution seems roughly `r fitb("normal", ignore_case = TRUE)`. Importantly, it is relatively centered around its mean.
 
 ## Model and estimation
 
@@ -81,8 +81,7 @@ If instead you plot the distribution of `log(gdpPercap)` (using the previous lin
 
 Assume you want to write a model to estimate the relationship between `gdpPercap` and `lifeExp` (or transformed versions of these variables) with OLS. For the resulting model to accurately represent the data generating process, the relationship between the variables therefore has to be linear. You want to write a model of the form
 
-$$y = \alpha + \beta x + e$$
-What should be $y$ in your case? `r fitb("lifeExp")`. And x? `r fitb("log(gdpPercap)")`.
+$$y = \alpha + \beta x + e$$ What should be $y$ in your case? `r fitb("lifeExp")`. And x? `r fitb("log(gdpPercap)")`.
 
 ### Regression
 
@@ -101,7 +100,7 @@ summary(...)
 Before doing the next questions, please read the slides, including the few that we did not have time to cover in class, they will help you answer the questions.
 :::
 
-What is the point estimate for `lifeExp`? `r fitb("8.4", tol = 0.1)`. How would you interpret this coefficient? 
+What is the point estimate for `lifeExp`? `r fitb("8.4", tol = 0.1)`. How would you interpret this coefficient?
 
 ```{r interpretation}
 #| echo: false
@@ -133,7 +132,7 @@ resid <- residuals(reg)
 resid <- reg$residuals
 ```
 
-Remember what heteroskedasticity is. Which scatter plot should we plot to observe it, if there is any to observe? `r fitb("resid")` against `r fitb(c("log(gdpPercap)", "x", "X"))`. 
+Remember what heteroskedasticity is. Which scatter plot should we plot to observe it, if there is any to observe? `r fitb("resid")` against `r fitb(c("log(gdpPercap)", "x", "X"))`.
 
 To do that, we should store these variable into a dataframe, using the tibble function. Let's call them `x1` and `x2` for the sake of the example. Replace `x1` and `x2` by the relevant variables in the following code. Note that to access variables in the `gapminder` dataset, you need to use `$`: for instance to access the variable year, write `gapminder$year`.
 
@@ -148,7 +147,7 @@ ggplot(data = data_residuals, aes(x = .., y = ..)) +
 
 Does there seem to be some heteroskedasticity here? `r mcq(c(answer = "Yes", "No"))`
 
-Why is it problematic? 
+Why is it problematic?
 
 There are actually formal tests for heteroskedasticity. They however go beyond what is covered in this section of the class.
 
@@ -175,14 +174,3 @@ data_residuals |>
   geom_qq() + 
   geom_qq_line()
 ```
-
-
-
-
-
-
-
-
-
-
-

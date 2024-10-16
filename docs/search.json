@@ -39,14 +39,14 @@
     "href": "content/lect/lect_3_specification.html",
     "title": "Model Specification",
     "section": "",
-    "text": "Objective\n\n\n\nA linear regression does not mean that everything has to be linear in the model; it means that the model has to be linear in its parameters. In this session, we will discuss why and how we can introduce non-linearities in our model and model heterogeneity."
+    "text": "Objective\n\n\n\nAfter this session, you should be familiar with a couple of ways to introduce non-linearity in your model and to account for heterogeneity in the effect you are interested in."
   },
   {
-    "objectID": "content/lect/lect_3_specification.html#session-outline",
-    "href": "content/lect/lect_3_specification.html#session-outline",
+    "objectID": "content/lect/lect_3_specification.html#summary",
+    "href": "content/lect/lect_3_specification.html#summary",
     "title": "Model Specification",
-    "section": "Session Outline",
-    "text": "Session Outline\n\nQuizz\nRecap’ from last week (+ derivation formula of the variance of the OLS estimator)\nExercise: Hands-on linear regression\nIntroduction to model specification\nLogarithms\nQuadratics\nIndicators\nInteractions\n\n Open slides"
+    "section": "Summary",
+    "text": "Summary\nA linear regression does not mean that everything has to be linear in the model; it means that the model has to be linear in its parameters. In this session, we will discuss why and how we can introduce non-linearities in our model and model heterogeneity. Specifically, we will underline how this allows to have more flexible and complex interpretations of the parameters of the model, how it enable to better satisfy some of the necessary assumptions discussed in lecture 2 and how it allows to introduce heterogenity in the effect we are interested in.\n\nSession Outline\n\nQuizz\nRecap’ from last week (+ derivation formula of the variance of the OLS estimator)\nExercise: Hands-on linear regression\nIntroduction to model specification\nLogarithms\nQuadratics\nIndicators\nInteractions\n\n Open slides"
   },
   {
     "objectID": "content/lect/lect_3_specification.html#exercise",
@@ -74,7 +74,7 @@
     "href": "content/lect/lect_1_linear_regression.html#summary",
     "title": "Linear Regression",
     "section": "Summary",
-    "text": "Summary\nAs researchers (academic or not), we want to answer research questions. To do so, we build theories and often want to take them to the data to assess their validity and quantify the values of parameters of interest. This involves studying relationships between variables. Regression is an helpful tool to do so. It allows us to estimate our model, using methods such as Ordinary Least-Squares (OLS) for instance. In this session, we review the basics of linear regression and derive the formula for the OLS estimator, an essential tool in any empirical economic analysis.\n\nSession Outline\n\nIntroduction: estimating a production function\nCourse logistics\nExample: the link between the level of education and earnings\nMathematical derivation of the OLS estimator"
+    "text": "Summary\nAs researchers (academics or not), we want to answer research questions. To do so, we build theories and often want to take them to the data to assess their validity and quantify the values of parameters of interest. This involves studying relationships between variables. Regression is an helpful tool to do so. It allows us to estimate our model, using methods such as Ordinary Least-Squares (OLS) for instance. In this session, we review the basics of linear regression and derive the formula for the OLS estimator, an essential tool in any empirical economic analysis.\n\nSession Outline\n\nIntroduction: estimating a production function\nCourse logistics\nExample: the link between the level of education and earnings\nMathematical derivation of the OLS estimator"
   },
   {
     "objectID": "content/lect/lect_1_linear_regression.html#materials",
@@ -235,14 +235,14 @@
     "href": "content/lect/lect_2_properties.html",
     "title": "OLS Properties",
     "section": "",
-    "text": "Objective\n\n\n\nThe OLS estimator, under some conditions, has some neat properties. In this session, we will described these properties and some of the necessary conditions for these properties to hold."
+    "text": "Objective\n\n\n\nAfter this session you should understand basic and crucial properties of the OLS estimator, along with the associated necessary assumptions."
   },
   {
-    "objectID": "content/lect/lect_2_properties.html#session-outline",
-    "href": "content/lect/lect_2_properties.html#session-outline",
+    "objectID": "content/lect/lect_2_properties.html#summary",
+    "href": "content/lect/lect_2_properties.html#summary",
     "title": "OLS Properties",
-    "section": "Session Outline",
-    "text": "Session Outline\n\nQuizz\nDiscussion on research questions\nEstimates and uncertainty\nSome properties estimators can have\nOptimality conditions: conditions under which the OLS estimator has some of these properties\nMathematical derivation (bias and variance of the OLS estimator)"
+    "section": "Summary",
+    "text": "Summary\nThe OLS estimator, under some conditions, has some neat properties (unbiasedness, efficiency, asymptotic consistency and normality). In this session, we describe these properties and some of the necessary conditions for these properties to hold. This session is very much centered around maths, may be a bit arid but is a cornerstone for everything we will learn afterwards.\nWe start by discussing and illustrating the fact that estimators are random variables (estimates are realizations of these random variables) and therefore come with uncertainty. After some probability reviews, we discuss some properties estimator can have and then the condition under which these properties holds. Once this has been discuss, we derive the mathematical expression for the bias and variance of the OLS estimator, underlying where the assumptions come to play.\n\nSession Outline\n\nQuizz\nDiscussion on research questions\nEstimates and uncertainty\nSome properties estimators can have\nOptimality conditions: conditions under which the OLS estimator has some of these properties\nMathematical derivation (bias and variance of the OLS estimator)"
   },
   {
     "objectID": "content/lect/lect_2_properties.html#materials",
