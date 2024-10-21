@@ -1,0 +1,34 @@
+---
+title: "Model Selection"
+subtitle: ""
+published-title: "Date"
+date: "2024-10-08"
+self-contained: true
+engine: knitr
+---
+
+::: callout-tip
+## Objective
+
+At the end of this session, you should be able to show conistency of an estimator, create asymptotic and bootstrap confidence intervals in order to create Statistical test
+:::
+
+## Summary
+
+In the session we are going to explore the large sample properties of estimators, why do we need them, how do we derive them, and introduce simulation based methods with illustration code in R.
+### Session Outline
+
+1.  Quizz
+2.  Convergence in Probability
+3.  Asymptotic Normality
+4.  Bootstrap Procedure
+5.  Introduction to Inference
+
+`r fontawesome::fa("file-powerpoint")` [Open slides](../../slides/lecture_5/slides_5_6.html)
+
+```{r out.width='100%'}
+#| echo: false
+
+knitr::include_url("../../slides/lecture_5/slides_4_6.html")
+```
+
