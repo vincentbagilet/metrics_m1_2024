@@ -1,0 +1,39 @@
+/*-- scss:defaults --*/
+
+// Include theme-specific fonts
+@import url(https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic);
+@import url(https://fonts.googleapis.com/css?family=Josefin+Sans:400,700,400italic,700italic);
+
+// colors
+$color-default:    #826D48 !default;
+$body-bg: #f0f1eb !default;
+$body-color: black !default;
+$link-color: #51483d !default;
+$selection-bg: #26351c !default;
+$headings-color: #826D48, !default;
+
+// Fonts
+$font-family-sans-serif: Lato, sans-serif !default;
+$headings-font-weight:    700 !default;
+$headings-line-height:    1.1 !default;
+$font-family-sans-serif:  "Lato", sans-serif !default;
+$headings-color:          $color-default, !default;
+
+// headings
+$presentation-heading-font: "Josefin Sans", sans-serif !default;
+$presentation-h1-font-size: 55px;
+$presentation-h2-font-size: 40px;
+$presentation-h3-font-size: 32px;
+
+
+$presentation-title-slide-text-align: right;
+
+/*-- scss:rules --*/
+
+.reveal a {
+  line-height: 1.3em;
+}
+
+
+
+

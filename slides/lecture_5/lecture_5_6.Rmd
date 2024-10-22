@@ -1,0 +1,504 @@
+---
+title: "Econometrics 1"
+subtitle: "Part V: Consistency of a estimator"
+author: "Gaetan Bakalli"
+date: " "
+output:
+  xaringan::moon_reader:
+    css: ['default', 'metropolis', 'metropolis-fonts', 'my-css.css']
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+    seal: false
+    self_contained: true
+---
+
+
+```{R, setup, include = F}
+# devtools::install_github("dill/emoGG")
+library(pacman)
+p_load(
+  broom, tidyverse,
+  latex2exp, ggplot2, ggthemes, ggforce, viridis, extrafont, gridExtra,
+  kableExtra, snakecase, janitor,
+  data.table, dplyr, estimatr,
+  lubridate, knitr, parallel,
+  lfe,
+  here, magrittr
+)
+# Define pink color
+red_pink <- "#e64173"
+turquoise <- "#20B2AA"
+orange <- "#FFA500"
+red <- "#fb6107"
+blue <- "#2b59c3"
+green <- "#8bb174"
+grey_light <- "grey70"
+grey_mid <- "grey50"
+grey_dark <- "grey20"
+purple <- "#6A5ACD"
+slate <- "#314f4f"
+# Dark slate grey: #314f4f
+# Knitr options
+opts_chunk$set(
+  comment = "#>",
+  fig.align = "center",
+  fig.height = 7,
+  fig.width = 10.5,
+  warning = F,
+  message = F
+)
+opts_chunk$set(dev = "svg")
+options(device = function(file, width, height) {
+  svg(tempfile(), width = width, height = height)
+})
+options(crayon.enabled = F)
+options(knitr.table.format = "html")
+# A blank theme for ggplot
+theme_empty <- theme_bw() + theme(
+  line = element_blank(),
+  rect = element_blank(),
+  strip.text = element_blank(),
+  axis.text = element_blank(),
+  plot.title = element_blank(),
+  axis.title = element_blank(),
+  plot.margin = structure(c(0, 0, -0.5, -1), unit = "lines", valid.unit = 3L, class = "unit"),
+  legend.position = "none"
+)
+theme_simple <- theme_bw() + theme(
+  line = element_blank(),
+  panel.grid = element_blank(),
+  rect = element_blank(),
+  strip.text = element_blank(),
+  axis.text.x = element_text(size = 18, family = "STIXGeneral"),
+  axis.text.y = element_blank(),
+  axis.ticks = element_blank(),
+  plot.title = element_blank(),
+  axis.title = element_blank(),
+  # plot.margin = structure(c(0, 0, -1, -1), unit = "lines", valid.unit = 3L, class = "unit"),
+  legend.position = "none"
+)
+theme_axes_math <- theme_void() + theme(
+  text = element_text(family = "MathJax_Math"),
+  axis.title = element_text(size = 22),
+  axis.title.x = element_text(hjust = .95, margin = margin(0.15, 0, 0, 0, unit = "lines")),
+  axis.title.y = element_text(vjust = .95, margin = margin(0, 0.15, 0, 0, unit = "lines")),
+  axis.line = element_line(
+    color = "grey70",
+    size = 0.25,
+    arrow = arrow(angle = 30, length = unit(0.15, "inches")
+  )),
+  plot.margin = structure(c(1, 0, 1, 0), unit = "lines", valid.unit = 3L, class = "unit"),
+  legend.position = "none"
+)
+theme_axes_serif <- theme_void() + theme(
+  text = element_text(family = "MathJax_Main"),
+  axis.title = element_text(size = 22),
+  axis.title.x = element_text(hjust = .95, margin = margin(0.15, 0, 0, 0, unit = "lines")),
+  axis.title.y = element_text(vjust = .95, margin = margin(0, 0.15, 0, 0, unit = "lines")),
+  axis.line = element_line(
+    color = "grey70",
+    size = 0.25,
+    arrow = arrow(angle = 30, length = unit(0.15, "inches")
+  )),
+  plot.margin = structure(c(1, 0, 1, 0), unit = "lines", valid.unit = 3L, class = "unit"),
+  legend.position = "none"
+)
+theme_axes <- theme_void() + theme(
+  text = element_text(family = "Fira Sans Book"),
+  axis.title = element_text(size = 18),
+  axis.title.x = element_text(hjust = .95, margin = margin(0.15, 0, 0, 0, unit = "lines")),
+  axis.title.y = element_text(vjust = .95, margin = margin(0, 0.15, 0, 0, unit = "lines")),
+  axis.line = element_line(
+    color = grey_light,
+    size = 0.25,
+    arrow = arrow(angle = 30, length = unit(0.15, "inches")
+  )),
+  plot.margin = structure(c(1, 0, 1, 0), unit = "lines", valid.unit = 3L, class = "unit"),
+  legend.position = "none"
+)
+theme_set(theme_gray(base_size = 20))
+# Column names for regression results
+reg_columns <- c("Term", "Est.", "S.E.", "t stat.", "p-Value")
+# Function for formatting p values
+format_pvi <- function(pv) {
+  return(ifelse(
+    pv < 0.0001,
+    "<0.0001",
+    round(pv, 4) %>% format(scientific = F)
+  ))
+}
+format_pv <- function(pvs) lapply(X = pvs, FUN = format_pvi) %>% unlist()
+# Tidy regression results table
+tidy_table <- function(x, terms, highlight_row = 1, highlight_color = "black", highlight_bold = T, digits = c(NA, 3, 3, 2, 5), title = NULL) {
+  x %>%
+    tidy() %>%
+    select(1:5) %>%
+    mutate(
+      term = terms,
+      p.value = p.value %>% format_pv()
+    ) %>%
+    kable(
+      col.names = reg_columns,
+      escape = F,
+      digits = digits,
+      caption = title
+    ) %>%
+    kable_styling(font_size = 20) %>%
+    row_spec(1:nrow(tidy(x)), background = "white") %>%
+    row_spec(highlight_row, bold = highlight_bold, color = highlight_color)
+}
+```
+
+```{css, echo = F, eval = F}
+@media print {
+  .has-continuation {
+    display: block !important;
+  }
+}
+```
+
+```{r xaringan-tile-view, echo=FALSE}
+xaringanExtra::use_tile_view()
+xaringanExtra::use_panelset()
+xaringanExtra::use_clipboard()
+xaringanExtra::use_extra_styles()
+```
+
+
+class: title-slide  
+<br>
+<br>
+<br>
+<br>
+ 
+# Econometrics 1
+
+## Lecture 5 and 6: Large Sample Properties
+
+### .smaller[Gaetan Bakalli]
+
+
+<br>
+```{R, out.width = "25%", echo = F}
+include_graphics("pics/liscence.png")
+```
+.center[.tiny[License: [CC BY NC SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/)]]
+---
+
+# How to test a (scientific) hypothesis?
+
+.center[
+.purple["In god we trust, all others must bring data." <sup>.smallest[👋]</sup>]
+]
+
+
+- .smallest[To assess the .pink[validity of a (scientific) hypothesis], the scientific community (generally) agrees on a specific procedure.]
+- .smallest[These hypotheses can be .pink[nearly anything], such as:]
+  1. .smallest[Coffee consumption increases blood pressure. ]
+  2. .smallest[Republican politicians are bad/good for the American Economy.]
+  3. .smallest[A glass of red wine is as good as an hour at the gym.️]
+- .smallest[This procedure involves the design of an experiment and then the collection of data to compute a metric, called .hi.purple[p-value], which evaluates the adequacy between the data and your original hypothesis.]
+- .smallest[There is generally .pink[a specific threshold] (typically 5%), and if the p-value falls below this threshold we can claim that we have statistically significant result(s) validating our hypothesis.]
+
+.footnote[.smallest[👋 From W. Edwards Deming.]]
+
+---
+
+# Statistics vs Truth 🤥
+
+- .smallest[.pink[Statistically significant results are not necessarily the truth], as there isn't a threshold (e.g. 5%) that separates real results from the false ones.]
+- .smallest[This procedure simply provides us with one piece of a puzzle that should be considered in the context of other evidence.]
+
+```{R, out.width = "50%", echo = F}
+include_graphics("pics/medical_studies.png")
+```
+
+.footnote[.smallest[👋] Read the original article: "*This is why you shouldn't believe that exciting new medical study*" [here](https://www.vox.com/2015/3/23/8264355/research-study-hype).]
+
+---
+
+# How does it work?
+
+.smallest[
+- Statistical methods are based on several fundamental concepts, the most central of which is to consider the information available (in the form of data) resulting from a .pink[random process].
+- As such, the data represent a .hi-purple[random sample] of a totally or conceptually accessible .hi-purple[population].
+- Then, .pink[statistical inference] allows to infer the properties of a population based on the observed sample. This includes deriving estimates and testing hypotheses.
+]
+
+```{R, out.width = "45%", echo = F}
+include_graphics("pics/sampling.png")
+```
+.tiny[Source: [luminousmen](luminousmen.com)]
+
+---
+# Extracting meaningful info from sample
+.smallest[  
+
+To draw meaningful information from our sample we need to make sure that the statistics we are computing are (loosely speaking) .hi-purple["informative enough"] to describe the underlying population. 
+
+First interesting results is the .pink[Weak Law of Large Numbers (WLLN)]
+
+- Let $X_1, \ldots, X_n$ be i.i.d. draws from a distribution with mean $\mu = \mathbb{E}[X_i]$ and variance $\sigma^2 = \mathbb{V}[X_i] < \infty$. Let $\bar{X}_n = \frac{1}{n} \sum_{i =1}^n X_i$. Then, $\bar{X}_n \xrightarrow[]{P} \mu$.
+
+Second, we will make use of those additional properties of  .pink[convergence in probability]:
+
+Let $X_n$ and $Z_n$ be two sequences of random variables such that $X_n \xrightarrow[]{} a$ and $Z_n \xrightarrow[]{} b$, and let $g(\cdot)$ be a continuous function. Then, 
+
+- $g(X_n) \xrightarrow[]{} g(a)$ (continuous mapping theorem)
+- $X_n + Z_n \xrightarrow[]{} a + b$
+- $X_nZ_n \xrightarrow[]{} ab$
+- $X_n/Z_n \xrightarrow[]{} a/b$ if $b > 0$.
+]
+---
+# WLLN - illustration
+
+.smallest[  
+.pink[Exercise]: Simulating the Weak Law of Large Numbers
+
+- Simulate random data from two distributions:
+  - A .purple[normal distribution] with a known mean $\mu$ and     variance $\sigma^2$.
+  - A .purple[uniform distribution] over the interval $[a, b]$.
+- Compute the sample mean for various increasing sample sizes (e.g., $n = 10, 100, 500, 1000, 1500, \ldots$).
+- Compare the sample means to the population mean for both distributions as the sample size increases. Create a plot to show the convergence of the sample mean to the true mean.
+
+.pink[Hint]: Here are the functions to simulate data from a normal and uniform distribution respectively
+]
+
+```{r, eval = FALSE}
+rnorm(n = 100, mean = 0, sd = 1)
+runif(n = 100, min = 0, max = 1)
+```
+
+---
+# Consistency
+.smallest[The estimator $\hat{\theta}$ is said to be consistent if it converges in probability to $\theta_0$, i.e. for all $\varepsilon > 0$ :
+	
+$$\lim_{n \to \infty} \Pr \left(|| \hat{\theta} - \theta_0 ||_2 \geq \varepsilon \right) = 0.$$
+Consistency simply means that if $n$ is "large enough" $\hat{{\theta}}$ will be .pink[arbitrarily close to]  $\theta_0$ (i.e. inside of an hypersphere of radius $\varepsilon$ centered at ${\theta}_0$). This also means the procedure (i.e. our estimator) based on unlimited data will be able to identify the underlying truth (i.e.  ${\theta}_0$).
+]
+
+
+```{R, concist, out.width = "50%", echo = F}
+include_graphics("pics/consistency.png")
+```
+
+---
+# Consistency - Linear Regression
+.smallest[
+Assumptions needed for establishing the large-sample properties of OLS: 
+
+- $\{(Y_{i}, \mathbf{X}_{i})\}_{i=1}^n$ are iid random vectors
+
+- $\mathbb{E}[Y^{2}_{i}] < \infty$ (finite outcome variance)
+
+- $\mathbb{E}[\Vert \mathbf{X}_{i}\Vert^{2}] < \infty$ (finite variances and covariances of covariates)
+
+- $\mathbb{E}[\mathbf{X}_{i}\mathbf{X}_{i}^\top]$ is .pink[positive definite] (no linear dependence in the covariates)
+
+Given the general form of the .pink[OLS regression model],
+$Y_i = \mathbf{X}_{i} \beta + \epsilon_i$ where (i) $\mathbf{X}_{i}$ is a $k$-dimensional vector of explanatory variables and (ii) $\epsilon_i$ is the error term, which satisfies the classical assumptions (i.e., zero mean, homoscedastic, and uncorrelated with the regressors),and its .pink[estimator]
+
+`$$ \hat{\beta} = \left( \frac{1}{n} \sum_{i=1}^n \mathbf{X}_i \mathbf{X}_i' \right)^{-1} \left( \frac{1}{n} \sum_{i=1}^n \mathbf{X}_i Y_i \right)$$`, 
+
+show consistency of $\hat{\beta}$ using the WLLN and the continuous mapping theorem.
+]
+---
+# Convergence in distribution
+
+  
+Let $X_1,X_2,\ldots$, be a sequence of r.v.s, and for $n = 1,2, \ldots$ let $F_n(x)$ be the c.d.f. of $X_n$. Then it is said that $X_1, X_2, \ldots$ .hi-pink[converges in distribution] to r.v. $X$ with c.d.f. $F(x)$ if
+
+$$
+  \lim_{n\rightarrow \infty} F_n(x) = F(x),
+$$
+  
+  for all values of $x$ for which $F(x)$ is continuous. We write this as $X_n \xrightarrow[]{d} X$ 
+  
+Essentially, convergence in distribution means that as $n$ gets large, the distribution of $X_n$ becomes more and more similar to the distribution of $X$, which we often call the .hi-purple[asymptotic distribution] of $X_n$.
+
+If we know that $X_n \xrightarrow[]{d} X$, then we can use the distribution of $X$ as an approximation to the distribution of $X_n$.
+
+---
+
+# Quick review: Normal distribution
+
+.smaller[$$Y\sim \mathcal{N}(\mu,\sigma^{2}), \ \ \ \ \ \color{#b4b4b4}{f_{Y}(y) = \frac{1}{\sqrt{2\pi{\color{drawColor6} \sigma}^{2}}}\ e^{-\frac{(y-{\color{drawColor6} \mu})^{2}}{2{\color{drawColor6} \sigma}^{2}}}}$$]
+
+.smaller[$$\mathbb{E}[Y] = \mu, \ \ \ \ \ \text{Var}[Y] = \sigma^{2},$$]
+
+.smaller[$$Z = \frac{Y-\mu}{\sigma} \sim \mathcal{N}(0,1), \ \ \ \ \ \color{#b4b4b4}{f_{Z}(z) = \frac{1}{\sqrt{2\pi}}\ e^{-\frac{z^{2}}{2}}.}$$]
+
+.smaller[.purple[Probability density function of a normal distribution:]]
+
+```{R, normal, out.width = "75%", echo = F}
+include_graphics("pics/standardnormalpdf2.png")
+```
+
+---
+
+# Quick review: Normal distribution
+
+.smaller[$$Y\sim \mathcal{N}(\mu,\sigma^{2}), \ \ \ \ \ \color{#b4b4b4}{f_{Y}(y) = \frac{1}{\sqrt{2\pi{\color{drawColor6} \sigma}^{2}}}\ e^{-\frac{(y-{\color{drawColor6} \mu})^{2}}{2{\color{drawColor6} \sigma}^{2}}}}$$]
+
+.smaller[$$\mathbb{E}[Y] = \mu, \ \ \ \ \ \text{Var}[Y] = \sigma^{2},$$]
+
+.smaller[$$Z = \frac{Y-\mu}{\sigma} \sim \mathcal{N}(0,1), \ \ \ \ \ \color{#b4b4b4}{f_{Z}(z) = \frac{1}{\sqrt{2\pi}}\ e^{-\frac{z^{2}}{2}}.}$$]
+
+.smaller[.purple[Suitable modeling for a lot of phenomena: IQ]] $\small \color{#373895}{\sim \mathcal{N}(100,15^{2})}$
+
+```{R, normal2, out.width = "75%", echo = F}
+include_graphics("pics/standardnormalpdf3.png")
+```
+
+---
+
+# .smallest[Normal distribution as an approximation?]
+
+.smallest[
+The .hi.purple[Central Limit Theorem(s) (CLT)] states (very informally): .purple[*the sampling distribution of the average of independent (or "not too strongly dependent") random variables (whose distributions are "not too different" nor "too extreme") tends to a normal distribution as the sample size gets larger.*]
+
+As an example, one of the simplest version of the CLT (known as the *Lindeberg–Lévy CLT*) states:
+*Suppose that* $\{X_{1},\ldots ,X_{n}\}$ *is a sequence of* *iid* *random variables such that* $\mathbb{E}[ X_i ] = \mu$ *and $\text{Var} [X_{i}]=\sigma^{2}<\infty$. Let ${\bar{X}}_{n} = \frac{1}{n} \sum_{i = 1}^n X_i$, then as $n$ approaches infinity, the random variables $\sqrt{n} (\bar{X}_{n}-\mu)$ .pink[converge in distribution] to a normal $\mathcal{N}(0,\sigma^{2})$.*
+
+This result can be extended (under some conditions) to .pink[dependent] (i.e. $X_i$ and $X_j$ are not independent for $i \neq j$) and/or .pink[non identically distributed] (i.e. $X_i$ and $X_j$ don't have the same distribution for $i \neq j$) data.
+
+Loosely speaking, we can translate the results of CLTs as 
+
+$$\bar{X}_n = \frac{1}{n} \sum_{i = 1}^n X_i \color{#eb078e}{\overset{\cdot}{\sim}} {\mathcal{N}\left(\mu, \frac{\sigma^2}{n}\right)},$$ 
+
+where $\color{#eb078e}{\overset{\cdot}{\sim}}$ corresponds ".pink[approximately distributed as]". 
+]
+---
+#.smallest[Asymptotic Nomality of OLS]
+.smallest[
+
+To establish the .hi-turquoise[asymptotic normality] of the OLS estimator, we need the following assumptions:
+
+- .pink[Linear Model]: The data follows the model $Y_i = \mathbf{X}_i^\top \beta + \epsilon_i$.
+
+- .purple[Zero Conditional Mean]: The error term has zero conditional mean, $\mathbb{E}[\epsilon_i \mid \mathbf{X}_i] = 0$
+
+- .pink[Homoscedasticity]: The error term has constant variance,
+$\mathbb{E}[\epsilon_i^2 \mid \mathbf{X}_i] = \sigma^2$
+
+- .purple[No Perfect Multicollinearity]: The matrix $\mathbf{Q}_{\mathbf{XX}} = \mathbb{E}[\mathbf{X}_i \mathbf{X}_i^\top]$ is invertible.
+
+- .pink[i.i.d. Sampling]: The observations $(Y_i, \mathbf{X}_i)$ are independent and identically distributed (i.i.d.).
+
+- .purple[Finite Fourth Moments]: The fourth moments of $\mathbf{X}_i$ and $\epsilon_i$ exist, $\mathbb{E}[\|\mathbf{X}_i\|^4] < \infty \quad \text{and} \quad \mathbb{E}[\epsilon_i^4] < \infty$
+]
+---
+
+# Asymptotic Normality Result
+.smallest[Under these assumptions, the OLS estimator $\hat{\beta}$ is .hi-teal[asymptotically normal]:
+
+`$$\sqrt{n} (\hat{\beta} - \beta) \overset{d}{\longrightarrow} \mathcal{N} \left( 0, \sigma^2 \mathbf{Q}_{\mathbf{XX}}^{-1} \right)$$`
+
+where $\mathbf{Q}_{\mathbf{XX}} = \mathbb{E}[\mathbf{X}_i \mathbf{X}_i^\top]$ is the population second moment matrix of the regressors and $\sigma^2$ is the variance of the error term.
+
+This result allows us to construct confidence intervals, where $z_{\alpha/2}$ is the critical value from the standard normal at $\alpha$ significance level and $\hat{\text{SE}}(\hat{\beta}_j)$ is the standard error of the estimated coefficient $\hat{\beta}_j$, in the form of:
+
+`$$\hat{\beta}_j \in \left[ \hat{\beta}_j - z_{\alpha/2} \cdot \hat{\text{SE}}(\hat{\beta}_j), \hat{\beta}_j + z_{\alpha/2} \cdot \hat{\text{SE}}(\hat{\beta}_j) \right]$$`
+
+or 
+
+`$$\mathbb{P}\left( \hat{\beta}_j - z_{\alpha/2} \cdot \hat{\text{SE}}(\hat{\beta}_j) \leq \beta_j \leq \hat{\beta}_j + z_{\alpha/2} \cdot \hat{\text{SE}}(\hat{\beta}_j) \right) = 1 - \alpha$$`
+**Remark**: The Homoskedatic and iid assumptions can be relaxed.]
+
+---
+# Asymptotic Normality illustration
+
+.pink[Exercice]: Observing the Asymptotic Normality  
+
+- Simulate random data from a .purlple[uniform distribution] between $a = 0$ and $b = 10$.
+- For different sample sizes ($n = 10, 50, 100, 500, 1000, \dots$), compute the sample means by .pink[generating multiple samples] (e.g., 1000 repetitions for each sample size).
+- Plot the distribution of the sample means for each sample size and compare them to the corresponding theoretical normal distribution predicted by the Central Limit Theorem.
+- Observe how the distribution of the sample means changes as the sample size increases. Does the distribution approach a normal distribution?
+
+Repeat the procedure with another distribution of your choice
+
+---
+# What if sample is small ? 
+- Asymptotic properties of estimators are valid when .hi-purple[sample size is large], i.e. $n \to \infty$
+- .pink[In small samples], asymptotic properties may
+provide poor approximations of the real distribution of estimators.
+- In particular confidence intervals based on asymptotic normality .purple[may be too wide or too narrow]
+- We may use .pink[simulations] to get a better approximation when samples are small.
+
+.hi-turquoise[Bootstrap]: The bootstrap is a statistical method used to estimate the variability of a statistic (like the mean, median, or regression coefficient) by .pink[repeatedly sampling with replacement from the original dataset]. It works by creating many "bootstrap samples" from the observed data, calculating the statistic for each sample, and then using the distribution of these statistics to make inferences, such as estimating standard errors or confidence intervals.
+
+
+---
+# Bootsrap Method
+.smallest[
+.hi.purple[Bootstrap Method]: Let $X = \{x_1, x_2, \dots, x_n\}$ be a sample such that  $X \sim F$. The bootstrap procedure for estimating the distribution of a statistic $T(X) is defined as :
+
+
+- Resample: Generate $B$ bootstrap samples, $X^*_b = \{x_1^*, x_2^*, \dots, x_n^*\}$, for $b = 1, 2, \dots, B$, where each $X^*_b$ is obtained by sampling with replacement from the original sample $X$.
+  
+- Compute Statistic: For each bootstrap sample $X^*_b$, compute the statistic $T(X^*_b)$.
+
+- Bootstrap Distribution: The empirical distribution of $\{T(X^*_1), T(X^*_2), \dots, T(X^*_B)\}$ provides an estimate of the sampling distribution of $T(X)$.
+
+- Estimates: The bootstrap distribution can be used to estimate quantities such as:
+    -  The standard error of the statistic:
+      `$$\hat{\text{SE}}(T) = \sqrt{\frac{1}{B} \sum_{b=1}^{B} \left( T(X^*_b) - \bar{T^*} \right)^2 }$$`
+      where $\bar{T^*} = \frac{1}{B} \sum_{b=1}^{B} T(X^*_b)$ is the mean of the bootstrap estimates.
+
+]
+---
+
+# Bootsrap Method illustration
+.smallest[
+.pink[Exercise]:  Comparing  Bootsrap and Asymptotic Normality  
+
+- Simulate a dataset of size $n = 20$ representing income data from a .hi-purple[log-normal distribution] 
+   
+- Bootstrap Confidence Interval:
+   - Perform 1000 bootstrap resamples and compute the median for each resample.
+   - Construct the 95% confidence interval for the median using the bootstrap percentile method.
+
+- Asymptotic Normal Confidence Interval: Compute the asymptotic normal confidence interval for the median based on the sample median and an approximate standard error. (Hint: Use simply $se = sd/sqrt(n)$).
+
+- Compare  the .pink[width] of the two confidence intervals and the .pink[location] (center) of the two intervals.
+]
+---
+
+# Hypothesis testing
+
+- In general (scientific) hypotheses can be translated into a set of (non-overlapping idealized) statistical hypotheses:
+
+$$H_0: \theta \color{#eb078e}{\in} \Theta_0 \  \text{ and } \ H_a: \theta \color{#eb078e}{\not\in} \Theta_0.$$
+
+- In a hypothesis test, the statement being tested is called the .hi-purple[null hypothesis] $\color{#373895}{H_0}$. A hypothesis test is designed to assess the strength of the evidence against the null hypothesis.
+- The .hi-purple[alternative hypothesis] $\color{#373895}{H_a}$ is the statement we hope or suspect to be true instead of $\color{#373895}{H_0}$.
+- Each hypothesis excludes the other, so that one can exclude one in favor of the other using the data.
+- .pink[Example:] a drug represses the progression of cancer
+
+$$H_0: \mu_{\text{Drug}} \color{#eb078e}{=} \mu_{\text{Control}} \  \text{ and } \ H_a: \mu_{\text{Drug}}  \color{#eb078e}{<} \mu_{\text{Control}}.$$
+---
+
+# Hypothesis testing
+
+
+```{R, out.width = "100%", echo = F}
+include_graphics("pics/great_pic.png")
+```
+
+---
+
+# Hypothesis testing
+
+
+.smallest[
+|                     | $H_0$ is true                               | $H_0$ is false                          |
+| ------------------- |---------------------------------------------| ----------------------------------------|
+| Can't reject $H_0$  | $\text{Correct decision (prob=}1-\alpha)$   | $\text{Type II error (prob=}1-\beta)$   |
+| Reject $H_0$        | $\text{Type I error (prob}=\alpha)$         | $\text{Correct decision (prob=}\beta)$  |
+]
+
+- The .pink[type I error] corresponds to the probability of rejecting $H_0$ when $H_0$ is true (also called .pink[false positive]). The .purple[type II error] corresponds to the probability of not rejecting $H_0$ when $H_a$ is true (also called .purple[false negative]).
+- A test is of .pink[significance level] $\color{#e64173}{\alpha}$ when the probability of making a type I error equals $\alpha$. Usually we consider $\alpha = 5\%$, however, this can vary depending on the context.
+- A test is of .purple[power] $\color{#6A5ACD}{\beta}$ when the probability to make a type II error is $1-\beta.$ In other words, the power of a test is its probability of rejecting $H_0$ when $H_0$ is false (or the probability of accepting $H_a$ when $H_a$ is true).
