@@ -25,7 +25,7 @@ In the session we are going to explore the large sample properties of estimators
 4.  Bootstrap Procedure
 5.  Introduction to Inference
 
-`r fontawesome::fa("file-powerpoint")` [Open](../../slides/lecture_5/slides_5_6.html)[slides](../../slides/lecture_5/lecture_5_6.html)
+`r fontawesome::fa("file-powerpoint")` [Open slides](../../slides/lecture_5/slides_5_6.html)
 
 ```{r out.width='100%'}
 #| echo: false

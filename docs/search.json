@@ -340,7 +340,7 @@
     "href": "content/lect/lect_5_6.html#summary",
     "title": "Large Sample Properties",
     "section": "Summary",
-    "text": "Summary\nIn the session we are going to explore the large sample properties of estimators, why do we need them, how do we derive them, and introduce simulation based methods with illustration code in R.\n\nSession Outline\n\nQuizz\nConvergence in Probability\nAsymptotic Normality\nBootstrap Procedure\nIntroduction to Inference\n\n Openslides"
+    "text": "Summary\nIn the session we are going to explore the large sample properties of estimators, why do we need them, how do we derive them, and introduce simulation based methods with illustration code in R.\n\nSession Outline\n\nQuizz\nConvergence in Probability\nAsymptotic Normality\nBootstrap Procedure\nIntroduction to Inference\n\n Open slides"
   },
   {
     "objectID": "content/ex/ex_2_specification.html",
