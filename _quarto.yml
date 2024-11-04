@@ -36,7 +36,7 @@ website:
       - text: 5-6 - Asymptotic Theory
         href: content/lect/lect_5_6.qmd
       - text: 7 - Hypothesis Testing
-        href: content/lect/lect_5_6.qmd
+        href: content/lect/lect_7.qmd
     - text: Exercises
       menu:
       - text: 1 - Hands-on Linear Regression

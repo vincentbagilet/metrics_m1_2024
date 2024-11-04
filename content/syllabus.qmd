@@ -40,7 +40,8 @@ More specifically, the course content will be divided into eight 3h-long lecture
 2.  [OLS properties](lect/lect_2_ols_properties.qmd): What are the properties and assumptions behind OLS?
 3.  [Model specification](lect/lect_3_specification.qmd): How to define a sensible model describing the relationships between the variables of interest?
 4.  [Covariates selection](lect/lect_4_selection.qmd): How to decide which variables to include in the model?
-5.  and 6. [Large sample properties](lect/lect_5_6.qmd): How to show the convergence and asymptotic distribution of estimators
+5.   [Large sample properties](lect/lect_5_6.qmd): How to show the convergence and asymptotic distribution of estimators
+6.  [Large sample properties](lect/lect_5_6.qmd): How to show the convergence and asymptotic distribution of estimators
 7.  [Hypothesis testing - Theory](lect/lect_7.qmd): How to construct a good statistical test?
 8.  [Hypothesis testing - Application](8_test_app.qmd): Which hypothesis can I use based on a specific (set) of hypothesis?
 
