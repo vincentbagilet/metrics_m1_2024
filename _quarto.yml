@@ -11,6 +11,7 @@ project:
   - slides_3_specification.html
   - slides_4_selection.html
   - slides_5_6.html
+  - slides_7.html
   - sim_results.RDS
   output-dir: docs
 execute:
@@ -33,6 +34,8 @@ website:
       - text: 4 - Model Selection
         href: content/lect/lect_4_selection.qmd
       - text: 5-6 - Asymptotic Theory
+        href: content/lect/lect_5_6.qmd
+      - text: 7 - Hypothesis Testing
         href: content/lect/lect_5_6.qmd
     - text: Exercises
       menu:

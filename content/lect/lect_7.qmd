@@ -1,0 +1,28 @@
+---
+title: "Hypothesis Testing"
+subtitle: ""
+published-title: "Date"
+date: "2024-10-22"
+self-contained: true
+engine: knitr
+---
+
+::: callout-tip
+## Objective
+
+At the end of this session, you will be able test statistical hypothesis.
+:::
+
+## Session Outline
+
+1.  Hypothesis test - t-test and the mean
+2.  P-value
+3.  t-test F-test and linear regression
+
+`r fontawesome::fa("file-powerpoint")` [Open slides](../../slides/lecture_7/slides_7.html)
+
+```{r out.width='100%'}
+#| echo: false
+
+knitr::include_url("../../slides/lecture_7/slides_7.html")
+```
