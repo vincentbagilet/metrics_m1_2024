@@ -1,24 +1,59 @@
 [
   {
-    "objectID": "content/definitions.html",
-    "href": "content/definitions.html",
-    "title": "Definitions, Terminology and Notations",
+    "objectID": "content/ex/ex_3_selection.html",
+    "href": "content/ex/ex_3_selection.html",
+    "title": "Exercise - Selection",
     "section": "",
-    "text": "For nn individuals indexed by ii (i=1,…,ni = 1,\\dots,n), in the linear regression model yi=β0+β1x1i+...+βkxki+eiy_i = \\beta_0 + \\beta_1 x_{1i} + ... + \\beta_k x_{ki} + e_i,\n\nyy is called the dependent variable, the regressand, the explained variable, or the left-hand side variable,\nx1,...,xkx_{1}, ..., x_{k} are the kk independent variables, the regressors, the explanatory variables, or the right-hand side variables,\nx↦β0+β1xx \\mapsto \\beta_0 + \\beta_1 x is the population regression function,\nβ0\\beta_0 is the intercept,\nβ1\\beta_1 is the slope parameter associated with x1x_1,\nTogether β0\\beta_0 and β1\\beta_1 are the coefficients or parameters of the regression model,\neie_i is the error or disturbance term.\n\nIn vector form, this is equivalent to y=β0+β1x1+...+βkxk+ey = \\beta_0 + \\beta_1 x_1 + ... + \\beta_k x_{k} + e where:\ny=[y1⋮yn]n×1,∀j∈{1,..,k}xj=[xj,1⋮xj,n]n×1ande=[e1⋮en]n×1y = \\begin{bmatrix}\n                    y_1\\\\ \n                    \\vdots\\\\\n                    y_n\n                \\end{bmatrix}_{n\\times 1},\n    \\quad       \\forall j \\in \\{1, .., k\\} \\quad\n     x_j = \\begin{bmatrix}\n                    x_{j,1}\\\\ \n                    \\vdots\\\\\n                    x_{j,n}\n                \\end{bmatrix}_{n\\times 1}\n     \\quad and \\quad        \n     e = \\begin{bmatrix}\n                    e_1\\\\ \n                    \\vdots\\\\\n                    e_n\n                \\end{bmatrix}_{n\\times 1}\nIn matrix form, this equivalent to y=Xβ+ey = X\\beta + e where:\n$$X =\n[1x1,1...xk,11x1,2...xk,2⋮⋮⋮1x1,n...xk,n]\\begin{bmatrix}\n\n            1 & x_{1,1} & ... & x_{k,1}\\\\ \n            1 & x_{1,2} & ... & x_{k,2}\\\\ \n            \\vdots & \\vdots & & \\vdots\\\\\n            1 & x_{1,n} & ... & x_{k,n}\\\\ \n        \\end{bmatrix}\n_{n(k + 1)} and =\n[β0⋮βk]\\begin{bmatrix}\n                    \\beta_{0}\\\\ \n                    \\vdots\\\\\n                    \\beta_{k}\n                \\end{bmatrix}\n_{(k+1)} $$\n\n\n\n\n\n\nNote\n\n\n\nIn this class, vectors are in lower case (eg yy) and matrices in caps (eg XX). Most of the time, individual observations will be indexed by ii (eg yiy_i); these are scalars."
+    "text": "Instructions\n\n\n\nThis page gives both instructions and some interactive snippets. You will have to run most of your code on RStudio, on your own computer.\nFirst, let’s load useful packages. We need the tidyverse package but also to install the wooldridge package (it contains the dataset we are interested in).\nCode\n# install.packages(\"wooldridge\")\n\nlibrary(tidyverse)\nlibrary(wooldridge)"
   },
   {
-    "objectID": "content/definitions.html#definitions",
-    "href": "content/definitions.html#definitions",
-    "title": "Definitions, Terminology and Notations",
-    "section": "Definitions",
-    "text": "Definitions"
+    "objectID": "content/ex/ex_3_selection.html#exploring-the-data-set",
+    "href": "content/ex/ex_3_selection.html#exploring-the-data-set",
+    "title": "Exercise - Selection",
+    "section": "Exploring the Data Set",
+    "text": "Exploring the Data Set\n\nThe Data\nLoad the data by calling wage1 (after loading the package using library(wooldridge)).\nPrint the dataset. It prints in a different format than what we are used to. It is stored in a dataframe and not the tibbles we are used to. Let’s create a tibble version of this data set, using the function as_tibble(); run the following line of code:\n\nwage &lt;- as_tibble(wage1)\n\nWhat does each variable represent? (use the help() function). How many observations are there in this data set? .\n\n\n“Research” Question\n\n\n\n\n\n\nObjective\n\n\n\nWe will study how to better explain/predict hourly wage, based on the set of covariates available in the data set\n\n\nWe want to build a model that accurately describes the variation in wage. Why can understanding how wage evolves with various covariates matter for economics research?\n\n\nSummarising the Data\nBefore anything, let’s quickly explore the data. To have an overview of the dataset, we can use the function glimpse(wage).\nWhat type of variable does profocc seem to be? ContinuousBinary Confirm this by exploring the documentation for the data set (the help)\nThe summary() function can also provide interesting information on the dataset. Call this function. What is the median number of years of educations in the data set? \nWhat is the proportion of married individuals in this data set? 1\n\n\nDistribution of Wage\nWe want to study the variation in wage, before anything, let’s plot its distribution as we did in the previous exercise!\n\n# plot distrib wage\n\nDo you notice anything weird or erroneous? \n\n\nRelationship between wage and education\nWe can then explore its correlation with education. Which ggplot function should we use? \n\n# plot relationship between wage and education\n\nWhat do we notice?\nIn addition, larger levels of education seem to be associated with largersmaller hourly wages.\nWe may also be interested in disparities by gender. We can plot the same graph distinguishing by gender. To do so, add color = female within the aes() function: aes(x = ..., y = ..., color = female).\nggplot treats female as a continuous variable (an integer). Instead, this variable is binary. To transform it as categorical variable, we can use the as_factor() function: aes(x = ..., y = ..., color = as_factor(female)).\nFor a given level of education, the wage of female individuals seems to be largerloweridentical than the wage of non-female ones.\nDoes the relationship between wage and education seem different for female and non-female?\n\n\nRelationship Between Wage and Other Variables\nGo on with this data exploration: look at the correlation between wage and experience, tenure and their squares. Can you see a clear relationship between the square of experience and wage? YesNo\nDoes that mean that there is no statistical relationship between these two variables? YesNo\nHow would you expect this relationship to be positivenullnegative Why?\n\n\n\n\n\n\nNote\n\n\n\nYou can do a lot more data exploration using graphs but also tables. We will however now turn to modeling."
+  },
+  {
+    "objectID": "content/ex/ex_3_selection.html#quadratics",
+    "href": "content/ex/ex_3_selection.html#quadratics",
+    "title": "Exercise - Selection",
+    "section": "Quadratics",
+    "text": "Quadratics\nLet’s first explore the relationship between hourly wage, level of education, experience and experience squared. Regress wage on these variables, as we did last weeks.\n\n\n\n\n\n\nTip\n\n\n\nThe variable expersq is already in the data set; you can call it directly. If you use exper^2 in your regression, what happens? To remedy this, you need to tell R that you are actually creating a new variable, using the function I(exper^2): formula = ... ~ ... + I(exper^2).\n\n\n\n# regression\n\nWhat is the point estimate for educ? . How would you interpret this coefficient?\n\n Comparing two individuals with the same level of experience, we expect one with one more year of education to earn on average 0.6% more per hour than the other Comparing two individuals, we expect one with one more year of education to earn on average $0.6 more per hour than the other Comparing two individuals with the same level of experience, we expect one with one more year of education to earn on average $0.6 more per hour than the other Comparing two individuals with the same level of experience, we expect one with one more year of education to earn on average 6% more per hour than the other None of the above\n\nWhat is the point estimate for exper? . How would you interpret this coefficient?\n\n Comparing two individuals with the same level of education, we expect one with one more year of experience to earn on average 0.27% more per hour than the other Comparing two individuals with the same level of education, we expect one with one more year of experience to earn on average $0.27 more per hour than the other Comparing two individuals with the same level of education, we expect one with one more year of experience to earn on average 2.7% more per hour than the other None of the above\n\nFor how many years of experience could you easily interpret this coefficient? . The presence of which variable in the analysis can explain this difference? wageeducexperexpersq\nComparing two individuals with the same level of education, we expect one with 3 years of experience to earn on average  more per hour than one with 2 years of experience. What is the general formula to compute this quantity?\n\n\nAnswer\n\n\\[\\frac{\\partial \\widehat{wage}}{\\partial exp} = \\hat{\\beta_2} + 2 \\hat{\\beta_3} exp \\]\n\nHow do you interpret the sign of expersq?\n\n\nAnswer\n\nThere are decreasing marginal returns to experience."
+  },
+  {
+    "objectID": "content/ex/ex_3_selection.html#indicators",
+    "href": "content/ex/ex_3_selection.html#indicators",
+    "title": "Exercise - Selection",
+    "section": "Indicators",
+    "text": "Indicators\nWe will now explore how the relationship between level of education and wage varies by marital status. If we add a married dummy, what is the coefficient for educ? \nHow do we interpret it?\n\n Comparing two individuals with the same level of education, we expect one with one more year of experience to earn on average $0.58 more per hour than the other Comparing two individuals with the same level of experience, we expect one with one more year of education to earn on average $0.58 more per hour than the other Comparing two individuals with the same level of experience and marital status, we expect one with one more year of education to earn on average $0.58 more per hour than the other\n\nFor a given level of education, on average, we expect married individual to earn  dollars more/less per hour than non married one.\nDoes the relationship between level of education and wage varies by marital status? YesNo\nIf you plot the regression lines for both groups, they will be"
+  },
+  {
+    "objectID": "content/ex/ex_3_selection.html#interactions",
+    "href": "content/ex/ex_3_selection.html#interactions",
+    "title": "Exercise - Selection",
+    "section": "Interactions",
+    "text": "Interactions\nTo make this relationship vary by marital status, we can interact the variable of interest, educ, with married. To interact two variables, we can use :: eg y ~ x:z.\nWhich variables do we need to include in the model?\n\n\nAnswer\n\neduc, married, educ:married, exper and expersq\n\n\n\n\n\n\n\nTip\n\n\n\nTry only having educ*married, exper and expersq in your formula. What happens to your results? What does the * do?\n\n\nComparing two married individuals with the same level of experience, we expect one with one more year of education to earn on average  more per hour than the other.\nComparing two non-married individuals with the same level of experience, we expect one with one more year of education to earn on average  more per hour than the other.\nPlot the relationship between wage and education. Add a regression line. To do so, we need to use the  function.\n\n#plot\n\nLet’s now plot separate lines for married vs non-married individuals. To do so, we need to add the color = married aesthetic (aes(..., color = married))."
+  },
+  {
+    "objectID": "content/ex/ex_3_selection.html#model-selection",
+    "href": "content/ex/ex_3_selection.html#model-selection",
+    "title": "Exercise - Selection",
+    "section": "Model selection",
+    "text": "Model selection\nLet’s now dive into model selection.\n\n\\(R^2\\)\nWhat is the \\(R^2\\) of the regression of wage on the level of education, the level of experience and its square? 2\nWhat is the adjusted\\(-R^2\\)? . Is the difference with the \\(R^2\\) large? Why so?\nHow would you interpret the \\(R^2\\) (or the adjusted\\(-R^2\\))?\n\n The model explains 0.27% of the variation in education The model explains 27% of the variation in education The model explains 27% of the variation in wage The model explains 0.27% of the variation in wage\n\nAdd nonwhite, tenure, female, married, numdep to the model. Does the this model explains a larger proportion of the variation in wage? YesNo\nDoes the coefficient for educ vary? Why?\nIs the interpretation of this coefficient the same as before? YesNo\n\n\nMisspecification\nLet’s get back to our simple model of wage on the level of education, the level of experience and its square. Does including female affect the coefficient for educ? YesNo Why?\n\n This is only noise Female is correlated with education Female is correlated with both wage and education Female is correlated with wage\n\nIn the first specification, female is an . What other variables in the data set could have similar effects? Should we include them in the model? YesNo\nShould we include any variables in the model? YesNo Why?\n\n Irrelevant variables will create a bias Irrelevant variables will increase the variance of the estimator Irrelevant variables make the model imposible to estimate\n\nVariable selection involves arbitrating this bias-variance trade-off.\n\n\nInformation Criteria\nTo select which variables to include and not to include, a basic and usual approach is to use Information Criteria. We will choose the model that minimizes an information criterion, either the Akaike Information Criterion (AIC) or the Bayesian Information Criterion (BIC). The associated functions are AIC and BIC.\nWrite several models including some of the following variables, in addition of educ: exper, expersq, married, tenure, female, numdep and nonwhite.\n\nreg_1 &lt;- lm(...)\nreg_2 &lt;- lm(...)\nreg_3 &lt;- lm(...)\nreg_4 &lt;- lm(...)\n\nAIC(reg_1, reg_2, reg_3, reg_4)\n\nBIC(reg_1, reg_2, reg_3, reg_4)\n\nWhich model would you choose?\nIn particular, estimate the model including all the covariates, compute its AIC. Then do the same thing but excluding nonwhite. Which model would you choose?3"
+  },
+  {
+    "objectID": "content/ex/ex_3_selection.html#footnotes",
+    "href": "content/ex/ex_3_selection.html#footnotes",
+    "title": "Exercise - Selection",
+    "section": "Footnotes",
+    "text": "Footnotes\n\n\nThis information is directly accessible through summary(wage)↩︎\nRun the regression and print its summary.↩︎\nHere the line between the two is pretty fine and the difference not particularly stark.↩︎"
   },
   {
     "objectID": "content/ex/ex_1_linear_regression.html",
     "href": "content/ex/ex_1_linear_regression.html",
     "title": "Exercise - Hands-on linear regression",
     "section": "",
-    "text": "First, let’s load useful packages. For now, we will only need the tidyverse package.\nWe will work with the airquality data set."
+    "text": "Instructions\n\n\n\nThis page describe the instructions and some interactive snippets. You will have to run most of your code on RStudio, on your own computer.\nFirst, let’s load useful packages. For now, we will only need the tidyverse package.\nCode\nlibrary(tidyverse)\nWe will work with the airquality data set."
   },
   {
     "objectID": "content/ex/ex_1_linear_regression.html#exploring-the-data-set",
@@ -39,21 +74,21 @@
     "href": "content/ex/ex_1_linear_regression.html#a-first-regression",
     "title": "Exercise - Hands-on linear regression",
     "section": "A first regression",
-    "text": "A first regression\nNow that we have quickly plotted the data, let’s run our first regression. To do so, we will use the lm() function. What does lm stands for? .\nTo regress, y on x, we need to write the formula y ~ x. Write your formula of interest for the airquality dataset and run the function.\n\nlm(formula = y_variable ~ x_variable, data = airquality)\n\nYou can store the result fo this regression, in the reg variable for instance. Use the “assignment” sign <- and this will create the reg variable.\n\nreg <- lm(formula = Ozone ~ Wind, data = airquality)\n\nThe nice thing with this is that you then can call the summary() function on this object:\n\nsummary(reg)\n\nRun this function. There is a lot of information there. What is the value of the coefficient of interest? .\nInterpret this coefficient. What word should your sentence start with? .\nAs always, there is some uncertainty associated with the value of this coefficient. What is the standard error of this coefficient? . Is the estimate statistically significant? YesNo.\n\nSpecification"
+    "text": "A first regression\nNow that we have quickly plotted the data, let’s run our first regression. To do so, we will use the lm() function. What does lm stands for? .\nTo regress, y on x, we need to write the formula y ~ x. Write your formula of interest for the airquality dataset and run the function.\n\nlm(formula = y_variable ~ x_variable, data = airquality)\n\nYou can store the result fo this regression, in the reg variable for instance. Use the “assignment” sign &lt;- and this will create the reg variable.\n\nreg &lt;- lm(formula = Ozone ~ Wind, data = airquality)\n\nThe nice thing with this is that you then can call the summary() function on this object:\n\nsummary(reg)\n\nRun this function. There is a lot of information there. What is the value of the coefficient of interest? .\nInterpret this coefficient. What word should your sentence start with? .\nAs always, there is some uncertainty associated with the value of this coefficient. What is the standard error of this coefficient? . Is the estimate statistically significant? YesNo.\n\nSpecification"
   },
   {
     "objectID": "content/ex/ex_1_linear_regression.html#multiple-regression",
     "href": "content/ex/ex_1_linear_regression.html#multiple-regression",
     "title": "Exercise - Hands-on linear regression",
     "section": "Multiple regression",
-    "text": "Multiple regression\nLet’s consider a different model, including temperature. Assume that \\(\\forall i \\in \\{1, .., n\\}\\), we have:\n\\[Ozone_i = \\beta_0 + \\beta_1 Wind_i + \\beta_2 Temp_i + e_i\\] Run a longer regression by adding one predictor to the model. To do so, you need to replace the ... by .\n\nreg_temp <- lm(formula = ..., data = airquality)\n\nsummary(reg_temp)\n\nWhat is the coefficient associated with Wind? .\nIs it close to the one we had before, including only Wind as a predictor? YesNo. Why is that different?\nMake a sentence to interpret this coefficient, starting with the same word as usual ()."
+    "text": "Multiple regression\nLet’s consider a different model, including temperature. Assume that \\(\\forall i \\in \\{1, .., n\\}\\), we have:\n\\[Ozone_i = \\beta_0 + \\beta_1 Wind_i + \\beta_2 Temp_i + e_i\\] Run a longer regression by adding one predictor to the model. To do so, you need to replace the ... by .\n\nreg_temp &lt;- lm(formula = ..., data = airquality)\n\nsummary(reg_temp)\n\nWhat is the coefficient associated with Wind? .\nIs it close to the one we had before, including only Wind as a predictor? YesNo. Why is that different?\nMake a sentence to interpret this coefficient, starting with the same word as usual ()."
   },
   {
     "objectID": "content/ex/ex_1_linear_regression.html#scaling",
     "href": "content/ex/ex_1_linear_regression.html#scaling",
     "title": "Exercise - Hands-on linear regression",
     "section": "Scaling",
-    "text": "Scaling\nWhat is the unit of Wind? . Is it easily interpretable for you? Not really. Let’s transform it into something we are more familiar with: .\nWhich dplyr function would you use to create a new variable? .\nTo get from Wind to your new variable, your need to MultiplyDivide Wind by 1.609. Implement this and run your new regression.\n\nairquality_scaled <- airquality |> \n  ...\n\nreg_scaled <- lm(formula = ..., data = airquality_scaled)\n\nsummary(reg_scaled)\n\nHow do you interpret the coefficient of interest?"
+    "text": "Scaling\nWhat is the unit of Wind? . Is it easily interpretable for you? Not really. Let’s transform it into something we are more familiar with: .\nWhich dplyr function would you use to create a new variable? .\nTo get from Wind to your new variable, your need to MultiplyDivide Wind by 1.609. Implement this and run your new regression.\n\nairquality_scaled &lt;- airquality |&gt; \n  ...\n\nreg_scaled &lt;- lm(formula = ..., data = airquality_scaled)\n\nsummary(reg_scaled)\n\nHow do you interpret the coefficient of interest?"
   },
   {
     "objectID": "content/ex/ex_1_linear_regression.html#linear-relationship",
@@ -61,153 +96,6 @@
     "title": "Exercise - Hands-on linear regression",
     "section": "Linear relationship?",
     "text": "Linear relationship?\nYou plotted the data earlier. Does the relationship between Ozone and Wind actually seem linear? YesNo. What physical process could explain this relationship?"
-  },
-  {
-    "objectID": "content/ex/ex_2_specification.html",
-    "href": "content/ex/ex_2_specification.html",
-    "title": "Exercise - Specification",
-    "section": "",
-    "text": "First, let’s load useful packages. We need the tidyverse package but also to install the gapminder package (it contains the dataset we are interested in)."
-  },
-  {
-    "objectID": "content/ex/ex_2_specification.html#exploring-the-data-set",
-    "href": "content/ex/ex_2_specification.html#exploring-the-data-set",
-    "title": "Exercise - Specification",
-    "section": "Exploring the data set",
-    "text": "Exploring the data set\n\nThe data\nLoad the data by calling gapminder (after loading the package using library(gapminder)).\nWhat does each variable represent? (use the help() function). How many countries are there in this data set? .\n\n\n“Research” question\n\n\n\n\n\n\nImportant\n\n\n\nHere, we will study the relationship between lifeExp and gdpPercap.\n\n\nThe goal is to study the relationship between GDP per capita and life expectancy at birth. We can ask questions like: do “richer” countries have a larger life expectancy on average? On average, how different is life expectancy between two countries that have a 1 billion difference in GDP per capita?\nThink about other interesting questions you could answer with this data set (start simple).\n\n\nPlot\nPlot a scatter plot of lifeExp as a function of gdpPercap. To do so, use the same lines of code as in the previous exercise on airquality, changing the relevant variables names.\n\n#plot\n\nInterpret this graph. For which level of GDP/capita is the difference between two countries having relatively similar GDP per capita the largest?\nDoes the relationship described on the graph you plotted look linear? Yes, roughlyNot at all\nWhat if you plot the log of gdpPercap, replacing gdpPercap by log(gdpPercap)? Yes, roughlyNot at all.\nWhy does the log allow to have a more linear relationship here? Plot the distribution of the gdpPercap, using the following lines of code, filling in the blanks. Which variable should you put on the x-axis? \n\nggplot(data = ..., aes(x = ...)) +\n  geom_histogram()\n\nWhat do you notice about this distribution? Is it surprising to you?\nIf instead you plot the distribution of log(gdpPercap) (using the previous lines of code), this distribution seems roughly . Importantly, it is relatively centered around its mean."
-  },
-  {
-    "objectID": "content/ex/ex_2_specification.html#model-and-estimation",
-    "href": "content/ex/ex_2_specification.html#model-and-estimation",
-    "title": "Exercise - Specification",
-    "section": "Model and estimation",
-    "text": "Model and estimation\n\nModel\nAssume you want to write a model to estimate the relationship between gdpPercap and lifeExp (or transformed versions of these variables) with OLS. For the resulting model to accurately represent the data generating process, the relationship between the variables therefore has to be linear. You want to write a model of the form\n\\[y = \\alpha + \\beta x + e\\] What should be \\(y\\) in your case? . And x? .\n\n\nRegression\nTo estimate this model, we will use the lm function. Which formula should you pass to the function? . Run the estimtion and display the output using the summary() function.\n\nreg <- lm(data = ..., formula = ...)\n\n\nsummary(...)\n\n\n\n\n\n\n\nNote\n\n\n\nBefore doing the next questions, please read the slides, including the few that we did not have time to cover in class, they will help you answer the questions.\n\n\nWhat is the point estimate for lifeExp? . How would you interpret this coefficient?\n\n\n\n\n Comparing two countries, we expect a country in which the GDP per capita is $1 larger than in the other to have a life expectancy that is on average 8.4 years larger Comparing two countries, we expect a country in which the GDP per capita is 1% larger than in the other to have a life expectancy that is on average 8.4 years larger Comparing two countries, we expect a country in which the GDP per capita is $1 larger than in the other to have a life expectancy that is on average 8.4% larger Comparing two countries, we expect a country in which the GDP per capita is 1% larger than in the other to have a life expectancy that is on average 0.084 years larger Comparing two countries, we expect a country in which the GDP per capita is 1% larger than in the other to have a life expectancy that is on average 8.4% larger Comparing two countries, we expect a country in which the GDP per capita is 1% larger than in the other to have a life expectancy that is on average 0.084% larger\n\nIs this number exact or is it an approximation? ExactApproximation\nDoes this number seem reasonable to you? Think about what it entails.\n\n\nHeteroskedasticity\nLet’s now look at the residuals of this regression in order to explore potential risks of heteroskedasticity. We can retrieve the residuals of a regression with the function resid <- residuals(reg) or by extracting them from the output of the regression: resid <- reg$residuals. Try these two approaches and look at the resulting vecotrs.\n\nresid <- residuals(reg)\nresid <- reg$residuals\n\nRemember what heteroskedasticity is. Which scatter plot should we plot to observe it, if there is any to observe?  against .\nTo do that, we should store these variable into a dataframe, using the tibble function. Let’s call them x1 and x2 for the sake of the example. Replace x1 and x2 by the relevant variables in the following code. Note that to access variables in the gapminder dataset, you need to use $: for instance to access the variable year, write gapminder$year.\n\ndata_residuals <- tibble(name_x1 = x1, name_x2 = x2)\n  \nggplot(data = data_residuals, aes(x = .., y = ..)) + \n  geom_point() + \n  geom_smooth()\n\nDoes there seem to be some heteroskedasticity here? YesNo\nWhy is it problematic?\nThere are actually formal tests for heteroskedasticity. They however go beyond what is covered in this section of the class.\n\n\nDistribution of the residuals\nWe saw in class that when the residuals are normally distributed, our estimator has nice properties. Plot an histogram to describe the distribution of the residuals. Which function should you use? \n\nggplot(data = data_residuals, aes(x = .., y = ..)) + \n  ...\n\nDoes that seem roughly normally distributed? YesNo\nTo actually test for normality, there is a bunch of tests one can implement but you will learn more about these later. For example, we can plot the residuals against draws from a normal distribution. If the residuals are normally distributed, the resulting points will be on the identity line. To plot this, we can use the geom_qq() function (geom_qq_line() plots the identity line):\n\ndata_residuals |> \n  ggplot(aes(sample = resid)) + \n  geom_qq() + \n  geom_qq_line()"
-  },
-  {
-    "objectID": "content/ex/ex_3_selection.html",
-    "href": "content/ex/ex_3_selection.html",
-    "title": "Exercise - Selection",
-    "section": "",
-    "text": "First, let’s load useful packages. We need the tidyverse package but also to install the wooldridge package (it contains the dataset we are interested in)."
-  },
-  {
-    "objectID": "content/ex/ex_3_selection.html#exploring-the-data-set",
-    "href": "content/ex/ex_3_selection.html#exploring-the-data-set",
-    "title": "Exercise - Selection",
-    "section": "Exploring the Data Set",
-    "text": "Exploring the Data Set\n\nThe Data\nLoad the data by calling wage1 (after loading the package using library(wooldridge)).\nPrint the dataset. It prints in a different format than what we are used to. It is stored in a dataframe and not the tibbles we are used to. Let’s create a tibble version of this data set, using the function as_tibble(); run the following line of code:\n\nwage <- as_tibble(wage1)\n\nWhat does each variable represent? (use the help() function). How many observations are there in this data set? .\n\n\n“Research” Question\n\n\n\n\n\n\nTip\n\n\n\nWe will study how to better explain/predict hourly wage, based on the set of covariates available in the data set\n\n\nWe want to build a model that accurately describes the variation in wage. Why can understanding how wage evolves with various covariates matter for economics research?\n\n\nSummarising the Data\nBefore anything, let’s quickly explore the data. To have an overview of the dataset, we can use the function glimpse(wage).\nWhat type of variable does profocc seem to be? ContinuousBinary Confirm this by exploring the documentation for the data set (the help)\nThe summary() function can also provide interesting information on the dataset. Call this function. What is the median number of years of educations in the data set? \nWhat is the proportion of married individuals in this data set? 1\n\n\nDistribution of Wage\nWe want to study the variation in wage, before anything, let’s plot its distribution as we did in the previous exercise!\n\n# plot distrib wage\n\nDo you notice anything weird or erroneous? \n\n\nRelationship between wage and education\nWe can then explore its correlation with education. Which ggplot function should we use? \n\n# plot relationship between wage and education\n\nWhat do we notice?\nIn addition, larger levels of education seem to be associated with largersmaller hourly wages.\nWe may also be interested in disparities by gender. We can plot the same graph distinguishing by gender. To do so, add color = female within the aes() function: aes(x = ..., y = ..., color = female).\nggplot treats female as a continuous variable (an integer). Instead, this variable is binary. To transform it as categorical variable, we can use the as_factor() function: aes(x = ..., y = ..., color = as_factor(female)).\nFor a given level of education, the wage of female individuals seems to be largerloweridentical than the wage of non-female ones.\nDoes the relationship between wage and education seem different for female and non-female?\n\n\nRelationship Between Wage and Other Variables\nGo on with this data exploration: look at the correlation between wage and experience, tenure and their squares. Can you see a clear relationship between the square of experience and wage? YesNo\nDoes that mean that there is no statistical relationship between these two variables? YesNo\nHow would you expect this relationship to be positivenullnegative Why?\n\n\n\n\n\n\nNote\n\n\n\nYou can do a lot more data exploration using graphs but also tables. We will however now turn to modeling."
-  },
-  {
-    "objectID": "content/ex/ex_3_selection.html#quadratics",
-    "href": "content/ex/ex_3_selection.html#quadratics",
-    "title": "Exercise - Selection",
-    "section": "Quadratics",
-    "text": "Quadratics\nLet’s first explore the relationship between hourly wage, level of education, experience and experience squared. Regress wage on these variables, as we did last weeks.\n\n\n\n\n\n\nTip\n\n\n\nThe variable expersq is already in the data set; you can call it directly. If you use exper^2 in your regression, what happens? To remedy this, you need to tell R that you are actually creating a new variable, using the function I(exper^2): formula = ... ~ ... + I(exper^2).\n\n\n\n# regression\n\nWhat is the point estimate for educ? . How would you interpret this coefficient?\n\n\n\n\n Comparing two individuals with the same level of experience, we expect one with one more year of education to earn on average 0.6% more per hour than the other Comparing two individuals, we expect one with one more year of education to earn on average $0.6 more per hour than the other Comparing two individuals with the same level of experience, we expect one with one more year of education to earn on average $0.6 more per hour than the other Comparing two individuals with the same level of experience, we expect one with one more year of education to earn on average 6% more per hour than the other None of the above\n\nWhat is the point estimate for exper? . How would you interpret this coefficient?\n\n\n\n\n Comparing two individuals with the same level of education, we expect one with one more year of experience to earn on average 0.27% more per hour than the other Comparing two individuals with the same level of education, we expect one with one more year of experience to earn on average $0.27 more per hour than the other Comparing two individuals with the same level of education, we expect one with one more year of experience to earn on average 2.7% more per hour than the other None of the above\n\nFor how many years of experience could you easily interpret this coefficient? . The presence of which variable in the analysis can explain this difference? wageeducexperexpersq\nComparing two individuals with the same level of education, we expect one with 3 years of experience to earn on average  more per hour than one with 2 years of experience. What is the general formula to compute this quantity?\n\n\nAnswer\n\n\\[\\frac{\\partial \\widehat{wage}}{\\partial exp} = \\hat{\\beta_2} + 2 \\hat{\\beta_3} exp \\]\n\nHow do you interpret the sign of expersq?\n\n\nAnswer\n\nThere are decreasing marginal returns to experience."
-  },
-  {
-    "objectID": "content/ex/ex_3_selection.html#indicators",
-    "href": "content/ex/ex_3_selection.html#indicators",
-    "title": "Exercise - Selection",
-    "section": "Indicators",
-    "text": "Indicators\nWe will now explore how the relationship between level of education and wage varies by marital status. If we add a married dummy, what is the coefficient for educ? \nHow do we interpret it?\n\n\n\n\n Comparing two individuals with the same level of education, we expect one with one more year of experience to earn on average $0.58 more per hour than the other Comparing two individuals with the same level of experience, we expect one with one more year of education to earn on average $0.58 more per hour than the other Comparing two individuals with the same level of experience and marital status, we expect one with one more year of education to earn on average $0.58 more per hour than the other\n\nFor a given level of education, on average, we expect married individual to earn  dollars more/less per hour than non married one.\nDoes the relationship between level of education and wage varies by marital status? YesNo\nIf you plot the regression lines for both groups, they will be"
-  },
-  {
-    "objectID": "content/ex/ex_3_selection.html#interactions",
-    "href": "content/ex/ex_3_selection.html#interactions",
-    "title": "Exercise - Selection",
-    "section": "Interactions",
-    "text": "Interactions\nTo make this relationship vary by marital status, we can interact the variable of interest, educ, with married. To interact two variables, we can use :: eg y ~ x:z.\nWhich variables do we need to include in the model?\n\n\nAnswer\n\neduc, married, educ:married, exper and expersq\n\n\n\n\n\n\n\nTip\n\n\n\nTry only having educ*married, exper and expersq in your formula. What happens to your results? What does the * do?\n\n\nComparing two married individuals with the same level of experience, we expect one with one more year of education to earn on average  more per hour than the other.\nComparing two non-married individuals with the same level of experience, we expect one with one more year of education to earn on average  more per hour than the other.\nPlot the relationship between wage and education. Add a regression line. To do so, we need to use the  function.\n\n#plot\n\nLet’s now plot separate lines for married vs non-married individuals. To do so, we need to add the color = married aesthetic (aes(..., color = married))."
-  },
-  {
-    "objectID": "content/ex/ex_3_selection.html#model-selection",
-    "href": "content/ex/ex_3_selection.html#model-selection",
-    "title": "Exercise - Selection",
-    "section": "Model selection",
-    "text": "Model selection\nLet’s now dive into model selection.\n\n\\(R^2\\)\nWhat is the \\(R^2\\) of the regression of wage on the level of education, the level of experience and its square? 2\nWhat is the adjusted\\(-R^2\\)? . Is the difference with the \\(R^2\\) large? Why so?\nHow would you interpret the \\(R^2\\) (or the adjusted\\(-R^2\\))?\n\n\n\n\n The model explains 0.27% of the variation in education The model explains 27% of the variation in education The model explains 27% of the variation in wage The model explains 0.27% of the variation in wage\n\nAdd nonwhite, tenure, female, married, numdep to the model. Does the this model explains a larger proportion of the variation in wage? YesNo\nDoes the coefficient for educ vary? Why?\nIs the interpretation of this coefficient the same as before? YesNo\n\n\nMisspecification\nLet’s get back to our simple model of wage on the level of education, the level of experience and its square. Does including female affect the coefficient for educ? YesNo Why?\n\n\n\n\n This is only noise Female is correlated with education Female is correlated with both wage and education Female is correlated with wage\n\nIn the first specification, female is an . What other variables in the data set could have similar effects? Should we include them in the model? YesNo\nShould we include any variables in the model? YesNo Why?\n\n\n\n\n Irrelevant variables will create a bias Irrelevant variables will increase the variance of the estimator Irrelevant variables make the model imposible to estimate\n\nVariable selection involves arbitrating this bias-variance trade-off.\n\n\nInformation Criteria\nTo select which variables to include and not to include, a basic and usual approach is to use Information Criteria. We will choose the model that minimizes an information criterion, either the Akaike Information Criterion (AIC) or the Bayesian Information Criterion (BIC). The associated functions are AIC and BIC.\nWrite several models including some of the following variables, in addition of educ: exper, expersq, married, tenure, female, numdep and nonwhite.\n\nreg_1 <- lm(...)\nreg_2 <- lm(...)\nreg_3 <- lm(...)\nreg_4 <- lm(...)\n\nAIC(reg_1, reg_2, reg_3, reg_4)\n\nBIC(reg_1, reg_2, reg_3, reg_4)\n\nWhich model would you choose?\nIn particular, estimate the model including all the covariates, compute its AIC. Then do the same thing but excluding nonwhite. Which model would you choose?3"
-  },
-  {
-    "objectID": "content/lect/lect_1_linear_regression.html",
-    "href": "content/lect/lect_1_linear_regression.html",
-    "title": "Linear Regression",
-    "section": "",
-    "text": "Objective\n\n\n\nIn this session, we review the basics of linear regression and derive the formula for the OLS estimator."
-  },
-  {
-    "objectID": "content/lect/lect_1_linear_regression.html#summary",
-    "href": "content/lect/lect_1_linear_regression.html#summary",
-    "title": "Linear Regression",
-    "section": "Summary",
-    "text": "Summary\nAs researchers (academics or not), we want to answer research questions. To do so, we build theories and often want to take them to the data to assess their validity and quantify the values of parameters of interest. This involves studying relationships between variables. Regression is an helpful tool to do so. It allows us to estimate our model, using methods such as Ordinary Least-Squares (OLS) for instance. In this session, we review the basics of linear regression and derive the formula for the OLS estimator, an essential tool in any empirical economic analysis.\n\nSession Outline\n\nIntroduction: estimating a production function\nCourse logistics\nExample: the link between the level of education and earnings\nMathematical derivation of the OLS estimator"
-  },
-  {
-    "objectID": "content/lect/lect_1_linear_regression.html#materials",
-    "href": "content/lect/lect_1_linear_regression.html#materials",
-    "title": "Linear Regression",
-    "section": "Materials",
-    "text": "Materials\n Open slides\n\n\n\n\nThese slides are built on the material Clément Gorin taught two years ago."
-  },
-  {
-    "objectID": "content/lect/lect_1_linear_regression.html#additional-resources",
-    "href": "content/lect/lect_1_linear_regression.html#additional-resources",
-    "title": "Linear Regression",
-    "section": "Additional Resources",
-    "text": "Additional Resources\n\nSeeing Theory provides a nice introduction to probability and statistics based on interactive web applications\nThe material from your L3 econometrics class\nChapter 2 of The Effect on good research questions\nChapter 4 of The Effect for a review of linear regression\nChapter 3 of Sciences Po’s Introduction to Econometrics with R: same\nMLU-explain on linear regression: same but from a machine learning perspective"
-  },
-  {
-    "objectID": "content/lect/lect_2_properties.html",
-    "href": "content/lect/lect_2_properties.html",
-    "title": "OLS Properties",
-    "section": "",
-    "text": "Objective\n\n\n\nAfter this session you should understand basic and crucial properties of the OLS estimator, along with the associated necessary assumptions."
-  },
-  {
-    "objectID": "content/lect/lect_2_properties.html#summary",
-    "href": "content/lect/lect_2_properties.html#summary",
-    "title": "OLS Properties",
-    "section": "Summary",
-    "text": "Summary\nThe OLS estimator, under some conditions, has some neat properties (unbiasedness, efficiency, asymptotic consistency and normality). In this session, we describe these properties and some of the necessary conditions for these properties to hold. This session is very much centered around maths, may be a bit arid but is a cornerstone for everything we will learn afterwards.\nWe start by discussing and illustrating the fact that estimators are random variables (estimates are realizations of these random variables) and therefore come with uncertainty. After some probability reviews, we discuss some properties estimator can have and then the condition under which these properties holds. Once this has been discuss, we derive the mathematical expression for the bias and variance of the OLS estimator, underlying where the assumptions come to play.\n\nSession Outline\n\nQuizz\nDiscussion on research questions\nEstimates and uncertainty\nSome properties estimators can have\nOptimality conditions: conditions under which the OLS estimator has some of these properties\nMathematical derivation (bias and variance of the OLS estimator)"
-  },
-  {
-    "objectID": "content/lect/lect_2_properties.html#materials",
-    "href": "content/lect/lect_2_properties.html#materials",
-    "title": "OLS Properties",
-    "section": "Materials",
-    "text": "Materials\n Open slides"
-  },
-  {
-    "objectID": "content/lect/lect_2_properties.html#additional-resources",
-    "href": "content/lect/lect_2_properties.html#additional-resources",
-    "title": "OLS Properties",
-    "section": "Additional Resources",
-    "text": "Additional Resources\n\nSeeing Theory provides a nice introduction to probability and statistics based on interactive web applications\nThe material from your L3 econometrics class\nChapter 2 of The Effect on good research questions\nChapter 4 of The Effect for a review of linear regression"
-  },
-  {
-    "objectID": "content/lect/lect_3_specification.html",
-    "href": "content/lect/lect_3_specification.html",
-    "title": "Model Specification",
-    "section": "",
-    "text": "Objective\n\n\n\nAfter this session, you should be familiar with a couple of ways to introduce non-linearity in your model and to account for heterogeneity in the effect you are interested in."
-  },
-  {
-    "objectID": "content/lect/lect_3_specification.html#summary",
-    "href": "content/lect/lect_3_specification.html#summary",
-    "title": "Model Specification",
-    "section": "Summary",
-    "text": "Summary\nA linear regression does not mean that everything has to be linear in the model; it means that the model has to be linear in its parameters. In this session, we will discuss why and how we can introduce non-linearities in our model and model heterogeneity. Specifically, we will underline how this allows to have more flexible and complex interpretations of the parameters of the model, how it enable to better satisfy some of the necessary assumptions discussed in lecture 2 and how it allows to introduce heterogenity in the effect we are interested in.\n\nSession Outline\n\nQuizz\nRecap’ from last week (+ derivation formula of the variance of the OLS estimator)\nExercise: Hands-on linear regression\nIntroduction to model specification\nLogarithms\nQuadratics\nIndicators\nInteractions\n\n Open slides"
-  },
-  {
-    "objectID": "content/lect/lect_3_specification.html#exercise",
-    "href": "content/lect/lect_3_specification.html#exercise",
-    "title": "Model Specification",
-    "section": "Exercise",
-    "text": "Exercise\nWhy use particular functional transformations for the variables in your model?\nLet’s try to answer part of this question using an example. You can find the associated exercise here."
-  },
-  {
-    "objectID": "content/lect/lect_3_specification.html#additional-resources",
-    "href": "content/lect/lect_3_specification.html#additional-resources",
-    "title": "Model Specification",
-    "section": "Additional Resources",
-    "text": "Additional Resources\n\nOn interpretation of log-transforms: section “incorporating nonlinearities in Simple regression” in the Chapter 2 of Wooldridge, Introductory Econometrics: A Modern Approach or a discussion in Introduction to Econometrics with R"
   },
   {
     "objectID": "content/lect/lect_4_selection.html",
@@ -238,50 +126,64 @@
     "text": "Additional Resources\n\nOn interpretation of log-transforms: section “incorporating nonlinearities in Simple regression” in the Chapter 2 of Wooldridge, Introductory Econometrics: A Modern Approach"
   },
   {
-    "objectID": "content/lect/lect_5_6.html",
-    "href": "content/lect/lect_5_6.html",
-    "title": "Large Sample Properties",
+    "objectID": "content/lect/lect_2_properties.html",
+    "href": "content/lect/lect_2_properties.html",
+    "title": "OLS Properties",
     "section": "",
-    "text": "Objective\n\n\n\nAt the end of this session, you should be able to show consistency of an estimator, create asymptotic and bootstrap confidence intervals in order to create Statistical test"
+    "text": "Objective\n\n\n\nAfter this session you should understand basic and crucial properties of the OLS estimator, along with the associated necessary assumptions."
   },
   {
-    "objectID": "content/lect/lect_5_6.html#summary",
-    "href": "content/lect/lect_5_6.html#summary",
-    "title": "Large Sample Properties",
+    "objectID": "content/lect/lect_2_properties.html#summary",
+    "href": "content/lect/lect_2_properties.html#summary",
+    "title": "OLS Properties",
     "section": "Summary",
-    "text": "Summary\nIn the session we are going to explore the large sample properties of estimators, why do we need them, how do we derive them, and introduce simulation based methods with illustration code in R.\n\nSession Outline\n\nQuizz\nConvergence in Probability\nAsymptotic Normality\nBootstrap Procedure\nIntroduction to Inference\n\n Openslides"
+    "text": "Summary\nThe OLS estimator, under some conditions, has some neat properties (unbiasedness, efficiency, asymptotic consistency and normality). In this session, we describe these properties and some of the necessary conditions for these properties to hold. This session is very much centered around maths, may be a bit arid but is a cornerstone for everything we will learn afterwards.\nWe start by discussing and illustrating the fact that estimators are random variables (estimates are realizations of these random variables) and therefore come with uncertainty. After some probability reviews, we discuss some properties estimator can have and then the condition under which these properties holds. Once this has been discuss, we derive the mathematical expression for the bias and variance of the OLS estimator, underlying where the assumptions come to play.\n\nSession Outline\n\nQuizz\nDiscussion on research questions\nEstimates and uncertainty\nSome properties estimators can have\nOptimality conditions: conditions under which the OLS estimator has some of these properties\nMathematical derivation (bias and variance of the OLS estimator)"
   },
   {
-    "objectID": "content/resources.html",
-    "href": "content/resources.html",
-    "title": "Resources",
+    "objectID": "content/lect/lect_2_properties.html#materials",
+    "href": "content/lect/lect_2_properties.html#materials",
+    "title": "OLS Properties",
+    "section": "Materials",
+    "text": "Materials\n Open slides"
+  },
+  {
+    "objectID": "content/lect/lect_2_properties.html#additional-resources",
+    "href": "content/lect/lect_2_properties.html#additional-resources",
+    "title": "OLS Properties",
+    "section": "Additional Resources",
+    "text": "Additional Resources\n\nSeeing Theory provides a nice introduction to probability and statistics based on interactive web applications\nThe material from your L3 econometrics class\nChapter 2 of The Effect on good research questions\nChapter 4 of The Effect for a review of linear regression"
+  },
+  {
+    "objectID": "content/definitions.html",
+    "href": "content/definitions.html",
+    "title": "Definitions, Terminology and Notations",
     "section": "",
-    "text": "Here is a list of resources and references that can be helpful for this class and to go beyond the material taught in this class."
+    "text": "For nn individuals indexed by ii (i=1,…,ni = 1,\\dots,n), in the linear regression model yi=β0+β1x1i+...+βkxki+eiy_i = \\beta_0 + \\beta_1 x_{1i} + ... + \\beta_k x_{ki} + e_i,\n\nyy is called the dependent variable, the regressand, the explained variable, or the left-hand side variable,\nx1,...,xkx_{1}, ..., x_{k} are the kk independent variables, the regressors, the explanatory variables, or the right-hand side variables,\nx↦β0+β1xx \\mapsto \\beta_0 + \\beta_1 x is the population regression function,\nβ0\\beta_0 is the intercept,\nβ1\\beta_1 is the slope parameter associated with x1x_1,\nTogether β0\\beta_0 and β1\\beta_1 are the coefficients or parameters of the regression model,\neie_i is the error or disturbance term.\n\nIn vector form, this is equivalent to y=β0+β1x1+...+βkxk+ey = \\beta_0 + \\beta_1 x_1 + ... + \\beta_k x_{k} + e where:\ny=[y1⋮yn]n×1,∀j∈{1,..,k}xj=[xj,1⋮xj,n]n×1ande=[e1⋮en]n×1y = \\begin{bmatrix}\n                    y_1\\\\ \n                    \\vdots\\\\\n                    y_n\n                \\end{bmatrix}_{n\\times 1},\n    \\quad       \\forall j \\in \\{1, .., k\\} \\quad\n     x_j = \\begin{bmatrix}\n                    x_{j,1}\\\\ \n                    \\vdots\\\\\n                    x_{j,n}\n                \\end{bmatrix}_{n\\times 1}\n     \\quad and \\quad        \n     e = \\begin{bmatrix}\n                    e_1\\\\ \n                    \\vdots\\\\\n                    e_n\n                \\end{bmatrix}_{n\\times 1}\nIn matrix form, this equivalent to y=Xβ+ey = X\\beta + e where:\nX=[1x1,1...xk,11x1,2...xk,2⋮⋮⋮1x1,n...xk,n]n×(k+1)andβ=[β0⋮βk](k+1)×1X = \\begin{bmatrix}\n            1 & x_{1,1} & ... & x_{k,1}\\\\ \n            1 & x_{1,2} & ... & x_{k,2}\\\\ \n            \\vdots & \\vdots & & \\vdots\\\\\n            1 & x_{1,n} & ... & x_{k,n}\\\\ \n        \\end{bmatrix}_{n\\times (k + 1)}\n      \\quad and \\quad   \n      \\beta = \\begin{bmatrix}\n                    \\beta_{0}\\\\ \n                    \\vdots\\\\\n                    \\beta_{k}\n                \\end{bmatrix}_{(k+1)\\times 1}\n                \n\n\n\n\n\n\nNote\n\n\n\nIn this class, vectors are in lower case (eg yy) and matrices in caps (eg XX). Most of the time, individual observations will be indexed by ii (eg yiy_i); these are scalars."
   },
   {
-    "objectID": "content/resources.html#econometrics",
-    "href": "content/resources.html#econometrics",
-    "title": "Resources",
-    "section": "Econometrics",
-    "text": "Econometrics\n\nMain Textbooks\n\nWooldridge, Introductory Econometrics: A Modern Approach\nGelman, Hill and Vehtari, Regression and Other Stories\nSciencesPo Introduction to Econometrics with R’s material overlaps with the one taught in this class and provides helpful web apps through the ScPoApps R Package.\nIntroduction to Econometrics with R\n\n\n\nAdditional Useful Resources\n\nBen Lambert’s videos cover introductory to advanced metrics topics and are pretty helpful to understand a specific concept you might be stuck on.\n\n\n\nGoing Further\n\n\nHuntington-Klein, The Effect: An Introduction to Research Design and Causality\nCunningham, Causal Inference, The Mixtape"
+    "objectID": "content/definitions.html#terminology-and-notation",
+    "href": "content/definitions.html#terminology-and-notation",
+    "title": "Definitions, Terminology and Notations",
+    "section": "",
+    "text": "For nn individuals indexed by ii (i=1,…,ni = 1,\\dots,n), in the linear regression model yi=β0+β1x1i+...+βkxki+eiy_i = \\beta_0 + \\beta_1 x_{1i} + ... + \\beta_k x_{ki} + e_i,\n\nyy is called the dependent variable, the regressand, the explained variable, or the left-hand side variable,\nx1,...,xkx_{1}, ..., x_{k} are the kk independent variables, the regressors, the explanatory variables, or the right-hand side variables,\nx↦β0+β1xx \\mapsto \\beta_0 + \\beta_1 x is the population regression function,\nβ0\\beta_0 is the intercept,\nβ1\\beta_1 is the slope parameter associated with x1x_1,\nTogether β0\\beta_0 and β1\\beta_1 are the coefficients or parameters of the regression model,\neie_i is the error or disturbance term.\n\nIn vector form, this is equivalent to y=β0+β1x1+...+βkxk+ey = \\beta_0 + \\beta_1 x_1 + ... + \\beta_k x_{k} + e where:\ny=[y1⋮yn]n×1,∀j∈{1,..,k}xj=[xj,1⋮xj,n]n×1ande=[e1⋮en]n×1y = \\begin{bmatrix}\n                    y_1\\\\ \n                    \\vdots\\\\\n                    y_n\n                \\end{bmatrix}_{n\\times 1},\n    \\quad       \\forall j \\in \\{1, .., k\\} \\quad\n     x_j = \\begin{bmatrix}\n                    x_{j,1}\\\\ \n                    \\vdots\\\\\n                    x_{j,n}\n                \\end{bmatrix}_{n\\times 1}\n     \\quad and \\quad        \n     e = \\begin{bmatrix}\n                    e_1\\\\ \n                    \\vdots\\\\\n                    e_n\n                \\end{bmatrix}_{n\\times 1}\nIn matrix form, this equivalent to y=Xβ+ey = X\\beta + e where:\nX=[1x1,1...xk,11x1,2...xk,2⋮⋮⋮1x1,n...xk,n]n×(k+1)andβ=[β0⋮βk](k+1)×1X = \\begin{bmatrix}\n            1 & x_{1,1} & ... & x_{k,1}\\\\ \n            1 & x_{1,2} & ... & x_{k,2}\\\\ \n            \\vdots & \\vdots & & \\vdots\\\\\n            1 & x_{1,n} & ... & x_{k,n}\\\\ \n        \\end{bmatrix}_{n\\times (k + 1)}\n      \\quad and \\quad   \n      \\beta = \\begin{bmatrix}\n                    \\beta_{0}\\\\ \n                    \\vdots\\\\\n                    \\beta_{k}\n                \\end{bmatrix}_{(k+1)\\times 1}\n                \n\n\n\n\n\n\nNote\n\n\n\nIn this class, vectors are in lower case (eg yy) and matrices in caps (eg XX). Most of the time, individual observations will be indexed by ii (eg yiy_i); these are scalars."
   },
   {
-    "objectID": "content/resources.html#r",
-    "href": "content/resources.html#r",
-    "title": "Resources",
-    "section": "R",
-    "text": "R\nIn addition to the material and information provided in the TD, here is a list of  resources.\n\nLearning R\n\nR for Data Science: definitely the best resource to learn R and the tidyverse by yourself.\nR cheatsheets: great summaries of the functions in key tidyverse packages.\nThe tidyverse style guide: a very short book to help you write more legible R code.\nTidy design principles a more advanced book to help you write better R code. \n\n\n\n\n\n\n\nTip\n\n\n\nIf you are new to R, read R for Data Science cover to cover, running all the code in the book yourself; by the time you finish the book, you will know R.\n\n\n\n\nData viz in R\nData visualization is key to any statistical analysis, whether it is used to explore the data, build a model, check hypotheses or present and communicate results. Here are a few resources that can help you build nice and relevant data viz in R.\n\nR for Data Science provides a nice introduction to ggplot, THE package to build plots in R. To go further you can read this book.\nModern Data Visualization with R and Data Visualization - A practical introduction both discuss key data viz concepts and teaches you how to apply them in R and ggplot.\nFundamentals of Data Visualization does not provide R code directly but provides a great introduction to data viz and the code can be found on the book’s GitHub."
-  },
-  {
-    "objectID": "content/resources.html#finding-data",
-    "href": "content/resources.html#finding-data",
-    "title": "Resources",
-    "section": "Finding data",
-    "text": "Finding data\nData are obviously central to statistical analyses. Identifying relevant datasets is often not an easy task. Here is a non-exhaustive list of places where to look for useful datasets.\n\nGoogle Dataset Search: a search engine for datasets hosted in thousands of repositories across the Web. Info here\nData Europa: European public sector datasets\nData.gouv: open platform for French public data\nData Is Plural: a weekly newsletter providing useful and often original datasets. There is a spreadsheet archiving all the data sets\nA currated list of French open data sources\nQuantitative Social Science Data: a curated list of economics datasets\nAwesome Public Datasets: a list of topic-centric public data sources\nPolData: a list of political science datasets\nICPSR stores, curates, and provides access to scientific data so others can reuse the data\nHarvard dataverse: A repository of datasets used in published research articles."
+    "objectID": "content/definitions.html#definitions",
+    "href": "content/definitions.html#definitions",
+    "title": "Definitions, Terminology and Notations",
+    "section": "Definitions",
+    "text": "Definitions"
   },
   {
     "objectID": "content/syllabus.html",
     "href": "content/syllabus.html",
+    "title": "Syllabus - Econometrics 1 (ECO-4104)",
+    "section": "",
+    "text": "All the information relative to this class can be found on the course website."
+  },
+  {
+    "objectID": "content/syllabus.html#course-website",
+    "href": "content/syllabus.html#course-website",
     "title": "Syllabus - Econometrics 1 (ECO-4104)",
     "section": "",
     "text": "All the information relative to this class can be found on the course website."
@@ -312,7 +214,7 @@
     "href": "content/syllabus.html#outline",
     "title": "Syllabus - Econometrics 1 (ECO-4104)",
     "section": "Outline",
-    "text": "Outline\nMore specifically, the course content will be divided into eight 3h-long lectures:\n\nLinear regression: Introduction and refresher to linear regression\nOLS properties: What are the properties and assumptions behind OLS?\nModel specification: How to define a sensible model describing the relationships between the variables of interest?\nCovariates selection: How to decide which variables to include in the model?\nand 6. Large sample properties: How to show the convergenceasymptotic distribution of estimators\nHypothesis testing - Theory: How to construct a good statistical test?\nHypothesis testing - Application: Which hypothesis can I use based on a specific (set) of hypothesis?"
+    "text": "Outline\nMore specifically, the course content will be divided into eight 3h-long lectures:\n\nLinear regression: Introduction and refresher to linear regression\nOLS properties: What are the properties and assumptions behind OLS?\nModel specification: How to define a sensible model describing the relationships between the variables of interest?\nCovariates selection: How to decide which variables to include in the model?\nand 6. Large sample properties: How to show the convergence and asymptotic distribution of estimators\nHypothesis testing - Theory: How to construct a good statistical test?\nHypothesis testing - Application: Which hypothesis can I use based on a specific (set) of hypothesis?"
   },
   {
     "objectID": "content/syllabus.html#prerequisites",
@@ -336,10 +238,129 @@
     "text": "Bibliography\nThe course website provides a series of references to complement and go beyond the material taught in this class. Among those, key references are:\n\nGelman, Andrew, Jennifer Hill, and Aki Vehtari. Regression and Other Stories. of Analytical Methods for Social Research. Cambridge University Press, 2020.\nWooldridge, Jeffrey M. Introductory Econometrics: A Modern Approach. South- Western College Publishing, 7th edition, 2018.\nAngrist, Joshua D. and Jorn-Stefen Prischke. Mostly Harmless Econometrics: An Empiricist’s Companion. Princeton University Press, 2009.\nWickham, Hadley, Mine Çetinkaya-Rundel, and Garrett Grolemund. R for data science. O’Reilly Media, Inc., 2nd edition, 2023\nHanck, Christoph, Martin Arnold, Alexander Gerber and Martin Schmelzer. Introduction to Econometrics with R. 2019."
   },
   {
+    "objectID": "content/resources.html",
+    "href": "content/resources.html",
+    "title": "Resources",
+    "section": "",
+    "text": "Here is a list of resources and references that can be helpful for this class and to go beyond the material taught in this class."
+  },
+  {
+    "objectID": "content/resources.html#econometrics",
+    "href": "content/resources.html#econometrics",
+    "title": "Resources",
+    "section": "Econometrics",
+    "text": "Econometrics\n\nMain Textbooks\n\nWooldridge, Introductory Econometrics: A Modern Approach\nGelman, Hill and Vehtari, Regression and Other Stories\nSciencesPo Introduction to Econometrics with R’s material overlaps with the one taught in this class and provides helpful web apps through the ScPoApps R Package.\nIntroduction to Econometrics with R\n\n\n\nAdditional Useful Resources\n\nBen Lambert’s videos cover introductory to advanced metrics topics and are pretty helpful to understand a specific concept you might be stuck on.\n\n\n\nGoing Further\n\n\nHuntington-Klein, The Effect: An Introduction to Research Design and Causality\nCunningham, Causal Inference, The Mixtape"
+  },
+  {
+    "objectID": "content/resources.html#r",
+    "href": "content/resources.html#r",
+    "title": "Resources",
+    "section": "R",
+    "text": "R\nIn addition to the material and information provided in the TD, here is a list of  resources.\n\nLearning R\n\nR for Data Science: definitely the best resource to learn R and the tidyverse by yourself.\nR cheatsheets: great summaries of the functions in key tidyverse packages.\nThe tidyverse style guide: a very short book to help you write more legible R code.\nTidy design principles a more advanced book to help you write better R code. \n\n\n\n\n\n\n\nTip\n\n\n\nIf you are new to R, read R for Data Science cover to cover, running all the code in the book yourself; by the time you finish the book, you will know R.\n\n\n\n\nData viz in R\nData visualization is key to any statistical analysis, whether it is used to explore the data, build a model, check hypotheses or present and communicate results. Here are a few resources that can help you build nice and relevant data viz in R.\n\nR for Data Science provides a nice introduction to ggplot, THE package to build plots in R. To go further you can read this book.\nModern Data Visualization with R and Data Visualization - A practical introduction both discuss key data viz concepts and teaches you how to apply them in R and ggplot.\nFundamentals of Data Visualization does not provide R code directly but provides a great introduction to data viz and the code can be found on the book’s GitHub."
+  },
+  {
+    "objectID": "content/resources.html#finding-data",
+    "href": "content/resources.html#finding-data",
+    "title": "Resources",
+    "section": "Finding data",
+    "text": "Finding data\nData are obviously central to statistical analyses. Identifying relevant datasets is often not an easy task. Here is a non-exhaustive list of places where to look for useful datasets.\n\nGoogle Dataset Search: a search engine for datasets hosted in thousands of repositories across the Web. Info here\nData Europa: European public sector datasets\nData.gouv: open platform for French public data\nData Is Plural: a weekly newsletter providing useful and often original datasets. There is a spreadsheet archiving all the data sets\nA currated list of French open data sources\nQuantitative Social Science Data: a curated list of economics datasets\nAwesome Public Datasets: a list of topic-centric public data sources\nPolData: a list of political science datasets\nICPSR stores, curates, and provides access to scientific data so others can reuse the data\nHarvard dataverse: A repository of datasets used in published research articles."
+  },
+  {
     "objectID": "index.html",
     "href": "index.html",
     "title": "Econometrics 1",
     "section": "",
-    "text": "Important\n\n\n\nThis course will make an extensive use of R and RStudio. Please install it before class. You can find instructions for installation here."
+    "text": "This website gathers all the materials and information for the course Econometrics 1 (ECO-4104) of the MSc Advanced Economics (2024-2025) at the ENS Lyon.\n\n\n\n\n\n\n\n\n\n\n\nImportant\n\n\n\nThis course will make an extensive use of R and RStudio. Please install it before class. You can find instructions for installation here."
+  },
+  {
+    "objectID": "content/lect/lect_1_linear_regression.html",
+    "href": "content/lect/lect_1_linear_regression.html",
+    "title": "Linear Regression",
+    "section": "",
+    "text": "Objective\n\n\n\nIn this session, we review the basics of linear regression and derive the formula for the OLS estimator."
+  },
+  {
+    "objectID": "content/lect/lect_1_linear_regression.html#summary",
+    "href": "content/lect/lect_1_linear_regression.html#summary",
+    "title": "Linear Regression",
+    "section": "Summary",
+    "text": "Summary\nAs researchers (academics or not), we want to answer research questions. To do so, we build theories and often want to take them to the data to assess their validity and quantify the values of parameters of interest. This involves studying relationships between variables. Regression is an helpful tool to do so. It allows us to estimate our model, using methods such as Ordinary Least-Squares (OLS) for instance. In this session, we review the basics of linear regression and derive the formula for the OLS estimator, an essential tool in any empirical economic analysis.\n\nSession Outline\n\nIntroduction: estimating a production function\nCourse logistics\nExample: the link between the level of education and earnings\nMathematical derivation of the OLS estimator"
+  },
+  {
+    "objectID": "content/lect/lect_1_linear_regression.html#materials",
+    "href": "content/lect/lect_1_linear_regression.html#materials",
+    "title": "Linear Regression",
+    "section": "Materials",
+    "text": "Materials\n Open slides\n\n\n\n\nThese slides are built on the material Clément Gorin taught two years ago."
+  },
+  {
+    "objectID": "content/lect/lect_1_linear_regression.html#additional-resources",
+    "href": "content/lect/lect_1_linear_regression.html#additional-resources",
+    "title": "Linear Regression",
+    "section": "Additional Resources",
+    "text": "Additional Resources\n\nSeeing Theory provides a nice introduction to probability and statistics based on interactive web applications\nThe material from your L3 econometrics class\nChapter 2 of The Effect on good research questions\nChapter 4 of The Effect for a review of linear regression\nChapter 3 of Sciences Po’s Introduction to Econometrics with R: same\nMLU-explain on linear regression: same but from a machine learning perspective"
+  },
+  {
+    "objectID": "content/lect/lect_3_specification.html",
+    "href": "content/lect/lect_3_specification.html",
+    "title": "Model Specification",
+    "section": "",
+    "text": "Objective\n\n\n\nAfter this session, you should be familiar with a couple of ways to introduce non-linearity in your model and to account for heterogeneity in the effect you are interested in."
+  },
+  {
+    "objectID": "content/lect/lect_3_specification.html#summary",
+    "href": "content/lect/lect_3_specification.html#summary",
+    "title": "Model Specification",
+    "section": "Summary",
+    "text": "Summary\nA linear regression does not mean that everything has to be linear in the model; it means that the model has to be linear in its parameters. In this session, we will discuss why and how we can introduce non-linearities in our model and model heterogeneity. Specifically, we will underline how this allows to have more flexible and complex interpretations of the parameters of the model, how it enable to better satisfy some of the necessary assumptions discussed in lecture 2 and how it allows to introduce heterogenity in the effect we are interested in.\n\nSession Outline\n\nQuizz\nRecap’ from last week (+ derivation formula of the variance of the OLS estimator)\nExercise: Hands-on linear regression\nIntroduction to model specification\nLogarithms\nQuadratics\nIndicators\nInteractions\n\n Open slides"
+  },
+  {
+    "objectID": "content/lect/lect_3_specification.html#exercise",
+    "href": "content/lect/lect_3_specification.html#exercise",
+    "title": "Model Specification",
+    "section": "Exercise",
+    "text": "Exercise\nWhy use particular functional transformations for the variables in your model?\nLet’s try to answer part of this question using an example. You can find the associated exercise here."
+  },
+  {
+    "objectID": "content/lect/lect_3_specification.html#additional-resources",
+    "href": "content/lect/lect_3_specification.html#additional-resources",
+    "title": "Model Specification",
+    "section": "Additional Resources",
+    "text": "Additional Resources\n\nOn interpretation of log-transforms: section “incorporating nonlinearities in Simple regression” in the Chapter 2 of Wooldridge, Introductory Econometrics: A Modern Approach or a discussion in Introduction to Econometrics with R"
+  },
+  {
+    "objectID": "content/lect/lect_5_6.html",
+    "href": "content/lect/lect_5_6.html",
+    "title": "Large Sample Properties",
+    "section": "",
+    "text": "Objective\n\n\n\nAt the end of this session, you should be able to show consistency of an estimator, create asymptotic and bootstrap confidence intervals in order to create Statistical test"
+  },
+  {
+    "objectID": "content/lect/lect_5_6.html#summary",
+    "href": "content/lect/lect_5_6.html#summary",
+    "title": "Large Sample Properties",
+    "section": "Summary",
+    "text": "Summary\nIn the session we are going to explore the large sample properties of estimators, why do we need them, how do we derive them, and introduce simulation based methods with illustration code in R.\n\nSession Outline\n\nQuizz\nConvergence in Probability\nAsymptotic Normality\nBootstrap Procedure\nIntroduction to Inference\n\n Openslides"
+  },
+  {
+    "objectID": "content/ex/ex_2_specification.html",
+    "href": "content/ex/ex_2_specification.html",
+    "title": "Exercise - Specification",
+    "section": "",
+    "text": "Instructions\n\n\n\nThis page gives both instructions and some interactive snippets. You will have to run most of your code on RStudio, on your own computer.\nFirst, let’s load useful packages. We need the tidyverse package but also to install the gapminder package (it contains the dataset we are interested in).\nCode\n# install.packages(\"gapminder\")\n\nlibrary(tidyverse)\nlibrary(gapminder)"
+  },
+  {
+    "objectID": "content/ex/ex_2_specification.html#exploring-the-data-set",
+    "href": "content/ex/ex_2_specification.html#exploring-the-data-set",
+    "title": "Exercise - Specification",
+    "section": "Exploring the data set",
+    "text": "Exploring the data set\n\nThe data\nLoad the data by calling gapminder (after loading the package using library(gapminder)).\nWhat does each variable represent? (use the help() function). How many countries are there in this data set? .\n\n\n“Research” question\n\n\n\n\n\n\nObjective\n\n\n\nHere, we will study the relationship between lifeExp and gdpPercap.\n\n\nThe goal is to study the relationship between GDP per capita and life expectancy at birth. We can ask questions like: do “richer” countries have a larger life expectancy on average? On average, how different is life expectancy between two countries that have a 1 billion difference in GDP per capita?\nThink about other interesting questions you could answer with this data set (start simple).\n\n\nPlot\nPlot a scatter plot of lifeExp as a function of gdpPercap. To do so, use the same lines of code as in the previous exercise on airquality, changing the relevant variables names.\n\n#plot\n\nInterpret this graph. For which level of GDP/capita is the difference between two countries having relatively similar GDP per capita the largest?\nDoes the relationship described on the graph you plotted look linear? Yes, roughlyNot at all\nWhat if you plot the log of gdpPercap, replacing gdpPercap by log(gdpPercap)? Yes, roughlyNot at all.\nWhy does the log allow to have a more linear relationship here? Plot the distribution of the gdpPercap, using the following lines of code, filling in the blanks. Which variable should you put on the x-axis? \n\nggplot(data = ..., aes(x = ...)) +\n  geom_histogram()\n\nWhat do you notice about this distribution? Is it surprising to you?\nIf instead you plot the distribution of log(gdpPercap) (using the previous lines of code), this distribution seems roughly . Importantly, it is relatively centered around its mean."
+  },
+  {
+    "objectID": "content/ex/ex_2_specification.html#model-and-estimation",
+    "href": "content/ex/ex_2_specification.html#model-and-estimation",
+    "title": "Exercise - Specification",
+    "section": "Model and estimation",
+    "text": "Model and estimation\n\nModel\nAssume you want to write a model to estimate the relationship between gdpPercap and lifeExp (or transformed versions of these variables) with OLS. For the resulting model to accurately represent the data generating process, the relationship between the variables therefore has to be linear. You want to write a model of the form\n\\[y = \\alpha + \\beta x + e\\] What should be \\(y\\) in your case? . And x? .\n\n\nRegression\nTo estimate this model, we will use the lm function. Which formula should you pass to the function? . Run the estimtion and display the output using the summary() function.\n\nreg &lt;- lm(data = ..., formula = ...)\n\n\nsummary(...)\n\n\n\n\n\n\n\nNote\n\n\n\nBefore doing the next questions, please read the slides, including the few that we did not have time to cover in class, they will help you answer the questions.\n\n\nWhat is the point estimate for lifeExp? . How would you interpret this coefficient?\n\n Comparing two countries, we expect a country in which the GDP per capita is $1 larger than in the other to have a life expectancy that is on average 8.4 years larger Comparing two countries, we expect a country in which the GDP per capita is 1% larger than in the other to have a life expectancy that is on average 8.4 years larger Comparing two countries, we expect a country in which the GDP per capita is $1 larger than in the other to have a life expectancy that is on average 8.4% larger Comparing two countries, we expect a country in which the GDP per capita is 1% larger than in the other to have a life expectancy that is on average 0.084 years larger Comparing two countries, we expect a country in which the GDP per capita is 1% larger than in the other to have a life expectancy that is on average 8.4% larger Comparing two countries, we expect a country in which the GDP per capita is 1% larger than in the other to have a life expectancy that is on average 0.084% larger\n\nIs this number exact or is it an approximation? ExactApproximation\nDoes this number seem reasonable to you? Think about what it entails.\n\n\nHeteroskedasticity\nLet’s now look at the residuals of this regression in order to explore potential risks of heteroskedasticity. We can retrieve the residuals of a regression with the function resid &lt;- residuals(reg) or by extracting them from the output of the regression: resid &lt;- reg$residuals. Try these two approaches and look at the resulting vecotrs.\n\nresid &lt;- residuals(reg)\nresid &lt;- reg$residuals\n\nRemember what heteroskedasticity is. Which scatter plot should we plot to observe it, if there is any to observe?  against .\nTo do that, we should store these variable into a dataframe, using the tibble function. Let’s call them x1 and x2 for the sake of the example. Replace x1 and x2 by the relevant variables in the following code. Note that to access variables in the gapminder dataset, you need to use $: for instance to access the variable year, write gapminder$year.\n\ndata_residuals &lt;- tibble(name_x1 = x1, name_x2 = x2)\n  \nggplot(data = data_residuals, aes(x = .., y = ..)) + \n  geom_point() + \n  geom_smooth()\n\nDoes there seem to be some heteroskedasticity here? YesNo\nWhy is it problematic?\nThere are actually formal tests for heteroskedasticity. They however go beyond what is covered in this section of the class.\n\n\nDistribution of the residuals\nWe saw in class that when the residuals are normally distributed, our estimator has nice properties. Plot an histogram to describe the distribution of the residuals. Which function should you use? \n\nggplot(data = data_residuals, aes(x = .., y = ..)) + \n  ...\n\nDoes that seem roughly normally distributed? YesNo\nTo actually test for normality, there is a bunch of tests one can implement but you will learn more about these later. For example, we can plot the residuals against draws from a normal distribution. If the residuals are normally distributed, the resulting points will be on the identity line. To plot this, we can use the geom_qq() function (geom_qq_line() plots the identity line):\n\ndata_residuals |&gt; \n  ggplot(aes(sample = resid)) + \n  geom_qq() + \n  geom_qq_line()"
   }
 ]
