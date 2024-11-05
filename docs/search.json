@@ -214,7 +214,7 @@
     "href": "content/syllabus.html#outline",
     "title": "Syllabus - Econometrics 1 (ECO-4104)",
     "section": "Outline",
-    "text": "Outline\nMore specifically, the course content will be divided into eight 3h-long lectures:\n\nLinear regression: Introduction and refresher to linear regression\nOLS properties: What are the properties and assumptions behind OLS?\nModel specification: How to define a sensible model describing the relationships between the variables of interest?\nCovariates selection: How to decide which variables to include in the model?\nand 6. Large sample properties: How to show the convergence and asymptotic distribution of estimators\nHypothesis testing - Theory: How to construct a good statistical test?\nHypothesis testing - Application: Which hypothesis can I use based on a specific (set) of hypothesis?"
+    "text": "Outline\nMore specifically, the course content will be divided into eight 3h-long lectures:\n\nLinear regression: Introduction and refresher to linear regression\nOLS properties: What are the properties and assumptions behind OLS?\nModel specification: How to define a sensible model describing the relationships between the variables of interest?\nCovariates selection: How to decide which variables to include in the model?\nLarge sample properties: How to show the convergence and asymptotic distribution of estimators\nLarge sample properties: How to show the convergence and asymptotic distribution of estimators\nHypothesis testing - Theory: How to construct a good statistical test?\nHypothesis testing - Application: Which hypothesis can I use based on a specific (set) of hypothesis?"
   },
   {
     "objectID": "content/syllabus.html#prerequisites",
@@ -376,5 +376,19 @@
     "title": "Hypothesis Testing",
     "section": "Session Outline",
     "text": "Session Outline\n\nHypothesis test - t-test and the mean\nP-value\nt-test F-test and linear regression\n\n Open slides"
+  },
+  {
+    "objectID": "content/lect/lect_8.html",
+    "href": "content/lect/lect_8.html",
+    "title": "Heterosekedasticity, Hypothesis Testing and Multiple Testing",
+    "section": "",
+    "text": "Objective\n\n\n\nAt the end of this session, you will be able detect Heteroskedasticity, use the correct estimator when in presence of Heteroskedasticity, and understand the correction of p-value when doing multiple testing."
+  },
+  {
+    "objectID": "content/lect/lect_8.html#session-outline",
+    "href": "content/lect/lect_8.html#session-outline",
+    "title": "Heterosekedasticity, Hypothesis Testing and Multiple Testing",
+    "section": "Session Outline",
+    "text": "Session Outline\n\nHeteroskedasticity\nCorrection of p-value\n\n Open../../slides/lecture_8/slides_8.htmlslides"
   }
 ]
