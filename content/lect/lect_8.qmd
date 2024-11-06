@@ -18,7 +18,7 @@ At the end of this session, you will be able detect Heteroskedasticity, use the 
 1.  Heteroskedasticity
 2.  Correction of p-value
 
-`r fontawesome::fa("file-powerpoint")` [Open../../slides/lecture_8/slides_8.htmlslides](../../slides/lecture_8/slides_8.html)
+`r fontawesome::fa("file-powerpoint")` [Open slides](../../slides/lecture_8/slides_8.html)
 
 ```{r out.width='100%'}
 #| echo: false
