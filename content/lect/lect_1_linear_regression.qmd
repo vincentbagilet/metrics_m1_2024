@@ -31,7 +31,7 @@ As researchers (academics or not), we want to answer research questions. To do s
 ```{r out.width='100%'}
 #| echo: false
 
-knitr::include_url("(../../slides/lecture_1/slides_1_linear_regression.html")
+knitr::include_url("../../slides/lecture_1/slides_1_linear_regression.html")
 ```
 
 These slides are built on the material Clément Gorin taught two years ago.

@@ -530,7 +530,7 @@ class: titled, middle
 
 - Spherical errors are a combination of: 
 
-  - **Homoskedasticity**: the variance of the errors does not depend on $X$ ( $\mathbb{V}[e_i|X] = \sigma $ )
+  - **Homoskedasticity**: the variance of the errors does not depend on $X$ ( $\mathbb{V}[e_i|X] = \sigma$ )
   
   - **No serial correlation** or **independent errors**: $e_i \perp e_j | X$ 
 
