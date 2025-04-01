@@ -7,7 +7,7 @@ This website gathers all the materials and information for the course Econometri
 
 ![](images/toolbox.jpg "Photo by Quality Pixels on Unsplash.com"){fig-align="center" width="70%"}
 
-This course aims to **introduce regression methods for economic research ** and general methods to test hypothesis. It shall provide fundamental tools to quantitatively explore relevant social science questions.
+This course aims to **introduce regression methods for economic research ** and general methods to test hypotheses. It shall provide fundamental tools to quantitatively explore relevant social science questions.
 
 **Intuition** is central to this class. A typical lecture first discusses the main intuition related to the topics of the day through a set of concrete examples and realistic simulations. Most sessions also involve **hands-on R exercises** and data analyses to allow grasping the main challenges associated with the topic of interest. After this description of the goals, the motivation, and the intuition behind the aspects explored in the lecture, it turns to a comprehensive theorizing and mathematical formalization.
 

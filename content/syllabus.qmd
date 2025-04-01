@@ -24,7 +24,7 @@ All the information relative to this class can be found on the [course website](
 
 ## Course Objectives and Overview
 
-This course aims to introduce regression methods for economic research and general methods to test hypothesis. It shall provide fundamental tools to quantitatively explore relevant social science questions.
+This course aims to introduce regression methods for economic research and general methods to test hypotheses. It shall provide fundamental tools to quantitatively explore relevant social science questions.
 
 Intuition will be central to this class. A typical lecture will first discuss the main intuition related to the topics of the day through a set of concrete examples and realistic simulations. Most sessions will also involve hands-on R exercises and data analyses to allow grasping the main challenges associated with the topic of interest. After this description of the goals, the motivation, and the intuition behind the aspects explored in the lecture, it will turn to a comprehensive theorizing and mathematical formalization.
 
